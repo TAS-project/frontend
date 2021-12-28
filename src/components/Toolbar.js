@@ -5,19 +5,19 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import CategoryIcon from '@mui/icons-material/Category';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import LabelImportantIcon from '@mui/icons-material/LabelImportant';
+import { Genre } from "../dummy";
 
 const drawerWidth = 240;
 
@@ -31,15 +31,20 @@ function ResponsiveDrawer() {
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
+      <Typography variant="h6" >
+            Genres
+        </Typography>
+        <Divider />
+      
       <List>
+  
         {/* list of ganers*/}
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+        { Genre.map((G) => (
+          <ListItem button key={G.Genre_ID}>
+            <ListItemIcon >
+               <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={G.Genre_Title} />
           </ListItem>
         ))}
       </List>
@@ -74,16 +79,20 @@ function ResponsiveDrawer() {
           </Typography>
           {/* search input */}
           <Paper component="form"
-          sx={{ m:1 , p: '2px 4px', display: 'flex', alignItems: 'center' , flex: 1 }}>
-          <InputBase sx={{ ml: 1, flex: 1 , width: 200}}
-          placeholder="Search books"
+          sx={{ m:1 , p: '2px 4px', display: 'flex', alignItems: 'center' ,flex:1, width: '300px'}}>
+          <InputBase sx={{ ml: 1, flex: 1 ,}}
+          placeholder="Search in"
           inputProps={{ 'aria-label': 'search Search books' }}
       />
-      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
+           <Typography variant="caption"> books </Typography>
+        <SearchIcon />
+            </IconButton>
+        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
+            <Typography variant="caption">users</Typography> 
         <SearchIcon />
       </IconButton>
       </Paper>
-
       </Toolbar>
       </AppBar>
       <Box component="nav"
