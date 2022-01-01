@@ -131,3 +131,65 @@ export const Genre = [
     Summary:"Bildungsroman is a literary genre of stories about a character growing psychologically and morally from their youth into adulthood"
   },
 ];
+
+export const Chapters = [
+  {
+    Chapter_ID : 1,
+    Chapter_Number : 1,
+    Book_id : 1,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date :"",
+    content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license."
+  },
+  {
+   Chapter_ID : 2,
+    Chapter_Number : 2,
+    Book_id : 1,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date :"",
+    content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license."
+ 
+  },
+  {
+   Chapter_ID : 3,
+    Chapter_Number : 3,
+    Book_id : 1,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date :"",
+    content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license."
+ 
+  }
+];
+
+export const Post_HomePage = [
+  {
+    Chapter_ID : 1,
+    Chapter_Number : 1,
+    Book_Name: "be a friend",
+    writer : "alice shrink",
+    BooK_Rate : 10,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date: "2021-2-1",
+    Last_chapter_name : "long time no see",
+    },
+  {
+    Chapter_ID : 2,
+    Chapter_Number : 1,
+    Book_Name: "be a friend",
+    writer : "alice shrink",
+    BooK_Rate : 10,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date: "2021-2-1",
+    Last_chapter_name : "long time no see",
+    },
+  {
+    Chapter_ID : 3,
+    Chapter_Number : 1,
+    Book_Name: "be a friend",
+    writer : "alice shrink",
+    BooK_Rate : 10,
+    //photo: "assets/post/1.jpeg",
+    Publishing_date: "2021-2-1",
+    Last_chapter_name : "long time no see",
+    },
+];
