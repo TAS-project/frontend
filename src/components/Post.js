@@ -4,23 +4,27 @@ import { useContext, useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import img1 from "../img/book_1.png";
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
-
+import { Button, Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
+import { Rating } from "@mui/material";
+import ModeCommentIcon from '@mui/icons-material/ModeComment';
 
 const user_id = 1;
 const useStyles = makeStyles((theme) => ({
   post: {
-    width: '90%',
-    borderradius: '10px',
-    boxshadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
-    margin: 'auto',
+    border: '2px solid',
+    borderColor: '#E7EDF3',
+    borderRadius: 16,
+    transition: '0.4s',
+    '&:hover': {
+      borderColor: '#2E2C2C',
+    },
+
   },
-  Cover: {
-    width: '120px',
-    height: '200px',
-    borderradius: '3%',
-    objectfit: 'cover',
-    marginright: '10px',
+  rate: {
+    display: 'flex',
+    marginLeft: "auto",
+    marginTop: "auto",
+    padding:"4px",
     },
   
 }));
@@ -56,15 +60,16 @@ export default function Post(props) {
     return (
 
       <Box
-      sx={{
+        className={classes.post}
+        boxShadow={12}
+        sx={{
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'center',
-        bgcolor: 'background.paper',
         overflow: 'hidden',
         borderRadius: '12px',
-        boxShadow: 1,
-        fontWeight: 'bold',
+          fontWeight: 'bold',
+        margin : '2%'
       }}
     >
       <Box
@@ -76,7 +81,7 @@ export default function Post(props) {
           maxWidth: { xs: 350, md: 250 },
         }}
         alt="The house from the offer."
-        src={img1}
+        src={require(`../img/book_${props.chapter.Chapter_ID}.png`)}
       />
       <Box
         sx={{
@@ -87,11 +92,11 @@ export default function Post(props) {
           minWidth: { md: 350 },
         }}
       >
-        <Box component="span" sx={{ fontSize: 16, mt: 1 }}>
+        <Box component="span" sx={{ fontSize: 22, mt: 1 }}>
          {props.chapter.Book_Name}
         </Box>
-        <Box component="span" sx={{ color: 'primary.main', fontSize: 22 }}>
-         {props.chapter.Book_Name}
+        <Box component="span" sx={{ color: 'primary.main', fontSize: 16 }}>
+         {props.chapter.writer}
         </Box>
         <Box
           sx={{
@@ -110,10 +115,23 @@ export default function Post(props) {
           }}
         >
          
-          CONFIDENCE SCORE 85%
+         last chapter : {props.chapter.Last_chapter_name}
         </Box>
+        </Box>
+        <Box py={1} className={classes.rate } >
+      <Typography component="legend">rating</Typography>
+      <Rating
+        name="rating"
+        value={props.chapter.BooK_Rate}
+        /*onChange={(event, newValue) => {
+          setValue(newValue);
+          }}
+          */  />
+        <Divider orientation="vertical" variant="middle" flexItem />
+          <Button startIcon={<ModeCommentIcon/>} style={{  textTransform: 'none' }}>reviews</Button>
+        </Box>
+        
       </Box>
-        </Box>
      
   );
 }
