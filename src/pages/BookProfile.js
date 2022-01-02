@@ -1,6 +1,7 @@
 import { book_1 , Chapters } from "../dummy";
 import Toolbar from '../components/Toolbar';
 import BookChapters from '../components/BookChapters';
+import Chapter from '../components/Chapter';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@material-ui/core";
@@ -13,8 +14,7 @@ root: {
 },
 bookinfo: {
     flex: '4',
-    //marginLeft: 'auto',
-    //marginRight: 'auto',
+
     margin:'auto',
     //textalign: 'center',
     //display:'flex',
@@ -26,14 +26,16 @@ bookinfo: {
     verticalAlign: 'middle',
     paddingTop: '40px',
     width: '90%',
-    border: '2px solid',
-    borderColor: '#E7EDF3',
-    borderRadius: 16,
-    transition: '0.4s',
-    '&:hover': {
-      borderColor: '#2E2C2C',
-    },
-    
+    //border: '2px solid',
+    //borderColor: '#E7EDF3',
+    //borderRadius: 16,
+    //transition: '0.4s',
+    //'&:hover': {
+    //  borderColor: '#2E2C2C',
+    //},
+    backgroundColor: "#babdd0",
+    backgroundImage:"../img/book_3.png",
+    opacity:"85%"
     
     },
 
@@ -70,7 +72,7 @@ export default function BookProfile() {
     <Typography variant="h5" gutterBottom component="div">
         {book_1.writer}
     </Typography>
-    <Divider></Divider>
+    
      <Rating
         name="rating"
         
@@ -89,8 +91,8 @@ export default function BookProfile() {
                     
     </Box>
     
-                
-    <BookChapters />
+     <Divider></Divider>           
+    <Chapter />
     
               
       

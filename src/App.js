@@ -13,7 +13,7 @@ import {
 function App() {
   return (
     <div>
-
+      <BookProfile/>
      
     </div>  
      
