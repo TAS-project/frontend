@@ -13,8 +13,9 @@ import {
 function App() {
   return (
     <div>
-      <BookProfile/>
-     
+      {//      <Toolbar /> <SuserFeed/>
+      }
+<BookProfile /> 
     </div>  
      
   );

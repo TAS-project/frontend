@@ -27,10 +27,8 @@ export default function BookChapters() {
       component="main"
       sx={{width:'90%' ,position: 'relative', p:1 }}
       >
-      
-      
-              {
-           Post_HomePage.map((p) => (
+      {
+        Post_HomePage.map((p) => (
              <Post xs={{ boxShadow: 3, m: 2 }} key={p.Chapter_ID} chapter={p} />
             
                   ))

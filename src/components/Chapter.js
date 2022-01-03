@@ -9,7 +9,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   post: {
     margin: 'auto',
-    padding: '30px',
+    padding: '40px',
     width: '90%',
     //border: '2px solid',
     borderColor: '#E7EDF3',
@@ -30,7 +30,7 @@ export default function Chapters() {
       sx={{width:'90%' ,position: 'relative', p:1 }}
       >
      
-    <Typography style={{textAlign:"center"}} variant="h5" gutterBottom component="div">
+    <Typography style={{ paddingTop:12,textAlign:"center"}} variant="h5" gutterBottom component="div">
         {"chapter "+ chapter_1.Chapter_ID + " :  "+ chapter_1.chapter_name}
     </Typography>
     <Typography style={{fontSize:20}} variant="body1" gutterBottom>
