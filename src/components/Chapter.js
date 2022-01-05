@@ -1,9 +1,10 @@
-import Post from "./Post";
-import { chapter_1 } from "../dummy";
+import Comment from "./Comment";
+import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core";
+import { Button, TextField } from "@mui/material";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +19,17 @@ const useStyles = makeStyles((theme) => ({
 
     
   },
+  comment: {
+    //border: '2px solid',
+    marginTop:'1%',
+    borderColor: '#E7EDF3',
+    borderRadius: 16,
+    margin:'auto',
+    transition: '0.4s',
+    '&:hover': {
+      borderColor: '#2E2C2C',
+    },
+  }
 
 }));
 export default function Chapters() {
@@ -35,7 +47,31 @@ export default function Chapters() {
     </Typography>
     <Typography style={{fontSize:20}} variant="body1" gutterBottom>
         {chapter_1.content}
-      </Typography>      
+      </Typography>
+      {/*comment section */ }
+      <Box className={classes.comment}>
+        <TextField
+          fullWidth
+          //style={{width:'90%'}}
+          id="outlined-multiline-flexible"
+          label="Multiline"
+          multiline
+          maxRows={4}
+          //value=""
+          //onChange={handleChange}
+        />
+        <Button>post</Button>
+      </Box>
+      
+      
+      
+      <Box>
+                  {
+        comments.map((c) => (
+             <Comment xs={{ boxShadow: 3, m: 2 }} key={c.comments_ID} comment={c} />
+            ))
+        }
+      </Box>
     </Box>
   );
 }
