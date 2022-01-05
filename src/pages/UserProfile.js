@@ -1,16 +1,9 @@
 import Toolbar from '../components/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-// import { styled } from '@mui/material/styles';
-// import Paper from '@mui/material/Paper';
-// import {Grid } from '@material-ui/core';
-// import Image from '../book.jpg'; // Import using relative path
-// import {  Avatar } from '@mui/material';
 import Rightbar from '../components/Rightbar';
-import './userProfile.css';
 import ProFeed from '../components/ProFeed';
 import { Avatar, Grid } from '@mui/material';
-import { Grade } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -99,8 +92,14 @@ export default function BookProfile() {
               <span className={classes.profileInfoDesc} >I'm a Writer :D</span>
             </Box>
             <Box className={classes.profileRightBottom}>
-                <Rightbar />
-                <ProFeed />               
+              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
+                <Grid item xs={6}>
+                  <Rightbar />
+                </Grid>
+                <Grid item xs={6}>
+                  <ProFeed />   
+                </Grid>
+                </Grid>                            
             </Box>
         </Box>
       </Box>

@@ -1,5 +1,6 @@
 .rightbar {
   flex: 3.5;
+  border: 3px solid black;
 }
 
 .rightbarWrapper {
