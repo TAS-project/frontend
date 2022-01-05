@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './App.css';
 import UserProfile from './pages/UserProfile';
 // import App from './App';
 import Signin from './Signin';
