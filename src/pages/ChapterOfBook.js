@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { book_1, Chapters } from "../dummy";
+import { book_1 , Chapters } from "../dummy";
 import Toolbar from '../components/Toolbar';
 import WriteChapter from '../components/WriteChapter';
-import PopUp from '../components/PopUp';
+import Chapter from '../components/Chapter';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@material-ui/core";
@@ -13,7 +12,6 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 
 import BookChapters from '../components/BookChapters';
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 root: {
@@ -70,37 +68,8 @@ left: '0px',
 verticalAlign: 'middle',
 }    
 }));
-export default function BookProfile() {
-  const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (value) => {
-    setOpen(false);
-    setSelectedValue(value);
-  };
-  const Clickonfollowers = () => {
-    console.log('click on fllowers');
-    return (
-          <div>
-      <Typography variant="subtitle1" component="div">
-        Selected: {selectedValue}
-      </Typography>
-      <br />
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open simple dialog
-      </Button>
-      <PopUp
-        selectedValue={selectedValue}
-        open={open}
-        onClose={handleClose}
-      />
-    </div>
-    );
-  }
+export default function ChapterOfBook() {
+  
   const classes = useStyles();
     return (
      
@@ -142,11 +111,9 @@ export default function BookProfile() {
           }}
           */  />
             <Box>
-                <Button startIcon={<CommentIcon/>} style={{ color:'black', textTransform: 'none' }}>chapters</Button>
+                            <Button startIcon={<CommentIcon/>} style={{ color:'black', textTransform: 'none' }}>chapters</Button>
                             <Button startIcon={<ListIcon/>} style={{ color:'black', textTransform: 'none' }} >riviews</Button>
-                <Button onClick={() => handleClickOpen()} startIcon={<BookmarksIcon />} style={{ color: 'black', textTransform: 'none' }}>followrs</Button>
-               <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
-
+                            <Button startIcon={<BookmarksIcon/>} style={{ color:'black', textTransform: 'none' }}>followrs</Button>
             </Box>
         <Button variant="outlined" style={{ color:'black', textTransform: 'none' }}>{ book_1.followed=== 0 ? 'follow book' : 'unfollow book'}</Button>            
                         
@@ -157,12 +124,9 @@ export default function BookProfile() {
     </Box>
     
      <Divider ></Divider>           
-{/**
- * 
- */}
-    <WriteChapter />
+
     <BookChapters/>   
-    
+
     </Box>
     </div>
   );

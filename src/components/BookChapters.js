@@ -3,37 +3,50 @@ import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { Divider, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { ListItemButton } from "@mui/material";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
-  post: {
-    margin:'auto'
-  },
-  Cover: {
-    width: '120px',
-    height: '200px',
-    borderradius: '3%',
-    objectfit: 'cover',
-    marginright: '10px',
+
+  chapters: {
+    marginTop:'3%',
+     margin:'auto',
+    border: '2px solid',
+    borderColor: '#E7EDF3',
+    borderRadius: 16,
+    padding: '3%',
+    justifyItems: 'center',
+    textAlign:'center',
     },
   
 }));
+
 export default function BookChapters() {
-  
+  const ClickonChaper =(Chapter_ID) => {
+  console.log('hello');
+};
   const classes = useStyles();
   return (
     <Box
-      className={classes.post}
+     className={classes.chapters}
       component="main"
       sx={{width:'90%' ,position: 'relative', p:1 }}
       >
-      {
-        Post_HomePage.map((p) => (
-             <Post xs={{ boxShadow: 3, m: 2 }} key={p.Chapter_ID} chapter={p} />
-            
-                  ))
-              }
+        <Typography variant="h6" >
+            chapters:
+        </Typography>
+        <Divider />
       
+      <List >
+  
+        {/* list of ganers*/}
+        { Post_HomePage.map((c) => (
+          <ListItemButton onClick={()=>ClickonChaper(c.Chapter_ID)} key={c.Chapter_ID}>
+            <ListItemText style={{textAlign:'center',}} primary={`chapter number: ${c.Last_chapter_name}`} />
+          </ListItemButton>
+        ))}
+      </List> 
     </Box>
   );
 }

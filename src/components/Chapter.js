@@ -3,7 +3,7 @@ import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography } from "@material-ui/core";
+import { Avatar, CardHeader, InputAdornment, Typography } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
 
 const drawerWidth = 240;
@@ -20,15 +20,11 @@ const useStyles = makeStyles((theme) => ({
     
   },
   comment: {
-    //border: '2px solid',
+    border: '2px solid',
     marginTop:'1%',
     borderColor: '#E7EDF3',
     borderRadius: 16,
     margin:'auto',
-    transition: '0.4s',
-    '&:hover': {
-      borderColor: '#2E2C2C',
-    },
   }
 
 }));
@@ -50,28 +46,33 @@ export default function Chapters() {
       </Typography>
       {/*comment section */ }
       <Box className={classes.comment}>
+        <CardHeader style={{paddingLeft:'40px'}} avatar={ <Avatar alt="Remy Sharp" src={require(`../img/book_3.png`)}/>}
+        title="user name"/>
         <TextField
           fullWidth
-          //style={{width:'90%'}}
-          id="outlined-multiline-flexible"
-          label="Multiline"
-          multiline
+          multiline={true}
+          rows={3}
+          style={{width:'90%', margin:'auto' , display:'block'}}
+          xs = {{m:1}}
           maxRows={4}
-          //value=""
+          InputProps={{
+          endAdornment: (<InputAdornment position="end">
+          <Button style={{right:0}}>post</Button>
+          </InputAdornment>), }}
           //onChange={handleChange}
         />
-        <Button>post</Button>
-      </Box>
+        
       
-      
-      
-      <Box>
+    
+      <Box >
                   {
         comments.map((c) => (
              <Comment xs={{ boxShadow: 3, m: 2 }} key={c.comments_ID} comment={c} />
             ))
         }
-      </Box>
+        </Box>
+        
+        </Box>
     </Box>
   );
 }

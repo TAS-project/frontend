@@ -15,57 +15,32 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       borderColor: '#2E2C2C',
     },
-  root: {
-    width: "100%",
-    backgroundColor: theme.palette.background.paper
-    },
-  fonts: {
-    fontWeight: "bold"
-  },
-  inline: {
-    display: "inline"
-  }
   },
 }));
 export default function Comment(props) {
   const classes = useStyles();
 
-    return (
+  return (
+      <Box>
+          <ListItem key={props.comment.comments_ID} alignItems="flex-start">
+              <ListItemAvatar>
+                <Avatar alt="avatar" src={require(`../img/book_4.png`)} />
+              </ListItemAvatar>
+              <ListItemText
+                primary={
+                  <Typography variant="caption">
+                    {`@${props.comment.Username}`}
+                  </Typography>
+                }
+                secondary={
+                  <Typography variant="body2" gutterBottom>{`${props.comment.content}`}</Typography>
+                }
+              />
+            </ListItem>
+            <Divider />
+         </Box> 
 
-      <Box
-        className={classes.comment}
-        boxShadow={12}
-        sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
-        alignItems: 'center',
-        overflow: 'hidden',
-        borderRadius: '12px',
-          fontWeight: 'bold',
-        margin : '2%'
-      }}
-    >
-      
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: { xs: 'center', md: 'flex-start' },
-          m: 3,
-          minWidth: { md: 350 },
-        }}
-      >
-        <Box component="span" sx={{ fontSize: 22, mt: 1 }}>
-         {props.comment.Username}
-        </Box>
-        <Box component="span" sx={{ color: 'primary.main', fontSize: 16 }}>
-         {props.comment.content}
-        </Box>
-
-        </Box>
-
-        
-      </Box>
+  
      
   );
 }
