@@ -20,40 +20,42 @@ const useStyles = makeStyles((theme) => ({
     textAlign:'center',
     },
     textarea: {
-        width: '90%',
-        height:'500px',
-  padding: '12px',
-  border: '1px solid #ccc',
-  borderradius: '4px',
-  resize: 'vertical',
+      width: '90%',
+      height:'500px',
+      padding: '12px',
+    border: '1px solid #ccc',
+    borderradius: '4px',
+    resize: 'vertical',
 },
 
 
 }));
 
 export default function WriteChapter() {
-  const ClickonChaper =(Chapter_ID) => {
-  console.log('hello');
-};
+  const ClickonAdd =(e) => {
+  e.preventDefault()
+    const {title, text } = e.target.elements
+    console.log({title: title.value, content: text.value })
+  };
+
   const classes = useStyles();
   return (
     <Box
      className={classes.chapters}
       component="main"
-      sx={{width:'90%' ,position: 'relative', p:1 }}
+      sx={{width:'90%' ,position: 'relative', p:1 , backgroundColor:'#F2EFEC' }}
       >
-<h2>New Chapter</h2>
-<p>balah balah.</p>
-<FormControl>
-  <InputLabel htmlFor="my-input">chapter title</InputLabel>
-  <Input id="my-input" aria-describedby="my-helper-text" />
-</FormControl>
+<h3 style={{fontFamily:'inherit'}}>New Chapter</h3>
+
           <div className={classes.container}>
-  <form >
+  <form onSubmit={ClickonAdd}>
 
 
-    <div className={classes.col75}>
-      <textarea className={classes.textarea} id="subject" name="subject" placeholder="Write your story.." ></textarea>
+          <div className={classes.col75}>
+              <InputLabel htmlFor="my-input">chapter title</InputLabel>
+  <Input style={{marginBottom:'3%'}}  id="title" aria-describedby="my-helper-text" />
+            <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." ></textarea>
+            <Button  type="submit" variant="contained" >add chapter</Button>
     </div>
 
   

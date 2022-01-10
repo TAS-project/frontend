@@ -39,7 +39,7 @@ function App() {
         <Route path="/register"  element= {user ? <Navigate to="/" /> : <Homepage />}>
           
         </Route>
-        <Route path="/book/:bookname" element={<BookProfile />}>
+        <Route path="/book/:bookname" element={<ChapterOfBook />}>
           
           </Route>
           
