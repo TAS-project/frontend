@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import Rightbar from '../components/Rightbar';
 import ProFeed from '../components/ProFeed';
 import { Avatar, Grid } from '@mui/material';
+import { Container } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -37,15 +38,15 @@ profileCoverImg: {
 profileUserImg: {
   width: '200px',
   height: '200px',
-  // borderradius: '50%',
+  borderRadius: '50%',
   objectFit: 'cover',
   position: 'absolute',
   left: '0',
   right: '0',
   margin: 'auto',
   top: '150px',
-  // borderColor : '#ffffff',
-//  borderRadius : '3px',
+  borderColor : '#ffffff',
+ 
 },
 // profileInfo: {
 //   display: 'flex',
@@ -83,23 +84,27 @@ export default function BookProfile() {
               <img  className={classes.profileCoverImg}
                   src={require(`../book.jpg`)}   alt=""  
               />
-              <Avatar className={classes.profileUserImg}
+              <img className={classes.profileUserImg}
                   src={require(`../img/book_3.png`)}   alt=""
               />
             </Box>
             <Box  className={classes.profileInfo}>
               <h4 className={classes.profileInfoName} >Taravat Monsef</h4>
-              <span className={classes.profileInfoDesc} >I'm a Writer :D</span>
+              {/* <span className={classes.profileInfoDesc} >I'm a Writer :D</span> */}
             </Box>
             <Box className={classes.profileRightBottom}>
-              <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
+              <Container>
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
+                <Grid item xs={6}>
+                  <ProFeed />
+                </Grid>
                 <Grid item xs={6}>
                   <Rightbar />
+                     
                 </Grid>
-                <Grid item xs={6}>
-                  <ProFeed />   
-                </Grid>
-                </Grid>                            
+                </Grid>  
+              </Container>
+                                        
             </Box>
         </Box>
       </Box>
