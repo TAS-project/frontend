@@ -17,6 +17,8 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import { Genre } from "../dummy";
+import PersonIcon from '@mui/icons-material/Person';
+import HomeIcon from '@mui/icons-material/Home';
 
 const drawerWidth = 240;
 
@@ -30,16 +32,33 @@ function ResponsiveDrawer() {
   const drawer = (
     <div>
       <Toolbar />
-      <Typography variant="h6" >
+      {/* list of directions*/}
+      <List>
+        <ListItem button onClick={() => {
+            window.location.pathname = '/home';
+          }}>
+            <ListItemIcon >
+               <HomeIcon fontSize="small" /> 
+            </ListItemIcon>
+            <ListItemText>Home</ListItemText>
+        </ListItem>
+                <ListItem button >
+            <ListItemIcon >
+               <PersonIcon fontSize="small" /> 
+            </ListItemIcon>
+            <ListItemText>Profile</ListItemText>
+        </ListItem>
+       
+      </List>
+      <Divider />
+      {/* list of ganers*/}
+      <Typography variant="body2" style={{padding:'20px'}} >
             Genres
         </Typography>
-        <Divider />
-      
       <List>
-  
-        {/* list of ganers*/}
+        
         { Genre.map((G) => (
-          <ListItem button key={G.Genre_ID}>
+          <ListItem button key={G.Genre_ID} >
             <ListItemIcon >
                <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>
@@ -47,7 +66,6 @@ function ResponsiveDrawer() {
           </ListItem>
         ))}
       </List>
-      <Divider />
     </div>
   );
 
