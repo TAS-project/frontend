@@ -10,8 +10,8 @@ ReactDOM.render(
   <React.StrictMode>
    {/* <App /> */}
   {/* <Signin /> */}
-  <UserProfile />
-  </React.StrictMode>,
+  {/* <UserProfile />
+  </React.StrictMode>, */}
   document.getElementById('root')
 );
 
