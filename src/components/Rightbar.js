@@ -85,7 +85,7 @@ export default function Rightbar({ profile }) {
       </div> <br />
      <div className={classes.rightbarInfoItem}>
                 <Grid className={classes.rightbarInfoKey} item >
-                  <Button variant="outlined" sx={{width: { md: '375px', xs: '275px' } , padding:'15px', position : 'relative',fullWidth:'{true}'}}>Create My Book</Button>
+                  <Button variant="outlined"  fullWidth sx={{width: { md: '375px', xs: '275px' } , padding:'15px', position : 'relative',fullWidth:'{true}'}}>Create My Book</Button>
                 </Grid>
               </div>
      </div>

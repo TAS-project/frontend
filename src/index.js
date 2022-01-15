@@ -4,14 +4,15 @@ import './App.css';
 import UserProfile from './pages/UserProfile';
 // import App from './App';
 import Signin from './Signin';
+import SignUp from './pages/SignUp';
 // import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <App /> */}
-  {/* <Signin /> */}
-  {/* <UserProfile />
-  </React.StrictMode>, */}
+    {/* <App /> */}
+    <SignUp />
+    {/* <UserProfile /> */}
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
