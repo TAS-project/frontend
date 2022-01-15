@@ -9,20 +9,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Image from '../src/book.jpg';
+import Image from '../img/book.jpg';
 
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#ED6663 ',
-    },
-     secondary: {
-      main: '#EBD8B7',
-    },
-  },
-});
 
 function Signin() {
     const handleSubmit = (event) => {
@@ -36,7 +24,7 @@ function Signin() {
   };
 
 return (
- <ThemeProvider theme={theme}>
+ <div>
    <Grid  container component="main" sx={{ height: '100vh'}}>
      <CssBaseline />
       <Grid item xs={false} sm={4} md={7}
@@ -71,7 +59,7 @@ return (
         </Box>
       </Grid>
     </Grid>
-  </ThemeProvider>
+  </div>
   );
     
 }

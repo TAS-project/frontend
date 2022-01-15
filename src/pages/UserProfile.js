@@ -82,7 +82,7 @@ export default function BookProfile() {
         <Box className={classes.profileRight}>
             <Box sx={{ height: '320px', position: 'relative',}} >
               <img  className={classes.profileCoverImg}
-                  src={require(`../book.jpg`)}   alt=""  
+                  src={require(`../img/book.jpg`)}   alt=""  
               />
               <img className={classes.profileUserImg}
                   src={require(`../img/book_3.png`)}   alt=""
