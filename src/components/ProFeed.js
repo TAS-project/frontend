@@ -1,28 +1,56 @@
-import React from 'react'
-import "./proFeed.css";
-import {PermMedia, Label,Room, EmojiEmotions} from "@material-ui/icons"
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import { Container } from "@mui/material";
 
-function ProFeed() {
-    return (
-        <div className="Title">
-           <h4 className="rightbarTitle">User information</h4>
-        <div className="rightbarInfo">
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">name:</span>
-            <span className="rightbarInfoValue">taravat</span>
-          </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">family name:</span>
-            <span className="rightbarInfoValue">monsef</span>
-          </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Email:</span>
-            <span className="rightbarInfoValue">taramonsef@gmail.com</span>
-          </div>
-        </div>
-        <h4 className="rightbarTitle">User friends</h4>
-        </div>
-    )
-}
+const useStyles = makeStyles((theme) => ({
+  card: {
+    marginBottom: theme.spacing(5),
+  },
+  media: {
+    height: 250,
+    [theme.breakpoints.down("sm")]: {
+      height: 150,
+    },
+  },
+}));
 
-export default ProFeed
+const ProFeed = ({ img, title }) => {
+  const classes = useStyles();
+  return (
+    <Container>
+      <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={img} title="My Post" />
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            {title}
+          </Typography>
+          <Typography variant="body2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            consectetur earum est.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
+    </Container>
+    
+  );
+};
+
+export default ProFeed;

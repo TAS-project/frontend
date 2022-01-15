@@ -5,13 +5,14 @@ import UserProfile from './pages/UserProfile';
 // import App from './App';
 import Signin from './Signin';
 import SignUp from './pages/SignUp';
+import ChapterOfBook from './pages/ChapterOfBook';
 // import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <SignUp />
-    {/* <UserProfile /> */}
+    {/* <SignUp /> */}
+    <UserProfile /> 
   </React.StrictMode>,
   document.getElementById('root')
 );

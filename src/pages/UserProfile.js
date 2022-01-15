@@ -9,13 +9,13 @@ import { Container } from '@material-ui/core';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-profile: {
-  display: 'flex',
-},
+// profile: {
+//   display: 'flex',
+// },
 
-profileRight: {
-  flex: 9,
-},
+// profileRight: {
+//   flex: 9,
+// },
 profileCover :{
   Height: '320px',
   position: 'relative',
@@ -72,9 +72,9 @@ export default function BookProfile() {
   
   const classes = useStyles();
     return (     
-   <>
+   <div>
       <Toolbar />
-       <Box
+  <Box
     className={classes.root}            
     component="main"
     sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
@@ -94,11 +94,11 @@ export default function BookProfile() {
             </Box>
             <Box className={classes.profileRightBottom}>
               <Container>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
-                <Grid item xs={6}>
+                <Grid container  columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
+                <Grid item xs={6} >
                   <ProFeed />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} >
                   <Rightbar />
                      
                 </Grid>
@@ -110,7 +110,7 @@ export default function BookProfile() {
       </Box>
     </Box>
       
-    </>
+    </div>
     
   );
 }
