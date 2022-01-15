@@ -16,63 +16,8 @@ import { makeStyles } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
-profile: {
-  display: 'flex',
-},
 
-profileRight: {
-  flex: 9,
-},
-profileCover :{
-  Height: '320px',
-  position: 'relative',
-},
-profileInfo : {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent : 'center',
-},
-profileCoverImg: {
-  width: '100%',
-  height: '100hv',
-  objectFit : 'cover',
-},
-// profileCover: {
-//   Height: '320px',
-//   position: 'relative',
-// },
-profileUserImg: {
-  width: '200px',
-  height: '200px',
-  borderRadius: '50%',
-  objectFit: 'cover',
-  position: 'absolute',
-  left: '0',
-  right: '0',
-  margin: 'auto',
-  top: '150px',
-  borderColor : '#ffffff',
- 
-},
-// profileInfo: {
-//   display: 'flex',
-//   flexDirection: 'column',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-// },
 
-profileInfoName: {
-  fontSize: '24px',
-},
-
-profileInfoDesc: {
-  fontWeight: '300',
-},
-
-// profileRightBottom: {
-//   display: 'flex',
-// },
 }));
 export default function SignUp() {
       const classes = useStyles();
