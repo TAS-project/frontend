@@ -57,6 +57,13 @@ export default function Post(props) {
     //setLike(isLiked ? like - 1 : like + 1);
     //setIsLiked(!isLiked);
   };
+
+  const userclick = () => {
+    window.location.pathname = `/profile/${props.chapter.Username}`;
+  };
+  const Bookclick = () => {
+    window.location.pathname = `/book/${props.chapter.Book_Name}`;
+  };
     return (
 
       <Box
@@ -92,12 +99,12 @@ export default function Post(props) {
           minWidth: { md: 350 },
         }}
       >
-        <Box component="span" sx={{ fontSize: 22, mt: 1 }}>
+        <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
         </Box>
-        <Box component="span" sx={{ color: 'primary.main', fontSize: 16 }}>
-         {props.chapter.writer}
-        </Box>
+        <Button  sx={{ color: 'primary.main', fontSize: 16 }} onClick={() => userclick()}>
+         @{props.chapter.Username}
+        </Button>
         <Box
           sx={{
             mt: 1.5,

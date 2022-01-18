@@ -39,10 +39,8 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Homepage />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
         <Route path="/home"  element= {<Homepage />}>  </Route>
-        <Route path="/book/:bookname" element={<ChapterOfBook />}>
-          
-          </Route>
-          
+        <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
+        <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>  
       </Routes>
     </Router>
     </ThemeProvider> 

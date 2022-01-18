@@ -33,7 +33,8 @@ export default function WriteChapter() {
   const ClickonAdd =(e) => {
   e.preventDefault()
     const {title, text } = e.target.elements
-    console.log({title: title.value, content: text.value })
+    console.log({ title: title.value, content: text.value })
+    window.location.reload();
   };
 
   const classes = useStyles();
