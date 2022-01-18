@@ -8,46 +8,130 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import { Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(6),
+   
   },
+
   media: {
-    height: 250,
+    height: 300,
+    width: 200,
+    // objectFit : 'cover',
+    // margin : '27px',
+    // padding : '40px',
     [theme.breakpoints.down("sm")]: {
-      height: 150,
+      height: 200,
+      width: 200,
     },
-  },
+    },
+  //   mediaContet : {
+  //   height: 100,
+  //   // width: 200,
+  //   // objectFit : 'cover',
+  //   // margin : '27px',
+  //   // padding : '40px',
+  //   [theme.breakpoints.down("sm")]: {
+  //     height: 100,
+  //     // width: 200,
+  //   },
+  // },
 }));
 
-const ProFeed = ({ img, title }) => {
+const ProFeed = ({ props, title }) => {
   const classes = useStyles();
   return (
     <Container>
-      <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia className={classes.media} image={img} title="My Post" />
-        <CardContent>
-          <Typography gutterBottom variant="h5">
-            {title}
+      
+        
+      <Box  className={classes.card}
+        boxShadow={12}
+        sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        alignItems : 'center',
+    justifyItems : 'center',
+    justifyContent : 'center',
+        overflow: 'hidden',
+        borderRadius: '12px',
+          fontWeight: 'bold',
+        padding : '30px'
+      }}
+      >
+        <Grid container justifyContent="center"  columns={{ xs: 16, sm: 8, md: 16 }} sx={{flexDirection: { xs: 'column', md: 'row' },}}>
+  <Grid item xs={16} md={8}>
+          <Box alignItems="center" justifyContent="center" component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post" />
+  </Grid>
+  <Grid item xs={16} md={8}>    
+    <Grid container spacing={9} direction="column">
+      <Grid item xs={16} md={8}>
+   
+    <Typography gutterBottom variant="h5"> title </Typography>
+          <Typography  variant="body2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+            consectetur earum est.
           </Typography>
+  
+    </Grid>
+     <Grid item xs={16} md={8}>
+  
+    <Grid container spacing={1} direction="row">
+      <Grid item  xs={16} md={8}>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>Book Profile</Button>
+      </Grid>
+      <Grid item  xs={16} md={8}>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>New Chapter</Button>
+      </Grid>
+          
+     </Grid>
+     
+      </Grid>
+  </Grid>
+  </Grid>
+</Grid>
+      
+    </Box>
+    <Box  className={classes.card}
+        boxShadow={12}
+        sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        alignItems : 'center',
+    justifyItems : 'center',
+    justifyContent : 'center',
+        overflow: 'hidden',
+        borderRadius: '12px',
+          fontWeight: 'bold',
+        padding : '30px'
+      }}
+      >
+        <Grid container  columns={16}>
+  <Grid item xs={8}>
+          <Box sx={{alignItem:"center"}} component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post" />
+  </Grid>
+  <Grid item xs={8}>
+    <Box sx={{alignItem:"center"}} className={classes.mediaContet}>
+      <Typography gutterBottom variant="h5"> title </Typography>
           <Typography variant="body2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             consectetur earum est.
           </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+    </Box >
+    
+          <CardActions>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>Book Profile</Button>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>New Chapter</Button>
+          
       </CardActions>
-    </Card>
+  </Grid>
+</Grid>
+      
+    </Box>
+
+     
+   
     </Container>
     
   );

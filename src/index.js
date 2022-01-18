@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
-// import UserProfile from './pages/UserProfile';
+
+import UserProfile from './pages/UserProfile';
 
 
 // import SignUp from './pages/SignUp';
@@ -9,11 +10,13 @@ import './App.css';
 import SignIn from './pages/SignIn';
 
 
+
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <SignIn />
-    {/* <UserProfile />  */}
+    {/* <SignIn /> */}
+    <UserProfile /> 
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

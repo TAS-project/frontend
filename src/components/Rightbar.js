@@ -21,9 +21,11 @@ roundbox : {
 InfoItem :{
   alignItems : 'center',
   justifyContent :'center',
-  border : '1px solid #B0B8B4',
+  borderRadius: '12px',
   paddingLeft : 'lg: 100px',
   padding : '20px',
+   
+    
 },
 
 rightbarInfoKey :{
@@ -46,8 +48,10 @@ export default function Rightbar({ profile }) {
     return (
       <>
       <Container>
+      
          <div className={classes.InfoItemiN}>
-        <div  className={classes.InfoItem}>
+             <Box boxShadow={12} sx={{borderRadius: '12px'}}>
+        <div    className={classes.InfoItem}>
        
      <Grid container justifyContent = "center" direction="row">
         <Grid item xs={8}>
@@ -82,14 +86,18 @@ export default function Rightbar({ profile }) {
           </Grid>
         </Box>
 
-      </div> <br />
+      </div>
+        </Box> <br />
+         <Box boxShadow={12} sx={{borderRadius: '12px'}}>
      <div className={classes.rightbarInfoItem}>
                 <Grid className={classes.rightbarInfoKey} item >
                   <Button variant="outlined"  fullWidth  
                   sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}>Create My Book</Button>
                 </Grid>
               </div>
+               </Box>
      </div>
+  
       </Container>
              
       </>
