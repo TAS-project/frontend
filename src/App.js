@@ -4,6 +4,8 @@ import ChapterOfBook from './pages/ChapterOfBook';
 import Signin from './pages/Signin';
 import BookProfile from './pages/BookProfile';
 import UserProfile from './pages/UserProfile';
+import SearchResult from './pages/SearchResult';
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -39,7 +41,8 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Homepage />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
         <Route path="/home"  element= {<Homepage />}>  </Route>
-        <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
+          <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
+          <Route exact path="/search/:word" element={<SearchResult />}></Route>
         <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>  
       </Routes>
     </Router>
