@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BookChapters() {
   const ClickonChaper =(Chapter_ID) => {
-  console.log('hello');
+    console.log('chapter clicked');
+    window.location.pathname = `/book/bname/${Chapter_ID}`;    
 };
   const classes = useStyles();
   return (

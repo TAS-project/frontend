@@ -1,43 +1,53 @@
-import { Grid, makeStyles } from "@material-ui/core";
-import Add from "./components/Add";
-import Toolbar from '../components/Toolbar';
-import { Box } from "@mui/system";
-import Rightbar from '../components/Rightbar';
-import ProFeed from '../components/ProFeed';
+import './App.css';
+import Homepage from './pages/Homepage';
+import ChapterOfBook from './pages/ChapterOfBook';
+import SignIn from './pages/SignIn';
+import BookProfile from './pages/BookProfile';
+import UserProfile from './pages/UserProfile';
+import SearchResult from './pages/SearchResult';
 
-const useStyles = makeStyles((theme) => ({
-  right: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none",
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Routes,
+  Route,
+} from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ED6663 ',
+    },
+     secondary: {
+      main: '#EBD8B7',
     },
   },
-}));
+});
 
-const App = () => {
-  const classes = useStyles();
+const user = false;
+function App() {
   return (
-    <div>
-      <Toolbar />
-      <Grid container>
-        <Grid item sm={2} xs={2}>
-           <Box sx={{ height: '320px', position: 'relative',}} >
-              <img  className={classes.profileCoverImg}
-                  src={require(`../book.jpg`)}   alt=""  
-              />
-              <img className={classes.profileUserImg}
-                  src={require(`../img/book_3.png`)}   alt=""
-              />
-            </Box>
-        </Grid>
-        <Grid item sm={7} xs={10}>
-           <ProFeed />
-        </Grid>
-        <Grid item sm={3} className={classes.right}>
-          <Rightbar />
-        </Grid>
-      </Grid>
+ 
+         
+    <ThemeProvider theme={theme}>
+      {/**/}
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Homepage />}></Route>
+         
+        <Route path="/login" element={user ? <Navigate to="/" /> : <SignIn />}></Route>
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Homepage />}></Route>
+        <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
+        <Route path="/home"  element= {<Homepage />}>  </Route>
+          <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
+          <Route exact path="/search/:word" element={<SearchResult />}></Route>
+        <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>  
+      </Routes>
+    </Router>
+    </ThemeProvider> 
      
-    </div>
   );
 };
 

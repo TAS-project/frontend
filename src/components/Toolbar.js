@@ -19,7 +19,7 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import { Genre } from "../dummy";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
-
+import { styled, alpha } from '@mui/material/styles';
 const drawerWidth = 240;
 
 function ResponsiveDrawer() {
@@ -69,9 +69,50 @@ function ResponsiveDrawer() {
     </div>
   );
 
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{  flexGrow: 1 }} >
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -100,7 +141,8 @@ function ResponsiveDrawer() {
           <InputBase sx={{ ml: 1, flex: 1 ,}}
           placeholder="Search in"
           inputProps={{ 'aria-label': 'search Search books' }}
-      />
+            />
+            
         <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
            <Typography variant="caption"> books </Typography>
         <SearchIcon />
@@ -109,7 +151,17 @@ function ResponsiveDrawer() {
             <Typography variant="caption">users</Typography> 
         <SearchIcon />
       </IconButton>
-      </Paper>
+          </Paper>
+         {/**
+        <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search> */} 
       </Toolbar>
       </AppBar>
       <Box component="nav"
@@ -156,3 +208,4 @@ function ResponsiveDrawer() {
 
 
 export default ResponsiveDrawer;
+

@@ -1,10 +1,8 @@
-import Post from "./Post";
-import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Divider, FormControl, FormHelperText, Input, InputLabel, List, ListItem, ListItemText, Typography } from "@material-ui/core";
-import { ListItemButton } from "@mui/material";
+
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +33,8 @@ export default function WriteChapter() {
   const ClickonAdd =(e) => {
   e.preventDefault()
     const {title, text } = e.target.elements
-    console.log({title: title.value, content: text.value })
+    console.log({ title: title.value, content: text.value })
+    window.location.reload();
   };
 
   const classes = useStyles();

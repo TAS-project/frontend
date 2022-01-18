@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Toolbar from '../components/Toolbar';
-import WriteChapter from '../components/WriteChapter';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import BookProfileHeader from '../components/BookProfileHeader';
@@ -8,7 +7,7 @@ import BookChapters from '../components/BookChapters';
 const drawerWidth = 240;
 
 export default function BookProfile() {
-
+  const IsOwner = true; 
     return (
      
     <div>
@@ -16,8 +15,8 @@ export default function BookProfile() {
     <Box               
     sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
     
-   <BookProfileHeader/>
-    <WriteChapter />
+          <BookProfileHeader IsOwner={ IsOwner}/>
+    
     <BookChapters/>   
     </Box>
     </div>
