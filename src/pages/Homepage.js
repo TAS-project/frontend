@@ -3,11 +3,15 @@ import Homefeed from '../components/Homefeed';
 
 
 export default function Homepage() {
-  
+
+
 
     return (
      
-    <div>
+      <div>
+
+        
+
             <Toolbar />
             <Homefeed/>
     </div>

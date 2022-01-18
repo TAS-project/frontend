@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, CardHeader, InputAdornment, Typography } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
 
-const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   post: {
     margin: 'auto',

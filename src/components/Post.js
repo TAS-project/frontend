@@ -57,6 +57,13 @@ export default function Post(props) {
     //setLike(isLiked ? like - 1 : like + 1);
     //setIsLiked(!isLiked);
   };
+
+  const userclick = () => {
+    window.location.pathname = `/profile/${props.chapter.Username}`;
+  };
+  const Bookclick = () => {
+    window.location.pathname = `/book/${props.chapter.Book_Name}`;
+  };
     return (
 
       <Box
@@ -68,17 +75,19 @@ export default function Post(props) {
         alignItems: 'center',
         overflow: 'hidden',
         borderRadius: '12px',
-          fontWeight: 'bold',
+        fontWeight: 'bold',
         margin : '2%'
       }}
     >
       <Box
         component="img"
-        sx={{
-          height: 200,
-          width: 120,
-          maxHeight: { xs: 233, md: 167 },
-          maxWidth: { xs: 350, md: 250 },
+          sx={{
+            padding: 1,
+            paddingRight:{md:'20px'},
+          height: { xs: 233, md: 267 },
+          width: { xs: 150, md: 200 },
+          //maxHeight: { xs: 233, md: 167 },
+          //maxWidth: { xs: 350, md: 250 },
         }}
         alt="The house from the offer."
         src={require(`../img/book_${props.chapter.Chapter_ID}.png`)}
@@ -92,12 +101,12 @@ export default function Post(props) {
           minWidth: { md: 350 },
         }}
       >
-        <Box component="span" sx={{ fontSize: 22, mt: 1 }}>
+        <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
         </Box>
-        <Box component="span" sx={{ color: 'primary.main', fontSize: 16 }}>
-         {props.chapter.writer}
-        </Box>
+        <Button  sx={{ color: 'primary.main', fontSize: 16 }} onClick={() => userclick()}>
+         @{props.chapter.Username}
+        </Button>
         <Box
           sx={{
             mt: 1.5,

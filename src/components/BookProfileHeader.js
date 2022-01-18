@@ -10,6 +10,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ListIcon from '@mui/icons-material/List';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 
+import WriteChapter from '../components/WriteChapter';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 const drawerWidth = 240;
@@ -68,9 +69,12 @@ left: '0px',
 verticalAlign: 'middle',
 }    
 }));
-export default function BookProfileHeader() {
+export default function BookProfileHeader(props) {
+  // open pop ups
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  // open create component 
+  const [showCreate, setShowCreate] = React.useState(false)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,7 +84,16 @@ export default function BookProfileHeader() {
     setOpen(false);
     setSelectedValue(value);
   };
-
+  const  trigerfollow = () => {
+    console.log('send server massehe for following / unfollowing');
+  };
+  const TrigerCreate = () => {
+    showCreate === true?
+      setShowCreate(false) :
+      setShowCreate(true)
+    console.log('show create component');
+  };
+ 
   const classes = useStyles();
     return (
      
@@ -122,16 +135,28 @@ export default function BookProfileHeader() {
                <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
 
             </Box>
-        <Button variant="outlined" style={{ color:'black', textTransform: 'none' }}>{ book_1.followed=== 0 ? 'follow book' : 'unfollow book'}</Button>            
-                        
+            { props.IsOwner ?
+              <Button variant="outlined" style={{ color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button>
+              :
+              <Button variant="outlined" style={{ color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book_1.followed === 0 ? 'follow book' : 'unfollow book'}</Button>   
+            }
+                   
+                          
     </div>
                     
   
                     
     </Box>
     
-     <Divider ></Divider>    
-
+        <Divider ></Divider>
+       
+    { // write chapter component 
+          showCreate ?
+        <WriteChapter />
+        :    
+        null
+    }
+      
     </div>
   );
 }
