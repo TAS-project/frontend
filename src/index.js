@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
+
 import UserProfile from './pages/UserProfile';
-// import App from './App';
-import Signin from './Signin';
-// import App from './App';
+
+
+// import SignUp from './pages/SignUp';
+
+import SignIn from './pages/SignIn';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-   {/* <App /> */}
-  {/* <Signin /> */}
-  {/* <UserProfile />
-  </React.StrictMode>, */}
+    {/* <App /> */}
+    {/* <SignIn /> */}
+    <UserProfile /> 
+    {/* <App /> */}
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
