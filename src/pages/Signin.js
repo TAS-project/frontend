@@ -12,7 +12,9 @@ import Typography from '@mui/material/Typography';
 import Image from '../img/book.jpg';
 
 
-function Signin() {
+
+
+function SignIn() {
     const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,7 +26,7 @@ function Signin() {
   };
 
 return (
- <div>
+
    <Grid  container component="main" sx={{ height: '100vh'}}>
      <CssBaseline />
       <Grid item xs={false} sm={4} md={7}
@@ -38,7 +40,7 @@ return (
       />
       <Grid className='logins' item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <Box sx={{my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-          <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}> <LockOutlinedIcon /></Avatar>
+          <Avatar sx={{ m: 1 }}> <LockOutlinedIcon /></Avatar>
           <Typography style={{ marginBottom :20}} component="h1" variant="h4"> Sign in </Typography>
           <Box style={{ marginTop:20}} component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField className='loginsT' style={{fontSize:15}}  margin="normal" required fullWidth id="username"  label="UserName" name="username" autoComplete="username" autoFocus />
@@ -59,9 +61,9 @@ return (
         </Box>
       </Grid>
     </Grid>
-  </div>
+
   );
     
 }
 
-export default Signin
+export default SignIn

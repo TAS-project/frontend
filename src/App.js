@@ -1,7 +1,7 @@
 import './App.css';
 import Homepage from './pages/Homepage';
 import ChapterOfBook from './pages/ChapterOfBook';
-import Signin from './pages/Signin';
+import SignIn from './pages/SignIn';
 import BookProfile from './pages/BookProfile';
 import UserProfile from './pages/UserProfile';
 import SearchResult from './pages/SearchResult';
@@ -37,7 +37,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Homepage />}></Route>
          
-        <Route path="/login" element={user ? <Navigate to="/" /> : <Signin />}></Route>
+        <Route path="/login" element={user ? <Navigate to="/" /> : <SignIn />}></Route>
         <Route path="/register" element={user ? <Navigate to="/" /> : <Homepage />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
         <Route path="/home"  element= {<Homepage />}>  </Route>
@@ -48,9 +48,7 @@ function App() {
     </Router>
     </ThemeProvider> 
      
-
-   
   );
-}
+};
 
 export default App;

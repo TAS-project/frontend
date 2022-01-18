@@ -9,13 +9,13 @@ import { Container } from '@material-ui/core';
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-profile: {
-  display: 'flex',
-},
+// profile: {
+//   display: 'flex',
+// },
 
-profileRight: {
-  flex: 9,
-},
+// profileRight: {
+//   flex: 9,
+// },
 profileCover :{
   Height: '320px',
   position: 'relative',
@@ -54,7 +54,19 @@ profileUserImg: {
 //   alignItems: 'center',
 //   justifyContent: 'center',
 // },
-
+container: {
+    height: "100vh",
+    color: "white",
+    paddingTop: theme.spacing(10),
+    backgroundColor: theme.palette.primary.main,
+    position: "relative",
+    top: 0,
+    [theme.breakpoints.up("sm")]: {
+      backgroundColor: "white",
+      color: "#555",
+      border: "1px solid #ece7e7",
+    },
+  },
 profileInfoName: {
   fontSize: '24px',
 },
@@ -72,19 +84,19 @@ export default function BookProfile() {
   
   const classes = useStyles();
     return (     
-   <>
+   <div>
       <Toolbar />
-       <Box
+  <Box
     className={classes.root}            
     component="main"
     sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
       <Box className={classes.profile}>
-        <Box className={classes.profileRight}>
+        <Box  className={classes.profileRight}>
             <Box sx={{ height: '320px', position: 'relative',}} >
-              <img  className={classes.profileCoverImg}
+              <img position="fixed"  className={classes.profileCoverImg}
                   src={require(`../img/book.jpg`)}   alt=""  
               />
-              <img className={classes.profileUserImg}
+              <img position="fixed" className={classes.profileUserImg}
                   src={require(`../img/book_3.png`)}   alt=""
               />
             </Box>
@@ -92,25 +104,26 @@ export default function BookProfile() {
               <h4 className={classes.profileInfoName} >Taravat Monsef</h4>
               {/* <span className={classes.profileInfoDesc} >I'm a Writer :D</span> */}
             </Box>
-            <Box className={classes.profileRightBottom}>
-              <Container>
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} direction="row"  justifyContent="center"  alignItems="center">
-                <Grid item xs={6}>
+                   
+            <Box >
+             
+                <Grid container  columns={{ xs: 4, sm: 8, md: 12 }} direction="row" >
+                <Grid item xs={6} >
                   <ProFeed />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid  item xs={6} >
                   <Rightbar />
                      
                 </Grid>
                 </Grid>  
-              </Container>
+             
                                         
             </Box>
-        </Box>
+ </Box>
       </Box>
     </Box>
       
-    </>
+    </div>
     
   );
 }
