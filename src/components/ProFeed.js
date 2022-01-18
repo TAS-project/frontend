@@ -107,24 +107,35 @@ const ProFeed = ({ props, title }) => {
         padding : '30px'
       }}
       >
-        <Grid container  columns={16}>
-  <Grid item xs={8}>
-          <Box sx={{alignItem:"center"}} component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post" />
+        <Grid container justifyContent="center"  columns={{ xs: 16, sm: 8, md: 16 }} sx={{flexDirection: { xs: 'column', md: 'row' },}}>
+  <Grid item xs={16} md={8}>
+          <Box alignItems="center" justifyContent="center" component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post" />
   </Grid>
-  <Grid item xs={8}>
-    <Box sx={{alignItem:"center"}} className={classes.mediaContet}>
-      <Typography gutterBottom variant="h5"> title </Typography>
-          <Typography variant="body2">
+  <Grid item xs={16} md={8}>    
+    <Grid container spacing={9} direction="column">
+      <Grid item xs={16} md={8}>
+   
+    <Typography gutterBottom variant="h5"> title </Typography>
+          <Typography  variant="body2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             consectetur earum est.
           </Typography>
-    </Box >
-    
-          <CardActions>
+  
+    </Grid>
+     <Grid item xs={16} md={8}>
+  
+    <Grid container spacing={1} direction="row">
+      <Grid item  xs={16} md={8}>
          <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>Book Profile</Button>
+      </Grid>
+      <Grid item  xs={16} md={8}>
          <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>New Chapter</Button>
+      </Grid>
           
-      </CardActions>
+     </Grid>
+     
+      </Grid>
+  </Grid>
   </Grid>
 </Grid>
       
