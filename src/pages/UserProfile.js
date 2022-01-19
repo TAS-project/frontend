@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import Rightbar from '../components/Rightbar';
 import ProFeed from '../components/ProFeed';
-import { Avatar, Grid } from '@mui/material';
-import { Container } from '@material-ui/core';
+import { Grid } from '@mui/material';
+// import { Container } from '@material-ui/core';
 import * as React from 'react';
 
 

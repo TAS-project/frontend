@@ -1,13 +1,12 @@
-import Post from "./Post";
 import React from 'react';
 import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Divider, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Divider, List, ListItemText, Typography } from "@material-ui/core";
 import { ListItemButton } from "@mui/material";
 
-const drawerWidth = 240;
+
 const useStyles = makeStyles((theme) => ({
 
   chapters: {
