@@ -7,7 +7,7 @@ import TabPanel from '@material-ui/lab/TabPanel';
 import * as React from 'react';
 import Toolbar from '../components/Toolbar';
 import Homefeed from '../components/Homefeed';
-
+import SuserFeed from '../components/SuserFeed';
 const drawerWidth = 240;
 
 
@@ -22,21 +22,23 @@ export default function SearchResult() {
       <Toolbar />
     <Box
       component="main"
-      sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` } ,position: 'relative', p:3}}>
+      sx={{}}>
     <TabContext value={value} >
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' ,  width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` } ,position: 'relative', p:3}}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Item One" value="1" />
-            <Tab label="Item Two" value="2" />
+            <Tab label="Books" value="1" />
+            <Tab label="users" value="2" />
           </TabList>
         </Box>
-        <TabPanel value="1">Books</TabPanel>
-        <TabPanel value="2">users</TabPanel>
+        <TabPanel value="1"> <Homefeed/> </TabPanel>
+        <TabPanel value="2"> <SuserFeed/></TabPanel>
       </TabContext>
       </Box>
 
-       
-            <Homefeed/>
+      {
+        window.location.href.split('/')[4]
+      }
+           
     </div>
     
   );

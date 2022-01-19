@@ -43,7 +43,7 @@ function App() {
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
         <Route path="/home"  element= {<Homepage />}>  </Route>
           <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
-          <Route exact path="/search/:word" element={<SearchResult />}></Route>
+          <Route  path="/search/:word" element={<SearchResult />} />
         <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>  
       </Routes>
     </Router>

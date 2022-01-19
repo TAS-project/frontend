@@ -73,7 +73,7 @@ const ClickonSearch =(e) => {
   e.preventDefault()
     const {Seachithem } = e.target.elements
     console.log({ Seachithem: Seachithem.value })
-    window.location.reload();
+    window.location.pathname = `/search/${Seachithem.value}`;
   };
 
   return (
@@ -102,7 +102,7 @@ const ClickonSearch =(e) => {
           </Typography>
           {/* search input  */}
           <form onSubmit={ClickonSearch} component="form"
-          sx={{ margin:'auto', display: 'flex' ,width:{md:'300px' , sx:'200px'}  , p:1}}>
+          sx={{ margin:'auto', display: 'flex' ,width:{md:'300px' , sx:'150px'}  , p:1}}>
             <InputBase sx={{ ml: 1, flex: 1, }}
               placeholder="Search in"
               id="Seachithem"
