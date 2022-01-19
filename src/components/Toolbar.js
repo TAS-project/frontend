@@ -69,47 +69,12 @@ function ResponsiveDrawer() {
     </div>
   );
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
+const ClickonSearch =(e) => {
+  e.preventDefault()
+    const {Seachithem } = e.target.elements
+    console.log({ Seachithem: Seachithem.value })
+    window.location.reload();
+  };
 
   return (
     <Box sx={{  flexGrow: 1 }} >
@@ -121,7 +86,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-      <Toolbar>
+      <Toolbar sx={{}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -135,33 +100,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           <Typography variant="h6" noWrap component="div">
             the authors society
           </Typography>
-          {/* search input */}
-          <Paper component="form"
-          sx={{ m:1 , p: '2px 4px', display: 'flex', alignItems: 'center' ,flex:1, width: '300px'}}>
-          <InputBase sx={{ ml: 1, flex: 1 ,}}
-          placeholder="Search in"
+          {/* search input  */}
+          <form onSubmit={ClickonSearch} component="form"
+          sx={{ margin:'auto', display: 'flex' ,width:{md:'300px' , sx:'200px'}  , p:1}}>
+            <InputBase sx={{ ml: 1, flex: 1, }}
+              placeholder="Search in"
+              id="Seachithem"
           inputProps={{ 'aria-label': 'search Search books' }}
             />
             
-        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
-           <Typography variant="caption"> books </Typography>
+        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search" >
+           <Typography variant="caption"></Typography>
         <SearchIcon />
             </IconButton>
-        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
-            <Typography variant="caption">users</Typography> 
-        <SearchIcon />
-      </IconButton>
-          </Paper>
-         {/**
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */} 
+          </form>
+
       </Toolbar>
       </AppBar>
       <Box component="nav"
