@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 import img1 from "../img/book_1.png";
 import { Button, Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
-import ModeCommentIcon from '@mui/icons-material/ModeComment';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const user_id = 1;
 const useStyles = makeStyles((theme) => ({
@@ -103,10 +103,11 @@ export default function Post(props) {
       >
         <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
-        </Box>
-        <Button  sx={{ color: 'primary.main', fontSize: 16 }} onClick={() => userclick()}>
+          </Box>
+        <Box  sx={{ color: '#ABABAB', fontSize: 16 , cursor: 'pointer'}} onClick={() => userclick()}>
          @{props.chapter.Username}
-        </Button>
+        </Box>
+        
         <Box
           sx={{
             mt: 1.5,
@@ -126,6 +127,7 @@ export default function Post(props) {
          
          last chapter : {props.chapter.Last_chapter_name}
         </Box>
+
         </Box>
         <Box py={1} className={classes.rate } >
       <Typography component="legend">rating</Typography>
@@ -137,7 +139,10 @@ export default function Post(props) {
           }}
           */  />
         <Divider orientation="vertical" variant="middle" flexItem />
-          <Button startIcon={<ModeCommentIcon/>} style={{  textTransform: 'none' }}>reviews</Button>
+        
+          <Box style={{ display: 'flex', alignItems: 'center',cursor: 'pointer', flexWrap: 'wrap', }}>
+            read more <ArrowForwardIosIcon fontSize="small" /></Box>
+        
         </Box>
         
       </Box>
