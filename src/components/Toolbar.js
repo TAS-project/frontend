@@ -133,7 +133,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
           </IconButton>
           {/* logo */}
           <Typography variant="h6" noWrap component="div">
-            name of our website
+            the authors society
           </Typography>
           {/* search input */}
           <Paper component="form"
