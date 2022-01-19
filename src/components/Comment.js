@@ -1,5 +1,6 @@
 
 import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import { Box } from "@mui/system";
 import { Button, Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";

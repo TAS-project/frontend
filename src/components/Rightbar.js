@@ -2,6 +2,9 @@
 import { Box, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@mui/material/Button';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,9 +45,17 @@ InfoItemiN : {
 
 }));
 
-export default function Rightbar({ profile }) {
+export default function Rightbar ({ profile }) {
+const EdithandleClick =() => {
+    console.log('edit clicked');
+    window.location.pathname = `../pages/Signin`;    
+};
+const NewBookHandleClick =() => {
+    console.log('new book clicked');
+    // window.location.pathname = `/book/bname/${Chapter_ID}`;    
+};
 
-  const ProfileRightbar = () => {
+  const ProfileRightbar = () => {   
     const classes = useStyles();
     return (
       <>
@@ -59,7 +70,11 @@ export default function Rightbar({ profile }) {
           <h4 className={classes.rightbarTitle}>Taravat information</h4>
         </Grid>
         <Grid className={classes.rightbarInfoItem} item xs={4}>
-          <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>EDIT</Button>
+         
+          <Button variant="contained" sx={{width: { md: '50px', xs: '40px' },
+          height: { md: '50px', xs: '40px' }}} onClick={()=>EdithandleClick()}>
+             <EditIcon />
+          </Button>
         </Grid>
       </Grid>
      
@@ -92,8 +107,11 @@ export default function Rightbar({ profile }) {
          <Box boxShadow={12} sx={{borderRadius: '12px'}}>
      <div className={classes.rightbarInfoItem}>
                 <Grid className={classes.rightbarInfoKey} item >
-                  <Button variant="outlined"  fullWidth  
-                  sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}>Create My Book</Button>
+                  <Button variant="contained"  fullWidth  
+                  sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}
+                  onClick={()=>NewBookHandleClick()}>
+                    Create My Book
+                    </Button>
                 </Grid>
               </div>
                </Box>

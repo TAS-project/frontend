@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import { Divider} from "@material-ui/core";
 import BookProfileHeader from '../components/BookProfileHeader';
 import Chapter from '../components/Chapter';
+import React from 'react';
 
 const drawerWidth = 240;
 

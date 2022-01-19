@@ -1,4 +1,5 @@
 import Comment from "./Comment";
+import React from 'react';
 import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 

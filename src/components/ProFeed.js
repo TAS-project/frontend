@@ -42,6 +42,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProFeed = ({ props, title }) => {
+  const BookProfileHandleClick =() => {
+    console.log('BookProfile clicked');
+    // window.location.pathname = `/book/bname/${Chapter_ID}`;    
+};
+const BookChapterHandleClick =() => {
+    console.log('BookChapter clicked');
+    // window.location.pathname = `/book/bname/${Chapter_ID}`;    
+};
   const classes = useStyles();
   return (
     <Container>
@@ -80,10 +88,12 @@ const ProFeed = ({ props, title }) => {
   
     <Grid container spacing={1} direction="row">
       <Grid item  xs={16} md={8}>
-         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>Book Profile</Button>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}
+         onClick={()=>BookProfileHandleClick()}>Book Profile</Button>
       </Grid>
       <Grid item  xs={16} md={8}>
-         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}>New Chapter</Button>
+         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}
+         onClick={()=>BookChapterHandleClick()}>New Chapter</Button>
       </Grid>
           
      </Grid>
@@ -94,7 +104,7 @@ const ProFeed = ({ props, title }) => {
 </Grid>
       
     </Box>
-    <Box  className={classes.card}
+    {/* <Box  className={classes.card}
         boxShadow={12}
         sx={{
         display: 'flex',
@@ -140,7 +150,7 @@ const ProFeed = ({ props, title }) => {
   </Grid>
 </Grid>
       
-    </Box>
+    </Box> */}
 
      
    
