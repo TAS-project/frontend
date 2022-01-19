@@ -19,7 +19,6 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import { Genre } from "../dummy";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
-import { styled, alpha } from '@mui/material/styles';
 const drawerWidth = 240;
 
 function ResponsiveDrawer() {
@@ -77,7 +76,7 @@ const ClickonSearch =(e) => {
   };
 
   return (
-    <Box sx={{  flexGrow: 1 }} >
+    <Box >
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -86,7 +85,7 @@ const ClickonSearch =(e) => {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-      <Toolbar sx={{}}>
+      <Toolbar sx={{display: "flex" , justify:"space-between"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -97,12 +96,13 @@ const ClickonSearch =(e) => {
             <MenuIcon />
           </IconButton>
           {/* logo */}
-          <Typography variant="h6" noWrap component="div">
+          <Typography sx={{  flex: 1 }}
+            variant="h6" noWrap component="div">
             the authors society
           </Typography>
           {/* search input  */}
           <form onSubmit={ClickonSearch} component="form"
-          sx={{ margin:'auto', display: 'flex' ,width:{md:'300px' , sx:'150px'}  , p:1}}>
+          sx={{ margin:'auto' ,width:{md:'300px' , sx:'150px'} , flex: 1  , p:1}}>
             <InputBase sx={{ ml: 1, flex: 1, }}
               placeholder="Search in"
               id="Seachithem"
