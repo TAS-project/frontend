@@ -91,7 +91,7 @@ export const Genre = [
   {
     Genre_ID : 1,
     Genre_Title: "Mystery",
-        Summary: "Mystery novels drop clues and slowly reveal information, turning the reader into a detective trying to solve the case, too."
+    Summary: "Mystery novels drop clues and slowly reveal information, turning the reader into a detective trying to solve the case, too."
   },
   {
     Genre_ID : 2,
@@ -204,7 +204,8 @@ export const book_1 =
     BooK_Rate : 2,
     photo: "../img/book_3.png",
   Publishing_date: "2021-2-1",
-    followed:1,
+  followed: 1,
+  genres: [{name:"Mystery" , color:"#585859"},{name:"Horror" , color:"#101870"}, {name:"Thriller" , color:"#783043"} ,{name:"Romance" , color:"#ff2209"} , {name:"Historical" , color:"#e9b055"} , {name:"Fantasy" , color:"#b22eba"},{name:"Realist Literature" , color:"#2ebab5"}]
     };
 export const chapter_1 = 
   {
@@ -216,6 +217,7 @@ export const chapter_1 =
     Publishing_date :"21-2-3",
     content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license.Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license."
    // content : "سلام"
+    
 };
     
 export const comments = [

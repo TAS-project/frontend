@@ -54,7 +54,7 @@ export default function WriteChapter() {
               <InputLabel htmlFor="my-input">chapter title</InputLabel>
   <Input style={{marginBottom:'3%'}}  id="title" aria-describedby="my-helper-text" />
             <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." ></textarea>
-            <Button  type="submit" variant="contained" >add chapter</Button>
+            <button  type="submit" variant="contained" >add chapter</button>
     </div>
 
   

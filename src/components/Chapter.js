@@ -3,8 +3,9 @@ import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, CardHeader, InputAdornment, Typography } from "@material-ui/core";
+import { Avatar, CardHeader, IconButton, InputAdornment, Typography } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 const useStyles = makeStyles((theme) => ({
   post: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 export default function Chapters() {
-  
+  const IsOwner = true; 
   const classes = useStyles();
   return (
     <Box
@@ -36,10 +37,17 @@ export default function Chapters() {
       component="main"
       sx={{width:'90%' ,position: 'relative', p:1 }}
       >
-     
+    <Box>
     <Typography style={{ paddingTop:12,textAlign:"center"}} variant="h5" gutterBottom component="div">
-        {"chapter "+ chapter_1.Chapter_ID + " :  "+ chapter_1.chapter_name}
-    </Typography>
+        {"chapter " + chapter_1.Chapter_ID + " :  " + chapter_1.chapter_name} 
+        </Typography>
+                { /*IsOwner===true ?
+        <IconButton color="primary" aria-label="upload picture" component="span">
+        <ModeEditIcon />
+        </IconButton>
+        :
+                null */}
+</Box> 
     <Typography style={{fontSize:20}} variant="body1" gutterBottom>
         {chapter_1.content}
       </Typography>
