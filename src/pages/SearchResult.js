@@ -6,7 +6,7 @@ import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
 import * as React from 'react';
 import Toolbar from '../components/Toolbar';
-import Homefeed from '../components/Homefeed';
+import SbookFeed from '../components/SbookFeed';
 import SuserFeed from '../components/SuserFeed';
 import Footer from '../components/Footer';
 
@@ -30,7 +30,7 @@ export default function SearchResult() {
             <Tab label="users" value="2" />
           </TabList>
         </Box>
-        <TabPanel value="1"> <Homefeed/> </TabPanel>
+        <TabPanel value="1"> <SbookFeed/> </TabPanel>
         <TabPanel value="2"> <SuserFeed/></TabPanel>
       </TabContext>
       </Box>

@@ -1,3 +1,5 @@
+// ********************************** search users ********************************//
+
 export const Users = [
   {
     Usr_ID: 1,
@@ -43,49 +45,33 @@ export const Users = [
  
   
 ];
-
-export const Book = [
+// ********************************** search book ********************************//
+export const Books = [
   {
     Book_ID : 1,
-    Book_Name: "Love For All, Hatred For None.",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
+    Book_Name: "be a friend",
+    Username : "tarvti",
+    BooK_Rate : 5,
+    photo: "../img/book_3.png",
+    summary:"The best way to know how much detail to include in your description is by traveling to the local library or bookstore and holding real books in your hand.There, you’ll have thousands of books at your fingertips. You will quickly realize how one author works his or her magic, causing you want to read more, and why another author’s book cover fails to peak your interest.",
+    followed: 0,
+    },
   {
     Book_ID : 2,
-    Book_Name: "15 mins ago",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
-  {
-    Book_ID : 3,
-    Book_Name: "Every moment is a fresh beginning.",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
-  {
-    Book_ID : 4,
-    Book_Name: "yours truely",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
+    Book_Name: "nobody no crime",
+    Username : "negini",
+    BooK_Rate : 2,
+    photo: "../img/book_2.png",
+    summary:"The best way to know how much detail to include in your description is by traveling to the local library or bookstore and holding real books in your hand.There, you’ll have thousands of books at your fingertips. You will quickly realize how one author works his or her magic, causing you want to read more, and why another author’s book cover fails to peak your interest.",
+    followed: 1,
+
+    },
+
 ];
+
+
+
+// ********************************** list of Genre ********************************//
 
 export const Genre = [
   {
@@ -130,6 +116,7 @@ export const Genre = [
   },
 ];
 
+// ********************************** list of chapters for book profile ********************************//
 export const Chapters = [
   {
     Chapter_ID : 1,
@@ -162,6 +149,7 @@ export const Chapters = [
   }
 ];
 
+// ********************************** list of posts for home page ********************************//
 export const Post_HomePage = [
   {
     Chapter_ID : 1,
@@ -194,7 +182,7 @@ export const Post_HomePage = [
     Last_chapter_name : "long time no see",
     },
 ];
-
+// ********************************** book profile information ********************************//
 export const book_1 = 
   {
     Book_ID : 1,
@@ -206,7 +194,9 @@ export const book_1 =
   Publishing_date: "2021-2-1",
   followed: 1,
   genres: [{name:"Mystery" , color:"#585859"},{name:"Horror" , color:"#101870"}, {name:"Thriller" , color:"#783043"} ,{name:"Romance" , color:"#ff2209"} , {name:"Historical" , color:"#e9b055"} , {name:"Fantasy" , color:"#b22eba"},{name:"Realist Literature" , color:"#2ebab5"}]
-    };
+};
+    
+// ********************************** chapter information ********************************//
 export const chapter_1 = 
   {
     Chapter_ID : 1,
@@ -219,7 +209,7 @@ export const chapter_1 =
    // content : "سلام"
     
 };
-    
+// ********************************** comments of a chapter ********************************//   
 export const comments = [
   {
     comments_ID : 1,
