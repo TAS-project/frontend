@@ -8,9 +8,9 @@ import * as React from 'react';
 import Toolbar from '../components/Toolbar';
 import Homefeed from '../components/Homefeed';
 import SuserFeed from '../components/SuserFeed';
+import Footer from '../components/Footer';
+
 const drawerWidth = 240;
-
-
 export default function SearchResult() {
   const [value, setValue] = React.useState('1');
 
@@ -38,7 +38,7 @@ export default function SearchResult() {
       {
         window.location.href.split('/')[4]
       }
-           
+     <Footer/>      
     </div>
     
   );

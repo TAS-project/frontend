@@ -2,19 +2,24 @@ import Post from "./Post";
 import { Users } from "../dummy";
 import Box from '@mui/material/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardMedia } from "@material-ui/core";
-import Grid from '@mui/material/Grid';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(({ palette }) => ({
-  shadows: {
-        border: '2px solid',
+  UserCard: {
+    display: 'flex',
+    flexDirection: { xs: 'column', md: 'row' },
+    alignItems: 'center',
+    overflow: 'hidden',
+    borderRadius: '12px',
+    fontWeight: 'bold',
+    margin : '2%',
+    border: '2px solid',
     borderColor: '#E7EDF3',
-    borderRadius: 16,
     transition: '0.4s',
     '&:hover': {
-      borderColor: '#2E2C2C',
+     borderColor: '#C19E8A',
     },
   },
   heading: {
@@ -30,8 +35,26 @@ const useStyles = makeStyles(({ palette }) => ({
     marginBottom: '0.875em',
   },
   media: {
-    borderRadius: 6,
+    borderRadius: '50%',
+    padding: 10,
+    '&:hover': {
+      opacity:'80%'
+    },
   },
+  butn: {
+    cursor: 'pointer',
+    borderRadius:5,
+    margiLeft: 'auto',
+    marginRight: 'auto',
+    padding:3,
+    border: '1px solid',
+    borderColor: '#C8C8C8',
+    '&:hover': {
+      color: "#AFA2A2",
+
+      
+    },
+  }
 }));
 export default function UFeed() {
   const styles = useStyles();
@@ -39,10 +62,11 @@ export default function UFeed() {
     <Box
       component="main"
       sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` } ,position: 'relative', p:3}}>
-      <Grid container spacing={3} p={1} columns={{ xs: 4, sm: 8, md: 12 }} className={styles.root} >
+     
       { Users.map((p) => (
-        <Grid item  xs={2} sm={4} md={3} className={ styles.shadows} key={p.Usr_ID} >
-      
+        
+        <Box key={p.Usr_ID}
+        className={ styles.UserCard }>
       <Box className={styles.media}
       component="img" sx={{ height: 150, width: 150 }}
       alt="The house from the offer."
@@ -55,13 +79,13 @@ export default function UFeed() {
           bgcolor: 'background.paper'}}>
           <h3 className={styles.heading}>{p.First_Name + "  " + p.Last_Name} </h3>
           <span sx={{ display: 'block' }} className={styles.subheader}>{"@" + p.Username}</span>
-          <Button sx={{width:{sm:'100%' , xl:'50%'}, display: 'block' }}>{ p.followed=== 0 ? 'follow' : 'unfollow'}</Button>
+            <Box className={ styles.butn } sx={{display: 'flex', mt: 1}}>
+              {p.followed === 0 ? ' follow' : ' unfollow'}</Box>
           </Box>
-      </Grid> 
-
+     </Box>
            ))
               }
-    </Grid>  
+    
     </Box>
   );
 }
