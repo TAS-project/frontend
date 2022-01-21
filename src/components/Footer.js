@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <Box
             className={classes.footer}      >
-            Copyright &copy; 2017 All Rights Reserved by TAS : <br/> Taravat Anita Saba 
+            Copyright &copy; 2022 All Rights Reserved by TAS : <br/> Taravat Anita Saba 
          
             </Box>
           </div>

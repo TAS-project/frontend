@@ -59,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 export default function BFeed() {
-  
+    const Bookclick = (Book_Name) => {
+    window.location.pathname = `/book/${Book_Name}`;
+    };
+    const userclick = (Username) => {
+    window.location.pathname = `/profile/${Username}`;
+  };
   const styles = useStyles();
   return (
     <Box
@@ -84,8 +89,8 @@ export default function BFeed() {
           p: 1,
           m: 1,
           bgcolor: 'background.paper'}}>
-          <h3 className={styles.heading}>{b.Book_Name} </h3>
-            <span sx={{ display: 'block' }} className={styles.subheader}>{"@" + b.Username}</span>
+          <Box  sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick(b.Book_Name)} >{b.Book_Name} </Box>
+            <Box sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(b.Username)}>{"@" + b.Username}</Box>
             <Typography>
             {b.summary}
             </Typography>

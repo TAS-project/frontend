@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import BookProfile from './pages/BookProfile';
 import UserProfile from './pages/UserProfile';
 import SearchResult from './pages/SearchResult';
+import GenrePage from './pages/GenrePage';
 
 import {
   BrowserRouter as Router,
@@ -44,7 +45,8 @@ function App() {
         <Route path="/home"  element= {<Homepage />}>  </Route>
           <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
-        <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>  
+          <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>
+          <Route path="/genre/:title" element={<GenrePage />}></Route>  
       </Routes>
     </Router>
     </ThemeProvider> 

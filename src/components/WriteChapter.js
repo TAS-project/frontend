@@ -2,6 +2,8 @@ import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Divider, FormControl, FormHelperText, Input, InputLabel, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import React from 'react';
+import { Alert } from '@mui/material';
 
 
 const drawerWidth = 240;
@@ -30,10 +32,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function WriteChapter() {
+  const [ShowError, setError] = React.useState(false);
   const ClickonAdd =(e) => {
   e.preventDefault()
-    const {title, text } = e.target.elements
+    const { title, text } = e.target.elements
     console.log({ title: title.value, content: text.value })
+    if (title.value === '') {
+      setError(true);
+    }else
     window.location.reload();
   };
 
@@ -42,7 +48,7 @@ export default function WriteChapter() {
     <Box
      className={classes.chapters}
       component="main"
-      sx={{width:'90%' ,position: 'relative', p:1 , backgroundColor:'#F2EFEC' }}
+      sx={{width:'90%' ,position: 'relative', p:1 , backgroundColor:'#f6f7f4' }}
       >
 <h3 style={{fontFamily:'inherit'}}>New Chapter</h3>
 
@@ -54,9 +60,15 @@ export default function WriteChapter() {
               <InputLabel htmlFor="my-input">chapter title</InputLabel>
   <Input style={{marginBottom:'3%'}}  id="title" aria-describedby="my-helper-text" />
             <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." ></textarea>
-            <button  type="submit" variant="contained" >add chapter</button>
-    </div>
-
+           
+          </div>
+          {
+            ShowError === true ?
+              <Alert sx={{width:'70%', margin: 'auto', display:'flex'}} severity="error">title of chapter can not be empty</Alert>
+              :
+              null
+          }
+ <button  type="submit" style={{color:'white', borderRadius:'10%', fontSize: 18,  cursor: 'pointer' ,backgroundColor: '#ED6663'}} >add chapter</button>
   
   </form>
 </div>

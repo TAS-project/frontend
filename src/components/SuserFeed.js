@@ -58,6 +58,9 @@ const useStyles = makeStyles(({ palette }) => ({
 }));
 export default function UFeed() {
   const styles = useStyles();
+      const userclick = (Username) => {
+    window.location.pathname = `/profile/${Username}`;
+  };
     return (
     <Box
       component="main"
@@ -78,7 +81,7 @@ export default function UFeed() {
           m: 1,
           bgcolor: 'background.paper'}}>
           <h3 className={styles.heading}>{p.First_Name + "  " + p.Last_Name} </h3>
-          <span sx={{ display: 'block' }} className={styles.subheader}>{"@" + p.Username}</span>
+          <Box  sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(p.Username)}>{"@" + p.Username}</Box>
             <Box className={ styles.butn } sx={{display: 'flex', mt: 1}}>
               {p.followed === 0 ? ' follow' : ' unfollow'}</Box>
           </Box>

@@ -27,7 +27,9 @@ function ResponsiveDrawer() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const genreclick = (Genre_Title) => {
+    window.location.pathname = `/genre/${Genre_Title}`;
+  };
   const drawer = (
     <div>
       <Toolbar />
@@ -57,7 +59,7 @@ function ResponsiveDrawer() {
       <List>
         
         { Genre.map((G) => (
-          <ListItem button key={G.Genre_ID} >
+          <ListItem button key={G.Genre_ID} onClick={() => genreclick(G.Genre_Title)}>
             <ListItemIcon >
                <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>

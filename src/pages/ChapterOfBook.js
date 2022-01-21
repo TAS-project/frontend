@@ -6,7 +6,7 @@ import Chapter from '../components/Chapter';
 
 const drawerWidth = 240;
 
-export default function ChapterOfBook() {
+export default function GenrePage() {
   
   
     return (

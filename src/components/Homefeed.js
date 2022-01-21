@@ -3,6 +3,8 @@ import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +15,19 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 export default function Feed() {
-  
+  const [posts, setPosts] = useState([]);
+  /*
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const res = username
+        ? await axios.get("/posts/profile/" + username)
+        : await axios.get("posts/timeline/" + user._id);
+      setPosts(res.data);
+      
+    };
+    fetchPosts();
+  }, [username, user._id]);
+*/
   const classes = useStyles();
   return (
     <Box
