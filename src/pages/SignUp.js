@@ -11,15 +11,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 
-import { makeStyles } from '@material-ui/core';
 
 
-const useStyles = makeStyles((theme) => ({
 
-
-}));
 export default function SignUp() {
-      const classes = useStyles();
+      // const classes = useStyles();
 
   const handleSubmit = (event) => {
     event.preventDefault();

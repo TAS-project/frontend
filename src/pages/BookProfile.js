@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Toolbar from '../components/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import BookProfileHeader from '../components/BookProfileHeader';
 import BookChapters from '../components/BookChapters';
