@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Feed() {
   const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    console.log('here we are at the userfeed ');
+    localStorage.setItem('token', JSON.stringify("witheveryewhatwesayhecomfdenswhoweare"));
+    console.log(localStorage.getItem("token"));
+  });
   /*
   useEffect(() => {
     const fetchPosts = async () => {
@@ -33,7 +38,7 @@ export default function Feed() {
     <Box
       className={classes.post}
       component="main"
-      sx={{width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` } ,position: 'relative', p:1 }}
+      sx={{width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:1 }}
       >
               {
            Post_HomePage.map((p) => (

@@ -89,7 +89,7 @@ export default function BookProfile() {
   <Box
     className={classes.root}            
     component="main"
-    sx={{ width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
+    sx={{ width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
       <Box className={classes.profile}>
         <Box  className={classes.profileRight}>
             <Box sx={{ height: '320px', position: 'relative',}} >
