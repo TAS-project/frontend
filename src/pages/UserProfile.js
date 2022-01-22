@@ -6,7 +6,8 @@ import ProFeed from '../components/ProFeed';
 import { Grid } from '@mui/material';
 // import { Container } from '@material-ui/core';
 import * as React from 'react';
-import Followers from '../components/Followers';
+// import Followers from '../components/Followers';
+import FollowProfile from '../components/FollowProfile';
 
 
 const drawerWidth = 240;
@@ -119,7 +120,7 @@ export default function BookProfile() {
                 <Grid item xs={6} >
                   <Grid containner direction="column">
                     <Grid  sx={{marginBottom : '30px'}} item >
-                      <Followers />
+                      <FollowProfile />
                     </Grid>
                     <Grid sx={{marginBottom : '30px'}} item >
                       <ProFeed />
