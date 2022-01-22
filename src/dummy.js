@@ -1,3 +1,5 @@
+// ********************************** search users ********************************//
+
 export const Users = [
   {
     Usr_ID: 1,
@@ -43,55 +45,39 @@ export const Users = [
  
   
 ];
-
-export const Book = [
+// ********************************** search book ********************************//
+export const Books = [
   {
     Book_ID : 1,
-    Book_Name: "Love For All, Hatred For None.",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
+    Book_Name: "be a friend",
+    Username : "tarvti",
+    BooK_Rate : 5,
+    photo: "../img/book_3.png",
+    summary:"The best way to know how much detail to include in your description is by traveling to the local library or bookstore and holding real books in your hand.There, you’ll have thousands of books at your fingertips. You will quickly realize how one author works his or her magic, causing you want to read more, and why another author’s book cover fails to peak your interest.",
+    followed: 0,
+    },
   {
     Book_ID : 2,
-    Book_Name: "15 mins ago",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
-  {
-    Book_ID : 3,
-    Book_Name: "Every moment is a fresh beginning.",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
-  {
-    Book_ID : 4,
-    Book_Name: "yours truely",
-    //photo: "assets/post/1.jpeg",
-    Usr_id: 1,
-    Summery: "",
-    Rating:0,
-    On_going: 0,
-    Suspended:0,
-  },
+    Book_Name: "nobody no crime",
+    Username : "negini",
+    BooK_Rate : 2,
+    photo: "../img/book_2.png",
+    summary:"The best way to know how much detail to include in your description is by traveling to the local library or bookstore and holding real books in your hand.There, you’ll have thousands of books at your fingertips. You will quickly realize how one author works his or her magic, causing you want to read more, and why another author’s book cover fails to peak your interest.",
+    followed: 1,
+
+    },
+
 ];
+
+
+
+// ********************************** list of Genre ********************************//
 
 export const Genre = [
   {
     Genre_ID : 1,
     Genre_Title: "Mystery",
-        Summary: "Mystery novels drop clues and slowly reveal information, turning the reader into a detective trying to solve the case, too."
+    Summary: "Mystery novels drop clues and slowly reveal information, turning the reader into a detective trying to solve the case, too."
   },
   {
     Genre_ID : 2,
@@ -130,6 +116,7 @@ export const Genre = [
   },
 ];
 
+// ********************************** list of chapters for book profile ********************************//
 export const Chapters = [
   {
     Chapter_ID : 1,
@@ -162,6 +149,7 @@ export const Chapters = [
   }
 ];
 
+// ********************************** list of posts for home page ********************************//
 export const Post_HomePage = [
   {
     Chapter_ID : 1,
@@ -176,7 +164,7 @@ export const Post_HomePage = [
   {
     Chapter_ID : 2,
     Chapter_Number : 1,
-    Book_Name: "be a friend",
+    Book_Name: "no body no crime ",
     Username : "negini",
     BooK_Rate : 4,
     photo: "../img/book_2.png",
@@ -194,7 +182,7 @@ export const Post_HomePage = [
     Last_chapter_name : "long time no see",
     },
 ];
-
+// ********************************** book profile information ********************************//
 export const book_1 = 
   {
     Book_ID : 1,
@@ -204,8 +192,11 @@ export const book_1 =
     BooK_Rate : 2,
     photo: "../img/book_3.png",
   Publishing_date: "2021-2-1",
-    followed:1,
-    };
+  followed: 1,
+  genres: [{name:"Mystery" , color:"#585859"},{name:"Horror" , color:"#101870"}, {name:"Thriller" , color:"#783043"} ,{name:"Romance" , color:"#ff2209"} , {name:"Historical" , color:"#e9b055"} , {name:"Fantasy" , color:"#b22eba"},{name:"Realist Literature" , color:"#2ebab5"}]
+};
+    
+// ********************************** chapter information ********************************//
 export const chapter_1 = 
   {
     Chapter_ID : 1,
@@ -214,10 +205,11 @@ export const chapter_1 =
     Book_id : 1,
     //photo: "assets/post/1.jpeg",
     Publishing_date :"21-2-3",
-    content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license.Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer. As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full-fledged repository with complete history and full version-tracking abilities, independent of network access or a central server.[12] Git is free and open-source software distributed under the GPL-2.0-only license."
+    content: "Git (/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.Its goals include speed, data integrity, and support for distributed, non- linear workflows (thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer.As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full - fledged repository with complete history and full version - tracking abilities, independent of network access or a central server.[12] Git is free and open - source software distributed under the GPL - 2.0 - only license.Git(/ɡɪt/)[7] is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development.Its goals include speed, data integrity, and support for distributed, non - linear workflows(thousands of parallel branches running on different systems).[8][9][10]Git was created by Linus Torvalds in 2005 for development of the Linux kernel, with other kernel developers contributing to its initial development.[11] Since 2005, Junio Hamano has been the core maintainer.As with most other distributed version control systems, and unlike most client–server systems, every Git directory on every computer is a full - fledged repository with complete history and full version - tracking abilities, independent of network access or a central server.[12] Git is free and open - source software distributed under the GPL - 2.0 - only license."
    // content : "سلام"
-};
     
+};
+// ********************************** comments of a chapter ********************************//   
 export const comments = [
   {
     comments_ID : 1,

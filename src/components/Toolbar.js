@@ -19,7 +19,6 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import { Genre } from "../dummy";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
-import { styled, alpha } from '@mui/material/styles';
 const drawerWidth = 240;
 
 function ResponsiveDrawer() {
@@ -28,7 +27,9 @@ function ResponsiveDrawer() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const genreclick = (Genre_Title) => {
+    window.location.pathname = `/genre/${Genre_Title}`;
+  };
   const drawer = (
     <div>
       <Toolbar />
@@ -58,7 +59,7 @@ function ResponsiveDrawer() {
       <List>
         
         { Genre.map((G) => (
-          <ListItem button key={G.Genre_ID} >
+          <ListItem button key={G.Genre_ID} onClick={() => genreclick(G.Genre_Title)}>
             <ListItemIcon >
                <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>
@@ -69,103 +70,57 @@ function ResponsiveDrawer() {
     </div>
   );
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
+const ClickonSearch =(e) => {
+  e.preventDefault()
+    const {Seachithem } = e.target.elements
+    console.log({ Seachithem: Seachithem.value })
+    window.location.pathname = `/search/${Seachithem.value}`;
+  };
 
   return (
-    <Box sx={{  flexGrow: 1 }} >
+    <Box >
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { md: `calc(100% - ${drawerWidth}px)` },
+          ml: { md: `${drawerWidth}px` },
         }}
       >
-      <Toolbar>
+      <Toolbar sx={{display: "flex" , justify:"space-between"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { md: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
           {/* logo */}
-          <Typography variant="h6" noWrap component="div">
-            name of our website
+          <Typography sx={{  flex: 1 }}
+            variant="h6" noWrap component="div">
+            the authors society
           </Typography>
-          {/* search input */}
-          <Paper component="form"
-          sx={{ m:1 , p: '2px 4px', display: 'flex', alignItems: 'center' ,flex:1, width: '300px'}}>
-          <InputBase sx={{ ml: 1, flex: 1 ,}}
-          placeholder="Search in"
+          {/* search input  */}
+          <form onSubmit={ClickonSearch} component="form"
+          sx={{ margin:'auto' ,width:{md:'300px' , sx:'150px'} , flex: 1  , p:1}}>
+            <InputBase sx={{ ml: 1, flex: 1, }}
+              placeholder="Search in"
+              id="Seachithem"
           inputProps={{ 'aria-label': 'search Search books' }}
             />
             
-        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
-           <Typography variant="caption"> books </Typography>
+        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search" >
+           <Typography variant="caption"></Typography>
         <SearchIcon />
             </IconButton>
-        <IconButton type="submit" sx={{ p: '5px' }} aria-label="search">
-            <Typography variant="caption">users</Typography> 
-        <SearchIcon />
-      </IconButton>
-          </Paper>
-         {/**
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */} 
+          </form>
+
       </Toolbar>
       </AppBar>
       <Box component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { md: drawerWidth }, flexShrink: { md: 0 } }}
         aria-label="mailbox folders">
         {/* Drawer in mobile. */}
         <Drawer
@@ -177,7 +132,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { xs: 'block', md: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
@@ -187,7 +142,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
+            display: { xs: 'none', md: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
           open
@@ -197,7 +152,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 0, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        sx={{ flexGrow: 1, p: 0, width: { md: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
  

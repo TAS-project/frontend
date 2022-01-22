@@ -1,13 +1,16 @@
-import Post from "./Post";
-import { Users } from "../dummy";
+
+import { Books } from "../dummy";
 import Box from '@mui/material/Box';
+
 import { makeStyles } from '@material-ui/core/styles';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { Typography } from "@material-ui/core";
 
 const drawerWidth = 240;
-
-const useStyles = makeStyles(({ palette }) => ({
-  UserCard: {
+const useStyles = makeStyles((theme) => ({
+  post: {
+    boxshadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
+  },
+  BookCard: {
     display: 'flex',
     flexDirection: { xs: 'column', md: 'row' },
     alignItems: 'center',
@@ -31,11 +34,9 @@ const useStyles = makeStyles(({ palette }) => ({
   },
   subheader: {
     fontSize: 14,
-    color: palette.grey[500],
     marginBottom: '0.875em',
   },
   media: {
-    borderRadius: '50%',
     padding: 10,
     '&:hover': {
       opacity:'80%'
@@ -55,40 +56,52 @@ const useStyles = makeStyles(({ palette }) => ({
       
     },
   }
+  
 }));
-export default function UFeed() {
-  const styles = useStyles();
-      const userclick = (Username) => {
+export default function BFeed() {
+    const Bookclick = (Book_Name) => {
+    window.location.pathname = `/book/${Book_Name}`;
+    };
+    const userclick = (Username) => {
     window.location.pathname = `/profile/${Username}`;
   };
-    return (
+  const styles = useStyles();
+  return (
     <Box
+      className={styles.post}
       component="main"
-      sx={{ width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:3}}>
-     
-      { Users.map((p) => (
-        
-        <Box key={p.Usr_ID}
-        className={ styles.UserCard }>
+      sx={{width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:1 }}
+      >
+              {
+           Books.map((b) => (
+              <Box key={b.Book_ID}
+        className={ styles.BookCard }>
       <Box className={styles.media}
-      component="img" sx={{ height: 150, width: 150 }}
+      component="img" sx={{ padding: 1,
+        paddingRight:{md:'20px'},
+        height: { xs: 233, md: 267 },
+        width: { xs: 150, md: 200 } }}
       alt="The house from the offer."
-            src={require(`../img/book_${p.Usr_ID}.png`)} />
+        src={require(`../img/book_${b.Book_ID}.png`)} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           p: 1,
           m: 1,
           bgcolor: 'background.paper'}}>
-          <h3 className={styles.heading}>{p.First_Name + "  " + p.Last_Name} </h3>
-          <Box  sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(p.Username)}>{"@" + p.Username}</Box>
+          <Box  sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick(b.Book_Name)} >{b.Book_Name} </Box>
+            <Box sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(b.Username)}>{"@" + b.Username}</Box>
+            <Typography>
+            {b.summary}
+            </Typography>
             <Box className={ styles.butn } sx={{display: 'flex', mt: 1}}>
-              {p.followed === 0 ? ' follow' : ' unfollow'}</Box>
+              {b.followed === 0 ? ' follow' : ' unfollow'}</Box>
           </Box>
      </Box>
-           ))
+            
+                  ))
               }
-    
+      
     </Box>
   );
 }
