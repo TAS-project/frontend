@@ -6,32 +6,22 @@ import {
 } from "@material-ui/core";
 import * as React from 'react';
 import { Box, Container, Grid } from "@mui/material";
+import EditBookInfo from "../pages/EditBookInfo";
 
 const useStyles = makeStyles((theme) => ({
 
 
   media: {
-    height: 300,
-    width: 200,
+    height: 200,
+    width: 160,
     // objectFit : 'cover',
     // margin : '27px',
     // padding : '40px',
     [theme.breakpoints.down("sm")]: {
-      height: 200,
-      width: 200,
+      height: 160,
+      width: 120,
     },
     },
-  //   mediaContet : {
-  //   height: 100,
-  //   // width: 200,
-  //   // objectFit : 'cover',
-  //   // margin : '27px',
-  //   // padding : '40px',
-  //   [theme.breakpoints.down("sm")]: {
-  //     height: 100,
-  //     // width: 200,
-  //   },
-  // },
 }));
 
 const ProFeed = ({ props, title }) => {
@@ -39,9 +29,9 @@ const ProFeed = ({ props, title }) => {
     console.log('BookProfile clicked');
     window.location.pathname = `/book/:bookname`;    
 };
-const BookChapterHandleClick =() => {
+const BookEditHandleClick =() => {
     console.log('BookChapter clicked');
-    // window.location.pathname = `/book/bname/${Chapter_ID}`;    
+    window.location.pathname = `/EditBookInformation`;    
 };
   const classes = useStyles();
   return (
@@ -86,7 +76,7 @@ const BookChapterHandleClick =() => {
       </Grid>
       <Grid item  xs={16} md={8} sm={8}>
          <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}
-         onClick={()=>BookChapterHandleClick()}>idk</Button>
+         onClick={()=>BookEditHandleClick()}>Edit Book Info</Button>
       </Grid>
           
      </Grid>

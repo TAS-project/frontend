@@ -3,7 +3,7 @@ import {
   Button,
  
   makeStyles,
-  Typography,
+
 } from "@material-ui/core";
 import * as React from 'react';
 import { Box, Container, Grid } from "@mui/material";
@@ -45,14 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FollowProfile = ({ props, title }) => {
-  const BookProfileHandleClick =() => {
-    console.log('BookProfile clicked');
-    window.location.pathname = `/book/:bookname`;    
-};
-const BookChapterHandleClick =() => {
-    console.log('BookChapter clicked');
-    // window.location.pathname = `/book/bname/${Chapter_ID}`;    
-};
+  
   const classes = useStyles();
   return (
     <Container>

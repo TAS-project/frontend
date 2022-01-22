@@ -1,9 +1,10 @@
 import React from 'react'
+import CreateNewBook from '../components/CreateNewBook'
 
 function NewBook() {
     return (
         <div>
-            NewBook
+            <CreateNewBook />
         </div>
     )
 }

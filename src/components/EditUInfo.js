@@ -81,56 +81,31 @@ export default function  EditUInfo() {
         >
            
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-               <Grid>
-                
-                </Grid>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
+                <TextField name="firstName" required fullWidth id="firstName" label="First Name" defaultValue="Hello World" autoFocus/>
                
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
+                <TextField required fullWidth id="lastName" label="lastNam" name="lastName" defaultValue="Hello World" autoFocus/>
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth name="UserName" label="User Name"
-                  type="UserName" id="UserName"  autoComplete="new-password"/>
+                <TextField required fullWidth name="UserName" label="User Name"  type="UserName" defaultValue="Hello World" id="UserName" autoFocus/>
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth id="email"  label=""
-                  name="email"  autoComplete="email" />
+                <TextField required fullWidth id="email"  label="Email" name="email" defaultValue="Hello World" autoFocus/>
               </Grid>
               
               <Grid item xs={12}>
-                <TextField required fullWidth name="password" label="" type="password"
-                 id="password" autoComplete="new-password" />
-              </Grid>
-              
-            </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}> Save </Button>
+                <TextField required fullWidth name="password" label="Password" type="password" id="password"  autoFocus/>
+              </Grid>    
+              <Grid item xs={12}>
+                <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 , height:'50px'}}> Save </Button>
+              </Grid>          
+            </Grid >
+            
 
-            {/* <Grid container justifyContent="flex-start">
-              <Grid item>Already have an account?
-                <Link href="#" variant="body2">
-                      Save
-                </Link>
-              </Grid>
-            </Grid> */}
+           
           </Box>
         </Box>
        
