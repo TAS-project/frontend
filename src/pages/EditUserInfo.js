@@ -1,14 +1,11 @@
-// import React from 'react'
-// import AvatarUpload from '../components/AvatarUpload'
-// import EditUInfo from '../components/EditUInfo'
+import React from 'react'
+import EditUInfo from '../components/EditUInfo'
 
-// function EditUserInfo() {
-//     return (
-       
-//             <AvatarUpload />
-     
-//     )
-// }
+function EditUserInfo() {
+    return (
+     <EditUInfo />
+    )
+}
 
-// export default EditUserInfo
+export default EditUserInfo
 

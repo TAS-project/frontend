@@ -1,13 +1,13 @@
 import Toolbar from '../components/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import Rightbar from '../components/Rightbar';
 import ProFeed from '../components/ProFeed';
 import { Grid } from '@mui/material';
 // import { Container } from '@material-ui/core';
 import * as React from 'react';
 // import Followers from '../components/Followers';
 import FollowProfile from '../components/FollowProfile';
+import UserInfo from '../components/UserInfo';
 
 
 const drawerWidth = 240;
@@ -115,7 +115,7 @@ export default function BookProfile() {
              
                 <Grid container  columns={{ xs: 4, sm: 8, md: 12 }} direction="row" >
                 <Grid sx={{marginBottom : '30px',}} item xs={6} >
-                  <Rightbar />                 
+                  <UserInfo />                 
                 </Grid>
                 <Grid item xs={6} >
                   <Grid containner direction="column">

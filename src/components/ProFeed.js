@@ -6,22 +6,36 @@ import {
 } from "@material-ui/core";
 import * as React from 'react';
 import { Box, Container, Grid } from "@mui/material";
-import EditBookInfo from "../pages/EditBookInfo";
 
 const useStyles = makeStyles((theme) => ({
-
+  
 
   media: {
-    height: 200,
-    width: 160,
+    height: 300,
+    width: 200,
+    display:'flex',
+    justifyContent:'center',
     // objectFit : 'cover',
     // margin : '27px',
     // padding : '40px',
     [theme.breakpoints.down("sm")]: {
-      height: 160,
-      width: 120,
+      height: 200,
+      width: 130,
+      display:"flex",
+      justifyContent:'center',
     },
     },
+    mediaContet : {
+    height: 120,
+    //width: 70,
+    // objectFit : 'cover',
+    // margin : '27px',
+    // padding : '40px',
+    [theme.breakpoints.down("sm")]: {
+      height: 120,
+      // width: 50,
+    },
+  },
 }));
 
 const ProFeed = ({ props, title }) => {
@@ -29,9 +43,9 @@ const ProFeed = ({ props, title }) => {
     console.log('BookProfile clicked');
     window.location.pathname = `/book/:bookname`;    
 };
-const BookEditHandleClick =() => {
+const BookChapterHandleClick =() => {
     console.log('BookChapter clicked');
-    window.location.pathname = `/EditBookInformation`;    
+    window.location.pathname = `/EditBookInfo`;    
 };
   const classes = useStyles();
   return (
@@ -42,10 +56,10 @@ const BookEditHandleClick =() => {
         boxShadow={12}
         sx={{
         display: 'flex',
-        flexDirection: { xs: 'column', md: 'column' ,sm:'column',lg: 'row'},
+        flexDirection: { xs: 'row', md: 'column' ,sm:'column',lg: 'row'},
         alignItems : 'center',
-    justifyItems : 'center',
-    justifyContent : 'center',
+  
+        justifyContent : 'center',
         overflow: 'hidden',
         borderRadius: '12px',
           fontWeight: 'bold',
@@ -53,30 +67,32 @@ const BookEditHandleClick =() => {
       }}
       >
         <Grid container   columns={{ xs: 16, sm: 8, md: 8,lg:16, xl:16 }} >
-  <Grid item xs={16} md={8} sm={8}>
-          <Box component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post" />
+  <Grid item xs={16} md={8} sm={8}  className={classes.media}>
+          <Box component="img" className={classes.media} src={require(`../img/book_5.png`)} title="My Post"  />
   </Grid>
-  <Grid item xs={16} md={8} sm={8} >    
-    <Grid  container  direction="column"  spacing={9}  >
+  <Grid item xs={16} md={8} sm={8}  >    
+    <Grid  container  direction="column"  spacing={6}  >
       <Grid item xs={16} md={8} sm={8}>
    
-    <Typography gutterBottom variant="h5"> title </Typography>
-          <Typography  variant="body2">
+    <Typography gutterBottom variant="h5" style={{textAlign : 'center'}} > title </Typography>
+          <Typography  variant="body2" style={{textAlign : 'center'}} >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             consectetur earum est.
           </Typography>
   
     </Grid>
-     <Grid item xs={16} md={8} sm={8}>
+     <Grid item xs={16} md={8} sm={8}   style={{ flexDirection: { xs: 'column', md: 'row' }, textAlign:'center' }}>
   
-    <Grid container spacing={1} direction="row">
-      <Grid item  xs={16} md={8} sm={8}>
-         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}
+    <Grid container spacing={1} >
+      <Grid item  md={8} >
+         
+         <Button variant="contained" sx={{padding: '10px',width: { md: '100px', xs: '75px' }}}
          onClick={()=>BookProfileHandleClick()}>Book Profile</Button>
       </Grid>
-      <Grid item  xs={16} md={8} sm={8}>
-         <Button variant="outlined" sx={{padding: '15px',width: { md: '100px', xs: '75px' }}}
-         onClick={()=>BookEditHandleClick()}>Edit Book Info</Button>
+
+      <Grid item  md={8}>
+        <Button variant="contained" sx={{padding: '10px',width: { md: '100px', xs: '75px' } } }
+          onClick={()=>BookChapterHandleClick()}>Edit  Book</Button>
       </Grid>
           
      </Grid>

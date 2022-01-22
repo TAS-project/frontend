@@ -7,7 +7,9 @@ import {
 } from "@material-ui/core";
 import * as React from 'react';
 import { Box, Container, Grid } from "@mui/material";
+import PopUp from "./PopUp";
 
+const emails = ['username@gmail.com', 'user02@gmail.com'];
 const useStyles = makeStyles((theme) => ({
 
 
@@ -45,8 +47,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FollowProfile = ({ props, title }) => {
-  
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  // open create component 
+  const [showCreate, setShowCreate] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
   const classes = useStyles();
+
   return (
     <Container>
       
@@ -67,17 +81,17 @@ const FollowProfile = ({ props, title }) => {
       >
     <Grid container  columns={{ xs: 4, sm: 4, md: 12}} sx={{padding:'5px'}} >
         <Grid item xs={4} >
-          <Button className={classes.buttons}> Post <br />1 </Button>   
+          <Button className={classes.buttons} > Post </Button>   
         </Grid>
 
         <Grid item xs={4}   >
-              <Button className={classes.buttons}> Follower <br />23 </Button>   
-           
+              <Button onClick={() => handleClickOpen()} className={classes.buttons}> Follower </Button>   
+            <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
         </Grid>
 
         <Grid item xs={4} >
-              <Button className={classes.buttons}> Following <br /> 20</Button>   
-            
+              <Button onClick={() => handleClickOpen()}  className={classes.buttons}> Following</Button>   
+            <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
         </Grid>
 </Grid>
       

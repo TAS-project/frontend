@@ -11,20 +11,32 @@ import { Button } from '@material-ui/core';
 
 const currencies = [
   {
-    value: 'USD',
-    label: '$',
+    value: '1',
+    label: 'Mystrey',
   },
   {
-    value: 'EUR',
-    label: '€',
+    value: '2',
+    label: 'Horror',
   },
   {
-    value: 'BTC',
-    label: '฿',
+    value: '3',
+    label: 'Thriller',
   },
   {
-    value: 'JPY',
-    label: '¥',
+    value: '4',
+    label: 'Romance',
+  },
+   {
+    value: '5',
+    label: 'Historical',
+  },
+   {
+    value: '6',
+    label: 'Fantacy',
+  },
+   {
+    value: '7',
+    label: 'Realist Literature',
   },
 ];
 
@@ -66,7 +78,7 @@ export default function  CreateNewBook() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-               <TextField  name="BookName"   required   fullWidth id="Book Name"   label="First Name"
+               <TextField  name="BookName"   required   fullWidth id="Book Name"   label="Book Name"
                   autoFocus
                 />
                  </Grid>

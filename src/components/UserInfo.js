@@ -33,7 +33,7 @@ InfoItemiN : {
 
 }));
 
-export default function Rightbar () {
+export default function UserInfo () {
 const EdithandleClick =() => {
     console.log('edit clicked');
     window.location.pathname = `/editUser`;    
