@@ -1,4 +1,5 @@
 import Comment from "./Comment";
+import React from 'react';
 import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 
@@ -7,7 +8,7 @@ import { Avatar, CardHeader, Icon, IconButton, InputAdornment, Typography } from
 import { Button, TextField } from "@mui/material";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EditChapter from '../components/EditChapter';
-import React from "react";
+
 
 const useStyles = makeStyles((theme) => ({
   post: {

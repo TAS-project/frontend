@@ -4,7 +4,7 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import TabPanel from '@material-ui/lab/TabPanel';
-import * as React from 'react';
+import React from 'react';
 import Toolbar from '../components/Toolbar';
 import SbookFeed from '../components/SbookFeed';
 import SuserFeed from '../components/SuserFeed';

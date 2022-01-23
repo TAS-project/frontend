@@ -1,4 +1,5 @@
 import Post from "./Post";
+import React from 'react';
 import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 

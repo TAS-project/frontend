@@ -1,10 +1,14 @@
 import Toolbar from '../components/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import Rightbar from '../components/Rightbar';
 import ProFeed from '../components/ProFeed';
-import { Avatar, Grid } from '@mui/material';
-import { Container } from '@material-ui/core';
+import { Grid } from '@mui/material';
+// import { Container } from '@material-ui/core';
+import * as React from 'react';
+// import Followers from '../components/Followers';
+import FollowProfile from '../components/FollowProfile';
+import UserInfo from '../components/UserInfo';
+
 
 const drawerWidth = 240;
 
@@ -74,7 +78,9 @@ profileInfoName: {
 profileInfoDesc: {
   fontWeight: '300',
 },
-
+boxes : {
+  marginBottom : '10px',
+},
 // profileRightBottom: {
 //   display: 'flex',
 // },
@@ -97,23 +103,30 @@ export default function BookProfile() {
                   src={require(`../img/book.jpg`)}   alt=""  
               />
               <img position="fixed" className={classes.profileUserImg}
-                  src={require(`../img/book_3.png`)}   alt=""
+                  src={require(`../img/book_2.png`)}   alt=""
               />
             </Box>
             <Box  className={classes.profileInfo}>
-              <h4 className={classes.profileInfoName} >Taravat Monsef</h4>
+              <h4 className={classes.profileInfoName} >User Name</h4>
               {/* <span className={classes.profileInfoDesc} >I'm a Writer :D</span> */}
             </Box>
                    
             <Box >
              
                 <Grid container  columns={{ xs: 4, sm: 8, md: 12 }} direction="row" >
-                <Grid item xs={6} >
-                  <ProFeed />
+                <Grid sx={{marginBottom : '30px',}} item xs={6} >
+                  <UserInfo />                 
                 </Grid>
-                <Grid  item xs={6} >
-                  <Rightbar />
-                     
+                <Grid item xs={6} >
+                  <Grid containner direction="column">
+                    <Grid  sx={{marginBottom : '30px'}} item >
+                      <FollowProfile />
+                    </Grid>
+                    <Grid sx={{marginBottom : '30px'}} item >
+                      <ProFeed />
+                    </Grid>
+                 </Grid>
+                  
                 </Grid>
                 </Grid>  
              

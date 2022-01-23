@@ -3,35 +3,53 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { makeStyles } from '@material-ui/core';
 
 
-const useStyles = makeStyles((theme) => ({
 
 
-}));
 export default function SignUp() {
-      const classes = useStyles();
+      // const classes = useStyles();
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    console.log(data.get('UserName'));
+    fetch('http://localhost:3001/User/register', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+    "Username": data.get('UserName'),
+    "First_Name": data.get('firstName'),
+    "Last_Name": data.get('lastName'),
+    "Password": data.get('password'),
+    "Email":  data.get('email')
+})
+    }).then(res => {
+       const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+       }else if (status === 401) { // error coming back from server
+        console.log('user already exits');
+      }
+       return ( status );
 
+     }).then((status) => {
+       if (status === 200) {
+         window.location.pathname = `/login/`;
+       }
+      }) 
+
+  };
+  
+  
   return (
 
       <Container component="main" maxWidth="xs" >
@@ -124,9 +142,9 @@ export default function SignUp() {
               Sign Up
             </Button>
             <Grid container justifyContent="flex-start">
-              <Grid item>Already have an account?
+              <Grid item>
                 <Link href="#" variant="body2">
-                      Sign in
+                     Already have an account? Sign in
                 </Link>
               </Grid>
             </Grid>

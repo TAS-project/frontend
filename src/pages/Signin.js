@@ -15,14 +15,36 @@ import Image from '../img/book.jpg';
 
 
 function SignIn() {
-    const handleSubmit = (event) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+      const data = new FormData(event.currentTarget);
+    fetch('http://localhost:3001/User/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "Username": data.get('username'),
+        "Password": data.get('password'),
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('worng password or username');
+      }
+       
+      return (res.json());
+
+    }).then((response) => {
+       localStorage.setItem('token', JSON.stringify(response.accessToken));
+      console.log(localStorage.getItem("token"));
+      window.location.pathname = `/home/`;
+      }) 
+
   };
 
 return (

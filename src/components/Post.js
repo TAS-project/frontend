@@ -1,14 +1,12 @@
 
-import { MoreVert } from "@material-ui/icons";
-import { useContext, useEffect, useState } from "react";
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import img1 from "../img/book_1.png";
-import { Button, Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
+import { Button, Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-const user_id = 1;
+// const user_id = 1;
 const useStyles = makeStyles((theme) => ({
   post: {
     border: '2px solid',
@@ -55,13 +53,7 @@ export default function Post(props) {
     fetchUser();
   }, [post.userId]);
 */
-  const likeHandler = () => {
-    try {
-      //axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (err) {}
-    //setLike(isLiked ? like - 1 : like + 1);
-    //setIsLiked(!isLiked);
-  };
+
 
   const userclick = () => {
     window.location.pathname = `/profile/${props.chapter.Username}`;

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { book_1 } from "../dummy";
-import Toolbar from '../components/Toolbar';
 import PopUp from '../components/PopUp';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
@@ -14,7 +13,7 @@ import Stack from '@mui/material/Stack';
 import WriteChapter from '../components/WriteChapter';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
-const drawerWidth = 240;
+// const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 root: {
         
