@@ -75,7 +75,7 @@ return (
               </Grid>
               <Grid item style={{ marginTop:20, fontSize:17}}>
                 Don't have an account?
-                <Link style={{fontSize:18}} href="/pages/SignIn" variant="body2">{" Sign Up"}</Link>
+                <Link style={{fontSize:18}} href="/register" variant="body2">{" Sign Up"}</Link>
               </Grid>
             </Grid>              
           </Box>

@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
 import { profile } from "../dummy";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
@@ -44,7 +45,10 @@ const NewBookHandleClick =() => {
     window.location.pathname = `/NewBook`;    
 };
 
-   
+  const logouthandleClick =() => {
+    console.log('log out clicked');
+    window.location.pathname = `/login`;    
+}; 
     const classes = useStyles();
     return (
       <>
@@ -57,12 +61,19 @@ const NewBookHandleClick =() => {
            <Typography gutterBottom variant="h5"> My information </Typography>
          
         </Grid>
-        <Grid item xs={4} >
-         
-          <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
+        <Grid container spacing={1} item xs={4} >
+         <Grid item xs={6}  > 
+        <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
           height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>EdithandleClick()}>
              <EditIcon />
           </Button>
+         </Grid>
+         <Grid item xs={6}  justifyContent='flex-end'> 
+           <Button variant="contained"  sx={{width: { md: '60px', xs: '40px' },
+          height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>logouthandleClick()}>
+             <LogoutIcon />
+          </Button>
+          </Grid>
         </Grid>
       </Grid>
      
