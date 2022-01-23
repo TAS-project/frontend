@@ -16,11 +16,41 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Feed() {
   const [posts, setPosts] = useState([]);
+  /*
+  useEffect(() => {
+    console.log('here we are at the Strat request ');
+     fetch('http://localhost:3001/User/login', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+    "Username": "TAS",
+    "Password": "1334"
+})
+     }).then(res => {
+       const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+       }else if (status === 401) { // error coming back from server
+        console.log('worng password or username');
+       }
+       return ( res.json() , status );
+
+     }).then((data , status) => {
+       if (status === 200) {
+         console.log(data);
+         
+       }
+      }) 
+  });
+*/
+
+  /*
   useEffect(() => {
     console.log('here we are at the userfeed ');
     localStorage.setItem('token', JSON.stringify("witheveryewhatwesayhecomfdenswhoweare"));
     console.log(localStorage.getItem("token"));
   });
+  /*
   /*
   useEffect(() => {
     const fetchPosts = async () => {
