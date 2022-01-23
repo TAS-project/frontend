@@ -1,13 +1,12 @@
 import Box from '@mui/material/Box';
-import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Input, InputLabel} from "@material-ui/core";
-
+import { Button, Divider, FormControl, FormHelperText, Input, InputLabel, List, ListItem, ListItemText, TextField, Typography } from "@material-ui/core";
+import React from 'react';
 import { Alert } from '@mui/material';
 
 
-// const drawerWidth = 240;
+const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 
   chapters: {
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function WriteChapter() {
+export default function EditChapter(props) {
   const [ShowError, setError] = React.useState(false);
   const ClickonAdd = (e) => {
     e.preventDefault()
@@ -41,7 +40,7 @@ export default function WriteChapter() {
     if (title.value === '') {
       setError(true);
     } else { 
-     
+    console.log('edit')   
     window.location.reload();
   }
   };
@@ -60,9 +59,9 @@ export default function WriteChapter() {
 
 
           <div className={classes.col75}>
-              <InputLabel  htmlFor="my-input">chapter title</InputLabel>
-  <Input style={{marginBottom:'3%'}}  id="title" aria-describedby="my-helper-text" />
-            <textarea className={classes.textarea}  id="text" name="subject" placeholder="Write your story..." ></textarea>
+              <InputLabel   htmlFor="my-input">chapter title</InputLabel>
+  <Input style={{marginBottom:'3%'}}  defaultValue={props.chapter.chapter_name } id="title" aria-describedby="my-helper-text" />
+            <textarea className={classes.textarea} value={props.chapter.content } id="text" name="subject" placeholder="Write your story..." ></textarea>
            
           </div>
           {
@@ -71,7 +70,7 @@ export default function WriteChapter() {
               :
               null
           }
- <button  type="submit" style={{color:'white', borderRadius:'10%', fontSize: 18,  cursor: 'pointer' ,backgroundColor: '#ED6663'}} >add chapter</button>
+ <button  type="submit" style={{color:'white', borderRadius:'10%', fontSize: 18,  cursor: 'pointer' ,backgroundColor: '#ED6663'}} >Edit chapter</button>
   
   </form>
 </div>

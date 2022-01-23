@@ -18,6 +18,25 @@ function SignIn() {
     const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+fetch('http://localhost:3001/User/login', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+    "Username":  data.get('username'),
+    "Password": data.get('password')
+})
+     }).then(res => {
+      if (!res.ok) { // error coming back from server
+          console.log('could not fetch the data for that resource');
+       }
+       return res.json();
+
+    }).then(data => {
+        console.log(data)
+      }) ;
+
+
     // eslint-disable-next-line no-console
     console.log({
       username: data.get('username'),
@@ -43,18 +62,20 @@ return (
           <Avatar sx={{ m: 1 }}> <LockOutlinedIcon /></Avatar>
           <Typography style={{ marginBottom :20}} component="h1" variant="h4"> Sign in </Typography>
           <Box style={{ marginTop:20}} component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          
             <TextField className='loginsT' style={{fontSize:15}}  margin="normal" required fullWidth id="username"  label="UserName" name="username" autoComplete="username" autoFocus />
             <TextField className='loginsT' style={{fontSize:15}} margin="normal" required fullWidth name="password"  label="Password" type="password" id="password"  autoComplete="current-password" />
             <Button style={{fontSize:18}} type="submit"  fullWidth  variant="contained"  sx={{ mt: 3, mb: 2 }}>
                 Sign In
               </Button>
+           
             <Grid container>
               <Grid item xs style={{ marginTop:20}}>
                 <Link style={{fontSize:18}} href="#" variant="body2"> Forgot password? </Link>
               </Grid>
               <Grid item style={{ marginTop:20, fontSize:17}}>
                 Don't have an account?
-                <Link style={{fontSize:18}} href="#" variant="body2">{" Sign Up"}</Link>
+                <Link style={{fontSize:18}} href="/pages/SignIn" variant="body2">{" Sign Up"}</Link>
               </Grid>
             </Grid>              
           </Box>

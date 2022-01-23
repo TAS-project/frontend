@@ -8,7 +8,8 @@ import { Button, Rating } from "@mui/material";
 import CommentIcon from '@mui/icons-material/Comment';
 import ListIcon from '@mui/icons-material/List';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
-
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 import WriteChapter from '../components/WriteChapter';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
@@ -134,12 +135,24 @@ export default function BookProfileHeader(props) {
                <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
 
             </Box>
-            { props.IsOwner ?
-              <Button variant="outlined" style={{ color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button>
+
+            <Box  style={{margin:'auto',justifycontent:'center',textAlign:'center', width:'60%'}}>
+              {
+                book_1.genres.map((g) => (
+                  <Chip label={g.name} color='primary' style={{ margin: {md:'2px' ,  xs:'1px'},backgroundColor: g.color }} key={g.name} />
+                ))
+                }
+            </Box>
+
+            <Box style={{margin:'2%'}}>
+            {props.IsOwner ?
+              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button> 
               :
-              <Button variant="outlined" style={{ color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book_1.followed === 0 ? 'follow book' : 'unfollow book'}</Button>   
+              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book_1.followed === 0 ? 'follow book' : 'unfollow book'}</Button>
+              
+              
             }
-                   
+            </Box>
                           
     </div>
                     

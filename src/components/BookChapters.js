@@ -6,7 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Divider, List, ListItemText, Typography } from "@material-ui/core";
 import { ListItemButton } from "@mui/material";
 
+import { useContext, useEffect, useState } from "react";
 
+const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 
   chapters: {
@@ -23,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BookChapters() {
+    useEffect(() => {
+    console.log('here we are at the bookchapter ');
+    console.log(localStorage.getItem("token"));
+  });
   const ClickonChaper =(Chapter_ID) => {
     console.log('chapter clicked');
     window.location.pathname = `/book/bname/${Chapter_ID}`;    

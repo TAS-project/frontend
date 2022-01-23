@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import { Button, Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
-import ModeCommentIcon from '@mui/icons-material/ModeComment';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 // const user_id = 1;
 const useStyles = makeStyles((theme) => ({
@@ -19,10 +19,15 @@ const useStyles = makeStyles((theme) => ({
 
   },
   rate: {
+    //position: { md: 'absolute' },
+    position:'absolute',
+    right: '3px',
+    bottom: '4px',
+    
+    //right:{ md: '3px' },
     display: 'flex',
-    marginLeft: "auto",
-    marginTop: "auto",
-    padding:"4px",
+    //marginLeft: "auto",
+    //padding:"4px",
     },
   
 }));
@@ -63,6 +68,7 @@ export default function Post(props) {
         boxShadow={12}
         sx={{
         display: 'flex',
+        position:'relative',
         flexDirection: { xs: 'column', md: 'row' },
         alignItems: 'center',
         overflow: 'hidden',
@@ -75,6 +81,7 @@ export default function Post(props) {
         component="img"
           sx={{
             padding: 1,
+            paddingTop:{xs:'40px', md:'10px'},
             paddingRight:{md:'20px'},
           height: { xs: 233, md: 267 },
           width: { xs: 150, md: 200 },
@@ -87,25 +94,29 @@ export default function Post(props) {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+            flexDirection: 'column',
+           
           alignItems: { xs: 'center', md: 'flex-start' },
           m: 3,
           minWidth: { md: 350 },
         }}
-      >
+        >
+           <Typography style={{color:"#878383", position: 'absolute' ,top:'3%', right:'3%'}}> last update : {props.chapter.Publishing_date }</Typography>
         <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
-        </Box>
-        <Button  sx={{ color: 'primary.main', fontSize: 16 }} onClick={() => userclick()}>
+          </Box>
+        <Box  sx={{ color: '#ABABAB', fontSize: 16 , cursor: 'pointer'}} onClick={() => userclick()}>
          @{props.chapter.Username}
-        </Button>
+        </Box>
+         
         <Box
           sx={{
-            mt: 1.5,
+            mt: 1,
             p: 0.5,
             borderRadius: '5px',
             color: 'primary.main',
-            fontWeight: 'medium',
+              fontWeight: 'medium',
+            marginBottom:'7%',
             display: 'flex',
             fontSize: 12,
             alignItems: 'center',
@@ -118,6 +129,7 @@ export default function Post(props) {
          
          last chapter : {props.chapter.Last_chapter_name}
         </Box>
+
         </Box>
         <Box py={1} className={classes.rate } >
       <Typography component="legend">rating</Typography>
@@ -129,7 +141,10 @@ export default function Post(props) {
           }}
           */  />
         <Divider orientation="vertical" variant="middle" flexItem />
-          <Button startIcon={<ModeCommentIcon/>} style={{  textTransform: 'none' }}>reviews</Button>
+        
+          <Box xs={{fontSize:{md:'20px', xs:'10px'},}} style={{ display: 'flex', alignItems: 'center',cursor: 'pointer', flexWrap: 'wrap', }}>
+            read more <ArrowForwardIosIcon fontSize="small" /></Box>
+        
         </Box>
         
       </Box>

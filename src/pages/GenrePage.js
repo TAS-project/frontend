@@ -1,7 +1,8 @@
 import Toolbar from '../components/Toolbar';
-import Homefeed from '../components/Homefeed';
+import SbookFeed from '../components/SbookFeed';
 import Footer from '../components/Footer';
-import React from 'react'
+import React from 'react';
+
 const drawerWidth = 240;
 export default function Homepage() {
 
@@ -14,8 +15,7 @@ export default function Homepage() {
         
 
         <Toolbar />
-
-          <Homefeed/>
+        <SbookFeed/>
         <Footer/>
             
     </div>
