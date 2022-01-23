@@ -43,18 +43,17 @@ function App() {
       {/**/}
     <Router>
       <Routes>
-        <Route exact path="/" element={<SupportSignin />}></Route>
+        <Route exact path="/" element={<UserProfile />}></Route>
          
         <Route path="/login" element={user ? <Navigate to="/" /> : <SignIn />}></Route>
         <Route path="/register" element={user ? <Navigate to="/" /> : <SignUp />}></Route>
-        <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
+        {/* <Route path="/profile/:username"  element= {<UserProfile />}>  </Route> */}
         <Route path="/home"  element= {<Homepage />}>  </Route>
         <Route path="/SupportSignup"  element= {<SupportSignup />}>  </Route>
         <Route path="/SupportSignin"  element= {<SupportSignin />}>  </Route>
          <Route exact path="/editUser" element={<EditUserInfo />}></Route>
           <Route exact path="/NewBook" element={<NewBook />}></Route>
           <Route exact path="/EditBookInformation" element={<EditBookInfo />}></Route>
-
           <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
           <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>

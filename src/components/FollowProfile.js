@@ -50,7 +50,7 @@ const FollowProfile = ({ props, title }) => {
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
   // open create component 
-  const [showCreate, setShowCreate] = React.useState(false)
+  // const [showCreate, setShowCreate] = React.useState(false)
 
   const handleClickOpen = () => {
     setOpen(true);

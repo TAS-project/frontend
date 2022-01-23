@@ -4,7 +4,7 @@ import { chapter_1 , comments} from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, CardHeader, Icon, IconButton, InputAdornment, Typography } from "@material-ui/core";
+import { Avatar, CardHeader, Icon, InputAdornment, Typography } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EditChapter from '../components/EditChapter';

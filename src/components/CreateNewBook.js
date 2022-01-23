@@ -41,10 +41,8 @@ const currencies = [
 ];
 
 
-export default function  CreateNewBook() {
-
-     
-
+ function  CreateNewBook() {
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -55,7 +53,7 @@ export default function  CreateNewBook() {
     });
   };
 
- const [currency, setCurrency] = React.useState('EUR');
+ const [currency, setCurrency] = React.useState('');
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
@@ -125,6 +123,6 @@ export default function  CreateNewBook() {
 
   );
 };
-
+export default CreateNewBook
 
 

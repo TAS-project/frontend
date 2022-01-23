@@ -8,6 +8,7 @@ import * as React from 'react';
 // import Followers from '../components/Followers';
 import FollowProfile from '../components/FollowProfile';
 import UserInfo from '../components/UserInfo';
+import { profile } from "../dummy";
 
 
 const drawerWidth = 240;
@@ -49,7 +50,8 @@ profileUserImg: {
   right: '0',
   margin: 'auto',
   top: '150px',
-  borderColor : '#ffffff',
+  border : '3px solid grey',
+  borderColor : 'grey',
  
 },
 // profileInfo: {
@@ -73,6 +75,7 @@ container: {
   },
 profileInfoName: {
   fontSize: '24px',
+  padding : '10px'
 },
 
 profileInfoDesc: {
@@ -86,7 +89,7 @@ boxes : {
 // },
 }));
 
-export default function BookProfile() {
+export default function BookProfile(props) {
   
   const classes = useStyles();
     return (     
@@ -103,11 +106,11 @@ export default function BookProfile() {
                   src={require(`../img/book.jpg`)}   alt=""  
               />
               <img position="fixed" className={classes.profileUserImg}
-                  src={require(`../img/book_2.png`)}   alt=""
+                  src={require(`../img/image.png`)}   alt=""
               />
             </Box>
             <Box  className={classes.profileInfo}>
-              <h4 className={classes.profileInfoName} >User Name</h4>
+              <h4 className={classes.profileInfoName} > {profile.Username}</h4>
               {/* <span className={classes.profileInfoDesc} >I'm a Writer :D</span> */}
             </Box>
                    
@@ -115,7 +118,7 @@ export default function BookProfile() {
              
                 <Grid container  columns={{ xs: 4, sm: 8, md: 12 }} direction="row" >
                 <Grid sx={{marginBottom : '30px',}} item xs={6} >
-                  <UserInfo />                 
+                  <UserInfo props={props}/>                 
                 </Grid>
                 <Grid item xs={6} >
                   <Grid containner direction="column">

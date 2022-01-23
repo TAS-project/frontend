@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
+import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
@@ -48,12 +49,12 @@ const NewBookHandleClick =() => {
     return (
       <>
       <Container>         
-        <Box boxShadow={12} sx={{borderRadius: '12px'}}>
+        <Box boxShadow = {12} sx={{borderRadius: '12px'}}>
         <div    className={classes.InfoItem}>
        
      <Grid container justifyContent = "center" direction="row">
         <Grid item xs={8}>
-           <Typography gutterBottom variant="h5"> User information </Typography>
+           <Typography gutterBottom variant="h5"> My information </Typography>
          
         </Grid>
         <Grid item xs={4} >
@@ -70,26 +71,26 @@ const NewBookHandleClick =() => {
             <div alignItems = "center" >
               
                   <Grid  item item className={classes.InfoItemiN}>
-                    <Typography  gutterBottom variant="h7">First Name :  name </Typography>
+                    <Typography  gutterBottom variant="h7">First Name :  {profile.First_Name} </Typography>
                   </Grid>
                   
               
               </div>
               <div >
                 <Grid item className={classes.InfoItemiN}>
-                  <Typography gutterBottom variant="h7">Last Name :  family </Typography>
+                  <Typography gutterBottom variant="h7">Last Name :  {profile.Last_Name} </Typography>
 
                 </Grid>
               </div>
               <div >
                 <Grid  item item className={classes.InfoItemiN}>
-                  <Typography  gutterBottom variant="h7">UserName :  username </Typography>
+                  <Typography  gutterBottom variant="h7">UserName :  {profile.Username} </Typography>
 
                 </Grid>
               </div>
               <div >
                 <Grid  item item className={classes.InfoItemiN}>
-                  <Typography  gutterBottom variant="h7">Email :  email@gmail.com </Typography>
+                  <Typography  gutterBottom variant="h7">Email :  {profile.email} </Typography>
 
                 </Grid>
               </div>

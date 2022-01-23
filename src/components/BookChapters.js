@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Divider, List, ListItemText, Typography } from "@material-ui/core";
 import { ListItemButton } from "@mui/material";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 
   chapters: {

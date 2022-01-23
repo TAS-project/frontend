@@ -4,7 +4,7 @@ import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 //import axios from "axios";
 
 const drawerWidth = 240;

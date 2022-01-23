@@ -1,11 +1,30 @@
 // ********************************** search users ********************************//
-
+export const profile = 
+  {
+    First_Name: "parnian",
+    Last_Name: "marzi",
+    Username: "parnitopia",
+    email: "parnian@gmail.com",
+   
+  }
+export const Book = 
+  {
+    Book_ID : 1,
+    Book_Name: "be a friend",
+    Username : "tarvti",
+    BooK_Rate : 5,
+    Genre : "Horror",
+    photo: "../img/book_3.png",
+    summary:"The best way to know how much detail to include in your description is by traveling to the local library or bookstore and holding real books in your hand.There, you’ll have thousands of books at your fingertips. You will quickly realize how one author works his or her magic, causing you want to read more, and why another author’s book cover fails to peak your interest.",
+    followed: 0,
+    }
 export const Users = [
   {
     Usr_ID: 1,
     Username: "parnitopia",
     First_Name: "parnian",
     Last_Name: "marzi",
+    email: "parnian@gmail.com",
     followed: 0,
     //profilePicture: "assets/person/1.jpeg",
   },
@@ -14,6 +33,7 @@ export const Users = [
     Username: "tarvti",
     First_Name: "taravat",
     Last_Name: "monsef",
+        email: "parnian@gmail.com",
     followed: 1,
     //profilePicture: "assets/person/1.jpeg",
   },
@@ -22,6 +42,8 @@ export const Users = [
     Username: "anitakamani",
     First_Name: "anita",
     Last_Name: "kamani",
+        email: "parnian@gmail.com",
+
     followed: 0,
     //profilePicture: "assets/person/1.jpeg",
   },
@@ -30,6 +52,8 @@ export const Users = [
     Username: "sabamakki",
     First_Name: "saba",
     Last_Name: "makki",
+        email: "parnian@gmail.com",
+
     followed: 1,
     //profilePicture: "assets/person/1.jpeg",
 
@@ -39,6 +63,8 @@ export const Users = [
     Username: "sabamakki",
     First_Name: "saba",
     Last_Name: "makki",
+        email: "parnian@gmail.com",
+
     followed: 0,
     //profilePicture: "assets/person/1.jpeg",
   },

@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@material-ui/core';
-
+import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -51,7 +51,7 @@ export default function  EditUInfo() {
     // eslint-disable-next-line no-console
     console.log({
       email: data.get('email'),
-      password: data.get('password'),
+      UserName : data.get('UserName'),
     });
   };
 
@@ -83,17 +83,17 @@ export default function  EditUInfo() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField name="firstName" required fullWidth id="firstName" label="First Name" defaultValue="Hello World" autoFocus/>
+                <TextField name="firstName" required fullWidth id="firstName" label="First Name" defaultValue= {profile.First_Name} autoFocus/>
                
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth id="lastName" label="lastNam" name="lastName" defaultValue="Hello World" autoFocus/>
+                <TextField required fullWidth id="lastName" label="lastNam" name="lastName" defaultValue= {profile.Last_Name} autoFocus/>
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth name="UserName" label="User Name"  type="UserName" defaultValue="Hello World" id="UserName" autoFocus/>
+                <TextField required fullWidth name="UserName" label="User Name"  type="UserName" defaultValue= {profile.Username} id="UserName" autoFocus/>
               </Grid>
               <Grid item xs={12}>
-                <TextField required fullWidth id="email"  label="Email" name="email" defaultValue="Hello World" autoFocus/>
+                <TextField required fullWidth id="email"  label="Email" name="email" defaultValue= {profile.email} autoFocus/>
               </Grid>
               
               <Grid item xs={12}>

@@ -2,7 +2,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import { Button, Divider, Typography } from "@material-ui/core";
+import {  Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 

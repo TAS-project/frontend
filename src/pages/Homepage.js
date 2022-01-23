@@ -2,7 +2,7 @@ import Toolbar from '../components/Toolbar';
 import Homefeed from '../components/Homefeed';
 import Footer from '../components/Footer';
 import React from 'react'
-const drawerWidth = 240;
+// const drawerWidth = 240;
 export default function Homepage() {
 
 

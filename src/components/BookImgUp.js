@@ -37,14 +37,14 @@ iconbut :{
    // color : 'hsla(0, 0%, 100%, 0.769)6',
 }
 }));
-function BookImgUp() {
+function BookImgUp(bookimg) {
      const classes = useStyles();
   return (
     <>
  <CssBaseline />
     <Box className={classes.profileImg}>
         <img  className={classes.profileUserImg}
-        src={require(`../img/book_2.png`)}   alt=""/>
+        src={require(`../img/bookimg.png`)}   alt=""/>
         <IconButton className={classes.iconbut}>
             <PhotoCameraIcon className={classes.profileUserIcon}  />
         </IconButton> 
