@@ -40,8 +40,10 @@ function SignIn() {
       return (res.json());
 
     }).then((response) => {
-       localStorage.setItem('token', JSON.stringify(response.accessToken));
+      localStorage.setItem('token', response.accessToken);
+      localStorage.setItem('user', data.get('username'));
       console.log(localStorage.getItem("token"));
+      console.log(localStorage.getItem("username"));
       window.location.pathname = `/home/`;
       }) 
 

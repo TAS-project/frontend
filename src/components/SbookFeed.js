@@ -11,13 +11,6 @@ const useStyles = makeStyles((theme) => ({
     boxshadow: '0px 0px 16px -8px rgba(0, 0, 0, 0.68)',
   },
   BookCard: {
-    display: 'flex',
-    flexDirection: { xs: 'column', md: 'row' },
-    alignItems: 'center',
-    overflow: 'hidden',
-    borderRadius: '12px',
-    fontWeight: 'bold',
-    margin : '2%',
     border: '2px solid',
     borderColor: '#E7EDF3',
     transition: '0.4s',
@@ -74,7 +67,17 @@ export default function BFeed() {
       >
               {
            Books.map((b) => (
-              <Box key={b.Book_ID}
+             <Box key={b.Book_ID}
+               sx={{
+                  display: 'flex',
+                  position:'relative',
+                  flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'center',
+              overflow: 'hidden',
+            borderRadius: '12px',
+            fontWeight: 'bold',
+            margin : '2%'
+               }}
         className={ styles.BookCard }>
       <Box className={styles.media}
       component="img" sx={{ padding: 1,

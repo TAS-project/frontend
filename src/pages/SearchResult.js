@@ -24,7 +24,7 @@ export default function SearchResult() {
       component="main"
       sx={{}}>
     <TabContext value={value} >
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' ,  width: { sm: `calc(100% - ${drawerWidth}px)` }, left: { sm: `${drawerWidth}px` } ,position: 'relative', p:3}}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' ,  width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:3}}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Books" value="1" />
             <Tab label="users" value="2" />

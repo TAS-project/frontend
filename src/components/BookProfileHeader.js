@@ -9,15 +9,11 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ListIcon from '@mui/icons-material/List';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
 import WriteChapter from '../components/WriteChapter';
-
+import { useEffect, useState } from "react";
 const emails = ['username@gmail.com', 'user02@gmail.com'];
-// const drawerWidth = 240;
+
 const useStyles = makeStyles((theme) => ({
-root: {
-        
-},
 bookinfo: {
     flex: '4',
     margin:'auto',
@@ -31,13 +27,11 @@ bookinfo: {
     backgroundColor: "#f6f7f4",
     opacity:"85%"
     },
-
 bookpic: {
     flex: '0',
     backgroundColor: 'red',
 
 },
-
 media: {
   position: 'relative',
   top: '0',
@@ -70,6 +64,40 @@ verticalAlign: 'middle',
 }    
 }));
 export default function BookProfileHeader(props) {
+  const [book, setbook] = useState(null);
+  const [fetched, setfetched] = useState(false);
+
+  useEffect(() => {
+    const book_id = window.location.href.split('/')[4];
+    console.log("book_id: " + book_id)
+  fetch('http://localhost:3001/User/Book_Profile_View', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+        "Book_ID": book_id,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('book: ' + JSON.stringify(response.Book));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      setbook(response.Book);
+      console.log("new book :" + JSON.stringify(response.Book));
+      setfetched(true)
+      }) 
+  }, []);
+
   // open pop ups
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
@@ -93,7 +121,9 @@ export default function BookProfileHeader(props) {
       setShowCreate(true)
     console.log('show create component');
   };
- 
+  const setValueRate = (newValue) => {
+    console.log(newValue)
+  };
   const classes = useStyles();
     return (
      
@@ -115,19 +145,19 @@ export default function BookProfileHeader(props) {
     <Box sx={{ display: { md: 'flex' } }}>
     <div className={classes.bookinfo} sx={{ width:'90%' }}>
     <Typography variant="h4" gutterBottom component="div">
-        {book_1.Book_Name}
+        {book.Book_Name}
     </Typography>
     <Typography variant="h5" gutterBottom component="div">
-        {book_1.writer}
+        {book.writer}
     </Typography>
     
      <Rating
         name="rating"
-        value={book_1.BooK_Rate}
-        /*onChange={(event, newValue) => {
-          setValue(newValue);
+        value={book.BooK_Rate}
+        onChange={(event, newValue) => {
+          setValueRate(newValue);
           }}
-          */  />
+            />
             <Box>
                 <Button startIcon={<CommentIcon/>} style={{ color:'black', textTransform: 'none' }}>chapters</Button>
                             <Button startIcon={<ListIcon/>} style={{ color:'black', textTransform: 'none' }} >riviews</Button>
@@ -148,7 +178,7 @@ export default function BookProfileHeader(props) {
             {props.IsOwner ?
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button> 
               :
-              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book_1.followed === 0 ? 'follow book' : 'unfollow book'}</Button>
+              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book.followed === 0 ? 'follow book' : 'unfollow book'}</Button>
               
               
             }

@@ -4,7 +4,8 @@ import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { CircularProgress } from "@mui/material";
 //import axios from "axios";
 
 const drawerWidth = 240;
@@ -16,68 +17,61 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 export default function Feed() {
-  const [posts, setPosts] = useState([]);
-  /*
+  const [posts, setPosts] = useState(Post_HomePage);
+  const [fetched, setfetched] = useState(false);
+
   useEffect(() => {
-    console.log('here we are at the Strat request ');
-     fetch('http://localhost:3001/User/login', {
+    const token = localStorage.getItem("token").toString();
+
+  fetch('http://localhost:3001/User/Home', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-    "Username": "TAS",
-    "Password": "1334"
-})
-     }).then(res => {
-       const status = res.status;
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({})
+    }).then(res => {
+      const status = res.status;
       if (status === 400) { // error coming back from server
         console.log('Error in fecthing');
-       }else if (status === 401) { // error coming back from server
-        console.log('worng password or username');
-       }
-       return ( res.json() , status );
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
 
-     }).then((data , status) => {
-       if (status === 200) {
-         console.log(data);
-         
-       }
+    }).then((response) => {
+      //console.log('posts anita : ' + response.Books);
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      setPosts(response.Books);
+      console.log("new posts :" + posts);
+      setfetched(true)
       }) 
-  });
-*/
+  }, []);
 
-  /*
-  useEffect(() => {
-    console.log('here we are at the userfeed ');
-    localStorage.setItem('token', JSON.stringify("witheveryewhatwesayhecomfdenswhoweare"));
-    console.log(localStorage.getItem("token"));
-  });
-  /*
-  /*
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const res = username
-        ? await axios.get("/posts/profile/" + username)
-        : await axios.get("posts/timeline/" + user._id);
-      setPosts(res.data);
-      
-    };
-    fetchPosts();
-  }, [username, user._id]);
-*/
   const classes = useStyles();
   return (
     <Box
       className={classes.post}
       component="main"
       sx={{width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:1 }}
-      >
-              {
-           Post_HomePage.map((p) => (
-             <Post xs={{ boxShadow: 3, m: 2 }} key={p.Chapter_ID} chapter={p} />
+    >
+      {
+        //console.log("p:"+posts)
+      }
+      { // if the data is fetched
+
+        fetched === true ?
+        posts.map((p) => (
+             <Post xs={{ boxShadow: 3, m: 2 }} key={p.Book_ID} chapter={p} />
             
-                  ))
-              }
-      
+        ))
+          :
+        <Box sx={{width:'20px', display: 'flex' ,  margin: 'auto' }}>
+          <CircularProgress />
+      </Box>
+      }
+
     </Box>
   );
 }

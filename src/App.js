@@ -52,9 +52,9 @@ function App() {
           <Route exact path="/NewBook" element={<NewBook />}></Route>
           <Route exact path="/EditBookInformation" element={<EditBookInfo />}></Route>
 
-          <Route exact path="/book/:bookname" element={<BookProfile />}></Route>
+          <Route exact path="/book/:bookid" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
-          <Route path="/book/:bookname/:CId" element={<ChapterOfBook />}></Route>
+          <Route path="/book/:bookid/:CId" element={<ChapterOfBook />}></Route>
           <Route path="/genre/:title" element={<GenrePage />}></Route>  
       </Routes>
     </Router>

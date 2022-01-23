@@ -2,11 +2,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import { Button, Divider, Typography } from "@material-ui/core";
+import { Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-// const user_id = 1;
+
 const useStyles = makeStyles((theme) => ({
   post: {
     border: '2px solid',
@@ -19,47 +19,25 @@ const useStyles = makeStyles((theme) => ({
 
   },
   rate: {
-    //position: { md: 'absolute' },
     position:'absolute',
     right: '3px',
     bottom: '4px',
-    
-    //right:{ md: '3px' },
     display: 'flex',
-    //marginLeft: "auto",
-    //padding:"4px",
     },
   
 }));
 export default function Post(props) {
   const classes = useStyles();
-
-    /*
-  const [like, setLike] = useState(post.likes.length);
-  const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState({});
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user: currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    setIsLiked(post.likes.includes(currentUser._id));
-  }, [currentUser._id, post.likes]);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [post.userId]);
-*/
-
+  const setValueRate =(newValue) => {
+      console.log(newValue)
+  }
 
   const userclick = () => {
-    window.location.pathname = `/profile/${props.chapter.Username}`;
+    window.location.pathname = `/profile/${props.chapter.Writer_Username}`;
   };
+
   const Bookclick = () => {
-    window.location.pathname = `/book/${props.chapter.Book_Name}`;
+    window.location.pathname = `/book/${props.chapter.Book_ID}`;
   };
     return (
 
@@ -85,11 +63,9 @@ export default function Post(props) {
             paddingRight:{md:'20px'},
           height: { xs: 233, md: 267 },
           width: { xs: 150, md: 200 },
-          //maxHeight: { xs: 233, md: 167 },
-          //maxWidth: { xs: 350, md: 250 },
         }}
         alt="The house from the offer."
-        src={require(`../img/book_${props.chapter.Chapter_ID}.png`)}
+        src={require(`../img/book_${props.chapter.Book_ID}.png`)}
       />
       <Box
         sx={{
@@ -101,12 +77,12 @@ export default function Post(props) {
           minWidth: { md: 350 },
         }}
         >
-           <Typography style={{color:"#878383", position: 'absolute' ,top:'3%', right:'3%'}}> last update : {props.chapter.Publishing_date }</Typography>
+           <Typography style={{color:"#878383", position: 'absolute' ,top:'3%', right:'3%'}}> last update : {props.chapter.Last_Updated }</Typography>
         <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
           </Box>
         <Box  sx={{ color: '#ABABAB', fontSize: 16 , cursor: 'pointer'}} onClick={() => userclick()}>
-         @{props.chapter.Username}
+         @{props.chapter.Writer_Username}
         </Box>
          
         <Box
@@ -127,7 +103,7 @@ export default function Post(props) {
           }}
         >
          
-         last chapter : {props.chapter.Last_chapter_name}
+         last chapter : {props.chapter.Last_Chapter_Name}
         </Box>
 
         </Box>
@@ -135,14 +111,14 @@ export default function Post(props) {
       <Typography component="legend">rating</Typography>
       <Rating
         name="rating"
-        value={props.chapter.BooK_Rate}
-        /*onChange={(event, newValue) => {
-          setValue(newValue);
+        value={props.chapter.Rate}
+        onChange={(event, newValue) => {
+          setValueRate(newValue);
           }}
-          */  />
+           />
         <Divider orientation="vertical" variant="middle" flexItem />
         
-          <Box xs={{fontSize:{md:'20px', xs:'10px'},}} style={{ display: 'flex', alignItems: 'center',cursor: 'pointer', flexWrap: 'wrap', }}>
+          <Box xs={{ fontSize: { md: '20px', xs: '10px' }, }} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flexWrap: 'wrap', }} onClick={() => Bookclick()}>
             read more <ArrowForwardIosIcon fontSize="small" /></Box>
         
         </Box>
