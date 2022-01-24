@@ -63,12 +63,12 @@ export default function WriteChapter() {
 
     }).then((response) => {
       console.log('response add chapter : ' + JSON.stringify(response));
-
-      
+     // window.location.pathname = `/book/${book_id}/`;
+      window.location.reload();
       })  
 
     
-      window.location.pathname = `/book/${book_id}/`;
+      
   }
   };
 
