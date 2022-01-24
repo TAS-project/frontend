@@ -88,7 +88,7 @@ const FollowProfile = (props) => {
       >
     <Grid container  columns={{ xs: 4, sm: 4, md: 12}} sx={{padding:'5px'}} >
         <Grid item xs={4} >
-          <Button className={classes.buttons} > Post </Button>   
+          <Button className={classes.buttons} > logout </Button>   
         </Grid>
 
         <Grid item xs={4}   >

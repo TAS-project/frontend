@@ -33,11 +33,11 @@ export default function Post(props) {
   }
 
   const userclick = () => {
-    window.location.pathname = `/profile/${props.chapter.Writer_Username}`;
+    window.location.pathname = `/profile/${props.chapter.Writer_Username}/`;
   };
 
   const Bookclick = () => {
-    window.location.pathname = `/book/${props.chapter.Book_ID}`;
+    window.location.pathname = `/book/${props.chapter.Book_ID}/`;
   };
     return (
 

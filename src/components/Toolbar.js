@@ -15,7 +15,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-import { Genre } from "../dummy";
+//import { Genre } from "../dummy";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
 import { useEffect, useState } from "react";
@@ -91,14 +91,15 @@ function ResponsiveDrawer() {
         </Typography>
       <List>
         
-        { genres.map((G) => (
+        { fetched=== true ?
+          genres.map((G) => (
           <ListItem button key={G.Genre_ID} onClick={() => genreclick(G.Genre_Title)}>
             <ListItemIcon >
                <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>
             <ListItemText primary={G.Genre_Title} />
           </ListItem>
-        ))}
+        )) : null}
       </List>
     </div>
   );

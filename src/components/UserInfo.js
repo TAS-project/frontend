@@ -43,11 +43,18 @@ const EdithandleClick =() => {
 const NewBookHandleClick =() => {
     console.log('new book clicked');
     window.location.pathname = `/NewBook`;    
+  };
+const fuserClick =() => {
+    console.log('new book clicked');
+    window.location.pathname = `/NewBook`;    
 };
 
   const logouthandleClick =() => {
-    console.log('log out clicked');
-    window.location.pathname = `/login`;    
+    console.log(props.profile.Username);
+    console.log(localStorage.getItem("username"));
+   // props.profile.Username === localStorage.getItem("username")
+
+    //window.location.pathname = `/login`;    
 }; 
     const classes = useStyles();
     return (
@@ -94,13 +101,13 @@ const NewBookHandleClick =() => {
                 </Grid>
               </div>
               <div >
-                <Grid  item item className={classes.InfoItemiN}>
+                <Grid  item className={classes.InfoItemiN}>
                   <Typography  gutterBottom variant="h7">UserName :  {props.profile.Username} </Typography>
 
                 </Grid>
               </div>
               <div >
-                <Grid  item item className={classes.InfoItemiN}>
+                <Grid  item  className={classes.InfoItemiN}>
                   <Typography  gutterBottom variant="h7">Email :  {props.profile.email} </Typography>
 
                 </Grid>
@@ -112,12 +119,21 @@ const NewBookHandleClick =() => {
         </Box> <br />
          <Box boxShadow={12} sx={{borderRadius: '12px'}}>
      <div className={classes.rightbarInfoItem}>
-                <Grid className={classes.rightbarInfoKey} item >
-                  <Button variant="contained"  fullWidth  
+              <Grid className={classes.rightbarInfoKey} item >{
+                props.profile.Username.toLowerCase() === localStorage.getItem("username") ?
+                <Button variant="contained"  fullWidth  
                   sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}
                   onClick={()=>NewBookHandleClick()}>
                     Create My Book
-                    </Button>
+                  </Button>
+                  :
+                  <Button variant="contained"  fullWidth  
+                  sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}
+                  onClick={()=>fuserClick()}>
+                   follow 
+                  </Button>
+                }
+                  
                 </Grid>
               </div>
                </Box>

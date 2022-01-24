@@ -1,7 +1,7 @@
 
 //import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
-
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, List, ListItemText, Typography } from "@material-ui/core";
 import { ListItemButton } from "@mui/material";
@@ -56,7 +56,7 @@ export default function BookChapters() {
   }, []);
   const ClickonChaper =(Chapter_ID) => {
     console.log('chapter clicked');
-    window.location.pathname = `/book/${window.location.href.split('/')[4]}/${Chapter_ID}`;    
+    window.location.pathname = `/book/${window.location.href.split('/')[4]}/${Chapter_ID}/`;    
 };
   const classes = useStyles();
   return (

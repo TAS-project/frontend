@@ -7,56 +7,84 @@ import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import BookImgUp from './BookImgUp';
 import { Button } from '@material-ui/core';
-
-
-const currencies = [
-  {
-    value: '1',
-    label: 'Mystrey',
-  },
-  {
-    value: '2',
-    label: 'Horror',
-  },
-  {
-    value: '3',
-    label: 'Thriller',
-  },
-  {
-    value: '4',
-    label: 'Romance',
-  },
-   {
-    value: '5',
-    label: 'Historical',
-  },
-   {
-    value: '6',
-    label: 'Fantacy',
-  },
-   {
-    value: '7',
-    label: 'Realist Literature',
-  },
-];
+import { useEffect, useState } from "react";
 
 
  function  CreateNewBook() {
-  
+  const [genres, setgenres] = useState([]);
+   const [fetched, setfetched] = useState(false);
+   // get all the genres
+  useEffect(() => {
+  fetch('http://localhost:3001/User/Genre_All', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({})
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log(JSON.stringify(response.Genres));
+      setgenres(response.Genres);
+      console.log("new genres :" + genres);
+      setfetched(true)
+      }) 
+  }, []);
+   
+   // create new book
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
+    
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get('BookName'),
+      Genres: [{ "Genre_ID": picked }],
+      summery : data.get('Description'),
     });
+    /*
+    fetch('http://localhost:3001/User/Chapter_Create', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Name": title.value,
+      "Content": text.value 
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('response add chapter : ' + JSON.stringify(response));
+
+      
+      })  
+   window.location.pathname = `/book/${props.chapter.Book_ID}/`;
+  }
+  */
   };
 
- const [currency, setCurrency] = React.useState('');
+ const [picked, setpicked] = React.useState('');
 
   const handleChange = (event) => {
-    setCurrency(event.target.value);
+    setpicked(event.target.value);
   };
   return (
       <>
@@ -76,7 +104,7 @@ const currencies = [
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-               <TextField  name="BookName"   required   fullWidth id="Book Name"   label="Book Name"
+               <TextField  name="BookName"   required   fullWidth id="BookName"   label="Book Name"
                   autoFocus
                 />
                  </Grid>
@@ -90,11 +118,13 @@ const currencies = [
           onChange={handleChange}
          
         >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
+        {fetched === true ?
+                    genres.map((option) => (
+            <MenuItem key={option.value} value={option.Genre_ID}>
+              {option.Genre_Title}
             </MenuItem>
-          ))}
+                    ))
+        : null }
         </TextField>  
            
               </Grid>

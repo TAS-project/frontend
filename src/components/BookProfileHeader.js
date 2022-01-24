@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { book_1 } from "../dummy";
+//import { book_1 } from "../dummy";
 import PopUp from '../components/PopUp';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
@@ -66,8 +66,8 @@ verticalAlign: 'middle',
 export default function BookProfileHeader(props) {
   const [book, setbook] = useState(null);
   const [fetched, setfetched] = useState(false);
-  const [followers, setfollowers] = useState(false);
-// for chaching book information 
+  //const [followers, setfollowers] = useState(false);
+// for caching book information 
   useEffect(() => {
     const book_id = window.location.href.split('/')[4];
     console.log("book_id: " + book_id)

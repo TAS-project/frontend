@@ -1,12 +1,11 @@
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Divider, FormControl, FormHelperText, Input, InputLabel, List, ListItem, ListItemText, TextField, Typography } from "@material-ui/core";
+import { Input, InputLabel } from "@material-ui/core";
 import React from 'react';
 import { Alert } from '@mui/material';
 
 
-const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
 
   chapters: {
