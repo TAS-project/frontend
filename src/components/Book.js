@@ -54,8 +54,8 @@ export default function Book(props) {
     const styles = useStyles();
     const [follow, togglefollow] = useState(0);
     useEffect(() => {
-        togglefollow(props.book.follow)
-  }, [props.book.follow]);
+        togglefollow(props.book.followed)
+  }, []);
     const Bookclick = (Book_ID) => {
     window.location.pathname = `/book/${Book_ID}/`;
     };
@@ -63,12 +63,35 @@ export default function Book(props) {
     window.location.pathname = `/profile/${Username}/`;
   };
 
-  const followun = (Username) => {
-      if (follow === 0) 
+  const followun = (Book_ID) => {
+    console.log("please toggle : " + Book_ID)
+    fetch('http://localhost:3001/User/BookFollow', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        "Book_ID": Book_ID,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('posts anita : ' + JSON.stringify(response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      if  (follow === 0)
         togglefollow(1)
       else
           togglefollow(0)
-      
+      }) 
   };
   
     return (
@@ -105,9 +128,9 @@ export default function Book(props) {
             </Typography>
             
                 {follow === 0 ?
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> follow</Box>
+                <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> follow</Box>
                 :
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
+                <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
                 }
                 
             </Box>

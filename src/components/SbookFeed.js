@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
  
   
 }));
-export default function BFeed() {
+export default function BFeed(props) {
 
   const styles = useStyles();
   return (
@@ -24,7 +24,7 @@ export default function BFeed() {
       sx={{width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` } ,position: 'relative', p:1 }}
       >
               {
-        Books.map((b) => (
+        props.books.map((b) => (
           <Book xs={{ boxShadow: 3, m: 2 }} key={b.Book_ID} book={b} />
                   ))
               }

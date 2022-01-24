@@ -2,7 +2,7 @@ import Toolbar from '../components/Toolbar';
 import SbookFeed from '../components/SbookFeed';
 import Footer from '../components/Footer';
 import React from 'react';
-
+import { Books } from "../dummy";
 export default function Homepage() {
 
 
@@ -14,7 +14,7 @@ export default function Homepage() {
         
 
         <Toolbar />
-        <SbookFeed/>
+        <SbookFeed books={Books }/>
         <Footer/>
             
     </div>
