@@ -15,7 +15,7 @@ import { useState } from "react";
 
 
 
-function SignIn() {
+function Signin() {
   const [error, seterror] = useState(false);
   var status = 0;
   const handleSubmit = (event) => {
@@ -102,4 +102,4 @@ return (
     
 }
 
-export default SignIn
+export default Signin

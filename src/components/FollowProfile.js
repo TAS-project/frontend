@@ -65,7 +65,17 @@ const FollowProfile = (props) => {
     setSelectedValue(value);
   };
 
+  const logouthandleClick =() => {
+    console.log(localStorage.getItem("username"));
+    window.location.pathname = `/login`;
+    window.localStorage.clear();
+    if (localStorage.getItem("username") === null) {
+     alert("yes");
+}
+   // props.profile.Username === localStorage.getItem("username")
 
+        
+}; 
   const classes = useStyles();
 
   return (
@@ -88,7 +98,7 @@ const FollowProfile = (props) => {
       >
     <Grid container  columns={{ xs: 4, sm: 4, md: 12}} sx={{padding:'5px'}} >
         <Grid item xs={4} >
-          <Button className={classes.buttons} > logout </Button>   
+          <Button onClick={() => logouthandleClick()} className={classes.buttons} > log out </Button>   
         </Grid>
 
         <Grid item xs={4}   >

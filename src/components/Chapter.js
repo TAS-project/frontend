@@ -5,7 +5,7 @@ import { comments} from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar, CardHeader, Icon, InputAdornment, Typography } from "@material-ui/core";
+import { Avatar, CardHeader, Divider, Grid, Icon, InputAdornment, Typography } from "@material-ui/core";
 import { Button, TextField } from "@mui/material";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import EditChapter from '../components/EditChapter';
@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
     borderColor: '#E7EDF3',
     borderRadius: 16,
     transition: '0.4s',
+    [theme.breakpoints.down("xs")]: {
+      padding: '0px',
+  
+    },
 
     
   },
@@ -33,6 +37,17 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 export default function Chapters() {
+   
+ const handlePost = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // eslint-disable-next-line no-console
+    console.log({
+      commentt: data.get('commentt'),
+      
+    });
+  };
+
   const [chapter, setchaper] = useState(null);
   const [fetched, setfetched] = useState(false);
   const [IsOwner, setOwner] = useState(null);
@@ -94,8 +109,8 @@ export default function Chapters() {
           {"chapter " + chapter.Chapter_ID + " :  " + chapter.chapter_name}
           {/**/
                 IsOwner===true ?
-              <Icon xs={{ cursor: 'pointer' }} color="primary" aria-label="upload picture" component="span" onClick={() => clickEdit()}>
-        <ModeEditIcon />
+        <Icon xs={{ cursor: 'pointer' }} sx={{padding:'10px'}} color="primary" aria-label="upload picture" component="span" onClick={() => clickEdit()}>
+          <ModeEditIcon />
         </Icon>
         :
                 null }
@@ -109,20 +124,30 @@ export default function Chapters() {
       <Box className={classes.comment}>
         <CardHeader style={{paddingLeft:'40px'}} avatar={ <Avatar alt="Remy Sharp" src={require(`../img/book_3.png`)}/>}
         title="user name"/>
-        <TextField
-          fullWidth
-          multiline={true}
-          rows={3}
-          style={{width:'90%', margin:'auto' , display:'block'}}
-          xs = {{m:1}}
-          maxRows={4}
-          InputProps={{
-          endAdornment: (<InputAdornment position="end">
-          <Button style={{right:0}}>post</Button>
-          </InputAdornment>), }}
-          //onChange={handleChange}
-        />
-        
+      <Box component="form" onSubmit={handlePost} noValidate sx={{ mt: 1 }}>
+        <Grid container direction="row" alignItems="center" justifyContent="center" >
+          <Grid item xs={10} >
+              <TextField
+              id="commentt"
+              name="commentt"
+              fullWidth
+              multiline={true}
+              rows={3}
+              style={{width:'90%', margin:'auto' , display:'block'}}
+              maxRows={4}
+              InputProps={{
+              endAdornment: (<InputAdornment position="end">
+              </InputAdornment>), }}
+              //onChange={handleChange}
+            />
+          </Grid>
+          <Grid item alignItems="center" justifyContent="center">
+            <Button type="submit" >Post</Button>
+          </Grid>
+        </Grid>
+      </Box>
+      <br />
+       <Divider />
       
     
       <Box >

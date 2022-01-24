@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       height: 200,
       width: 130,
-      display:"flex",
+      //display:"flex",
       justifyContent:'center',
     },
     },
@@ -50,9 +50,9 @@ const EditBookHandleClick =(Book_ID) => {
         boxShadow={12}
         sx={{
         display: 'flex',
-        flexDirection: { xs: 'row', md: 'column' ,sm:'column',lg: 'row'},
+       // flexDirection: { xs: 'row', md: 'column' ,sm:'column',lg: 'row'},
         alignItems : 'center',
-  
+        marginBottom : '20px',
         justifyContent : 'center',
         overflow: 'hidden',
         borderRadius: '12px',
@@ -61,10 +61,10 @@ const EditBookHandleClick =(Book_ID) => {
       }}
       >
      
-        <Grid container columns={{ xs: 16, sm: 8, md: 8, lg: 16, xl: 16 }} >
+        <Grid container columns={{ xs: 8, sm: 8, md: 8, lg: 8, xl: 16 }} justifyContent='center'>
           
          
-          <Grid item xs={16} md={8} sm={8} className={classes.media}>
+          <Grid item xs={8} md={8} sm={8} className={classes.media} justifyContent='center'>
 
             
           <Box component="img" className={classes.media} src={b.Book_Cover} title="My Post"  />
@@ -79,9 +79,9 @@ const EditBookHandleClick =(Book_ID) => {
           </Typography>
   
     </Grid>
-     <Grid item xs={16} md={8} sm={8}   style={{ flexDirection: { xs: 'column', md: 'row' }, textAlign:'center' }}>
+     <Grid item xs={8} md={8} sm={8} >
   
-    <Grid container spacing={1} >
+    <Grid container spacing={1} justifyContent='center'>
       <Grid item  md={8} >
          
          <Button variant="contained"  sx={{padding: '10px',width: { md: '100px', xs: '75px' }}}

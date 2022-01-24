@@ -53,7 +53,7 @@ profileUserImg: {
 //   justifyContent: 'center',
 // },
 container: {
-    height: "100vh",
+    //height: "100vh",
     color: "white",
     paddingTop: theme.spacing(10),
     backgroundColor: theme.palette.primary.main,
@@ -76,9 +76,7 @@ profileInfoDesc: {
 boxes : {
   marginBottom : '10px',
 },
-// profileRightBottom: {
-//   display: 'flex',
-// },
+
 }));
 
 export default function BookProfile() {
@@ -128,16 +126,18 @@ export default function BookProfile() {
 
   const classes = useStyles();
     return (     
-   <div>
+   <div className={classes.con}>
         <Toolbar />
         {fetched === true ?
-          <Box
+          <Box 
             className={classes.root}
             component="main"
+            justifyContent='center'
+            alignContent='center'
             sx={{ width: { md: `calc(100% - ${drawerWidth}px)` }, left: { md: `${drawerWidth}px` }, position: 'relative', p: 1 }}>
             <Box className={classes.profile}>
               <Box className={classes.profileRight}>
-                <Box sx={{ height: '320px', position: 'relative', }} >
+                <Box sx={{ height: '320px', }} >
                   <img position="fixed" className={classes.profileCoverImg}
                     src={require(`../img/book.jpg`)} alt=""
                   />
