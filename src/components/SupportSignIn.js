@@ -16,14 +16,43 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme();
 
 function SupportSignIn() {
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      email: data.get('email'),
+      username: data.get('username'),
       password: data.get('password'),
     });
+    fetch('http://localhost:3001/Supporter/login', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "Username": data.get('username'),
+        "Password": data.get('password'),
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('worng password or username');
+      }
+       
+      return (res.json());
+
+    }).then((response) => {
+      localStorage.setItem('token', response.accessToken);
+      localStorage.setItem('user', data.get('username'));
+      localStorage.setItem('access', true);
+      console.log(localStorage.getItem("token"));
+      console.log(localStorage.getItem("username"));
+      window.location.pathname = `/home/`;
+      }) 
   };
 
   return (
@@ -60,10 +89,10 @@ function SupportSignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField

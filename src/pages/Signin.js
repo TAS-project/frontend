@@ -10,13 +10,16 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Image from '../img/book.jpg';
-
+import { Alert } from '@mui/material';
+import { useState } from "react";
 
 
 
 function SignIn() {
-
+  const [error, seterror] = useState(false);
+  var status = 0;
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     fetch('http://localhost:3001/User/login', {
@@ -30,21 +33,26 @@ function SignIn() {
         "Password": data.get('password'),
       })
     }).then(res => {
-      const status = res.status;
+      status = res.status;
       if (status === 400) { // error coming back from server
-        console.log('Error in fecthing');
+        console.log('Big error')
       } else if (status === 401) { // error coming back from server
         console.log('worng password or username');
+        seterror(true)
       }
        
-      return (res.json());
+      return (res.json() );
 
     }).then((response) => {
-      localStorage.setItem('token', response.accessToken);
-      localStorage.setItem('user', data.get('username'));
-      console.log(localStorage.getItem("token"));
-      console.log(localStorage.getItem("username"));
-      window.location.pathname = `/home/`;
+
+      if (status === 200) {
+        localStorage.setItem('token', response.accessToken);
+        localStorage.setItem('username',data.get('username'));
+        localStorage.setItem('access', false);
+        console.log(localStorage.getItem("token"));
+        console.log(localStorage.getItem("username"));
+        window.location.pathname = `/home/`;
+      }
       }) 
 
   };
@@ -69,15 +77,17 @@ return (
           <Box style={{ marginTop:20}} component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
           
             <TextField className='loginsT' style={{fontSize:15}}  margin="normal" required fullWidth id="username"  label="UserName" name="username" autoComplete="username" autoFocus />
-            <TextField className='loginsT' style={{fontSize:15}} margin="normal" required fullWidth name="password"  label="Password" type="password" id="password"  autoComplete="current-password" />
-            <Button style={{fontSize:18}} type="submit"  fullWidth  variant="contained"  sx={{ mt: 3, mb: 2 }}>
+            <TextField className='loginsT' style={{ fontSize: 15 }} margin="normal" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password" />
+            {error && <Alert severity="error">wrong username or password</Alert>}
+          <Button style={{ fontSize: 18 }} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Sign In
               </Button>
            
             <Grid container>
               <Grid item xs style={{ marginTop:20}}>
                 <Link style={{fontSize:18}} href="#" variant="body2"> Forgot password? </Link>
-              </Grid>
+            </Grid>
+            
               <Grid item style={{ marginTop:20, fontSize:17}}>
                 Don't have an account?
                 <Link style={{fontSize:18}} href="/register" variant="body2">{" Sign Up"}</Link>

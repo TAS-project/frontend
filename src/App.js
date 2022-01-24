@@ -19,8 +19,8 @@ import {
 } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material';
 import EditBookInfo from './pages/EditBookInfo';
-//import SupportSignup from './pages/SupportSignup';
-//import SupportSignin from './pages/SupportSignin';
+import SupportSignup from './pages/SupportSignup';
+import SupportSignin from './pages/SupportSignin';
 
 
 
@@ -56,7 +56,12 @@ function App() {
           <Route exact path="/book/:bookid" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
           <Route path="/book/:bookid/:CId" element={<ChapterOfBook />}></Route>
-          <Route path="/genre/:title" element={<GenrePage />}></Route>  
+          <Route path="/genre/:title" element={<GenrePage />}></Route>
+          
+          {/* Support Members*/}
+          <Route path="/SupportSignup"  element= {<SupportSignup />}>  </Route>
+          <Route path="/SupportSignin" element={<SupportSignin />}>  </Route>
+          
       </Routes>
     </Router>
     </ThemeProvider> 

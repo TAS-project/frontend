@@ -10,14 +10,15 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import { Alert } from '@mui/material';
+import { useState } from "react";
 
 
 
 export default function SignUp() {
       // const classes = useStyles();
+  const [error, seterror] = useState(false);
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -36,8 +37,10 @@ export default function SignUp() {
        const status = res.status;
       if (status === 400) { // error coming back from server
         console.log('Error in fecthing');
+        seterror(true)
        }else if (status === 401) { // error coming back from server
         console.log('user already exits');
+        seterror(true)
       }
        return ( status );
 
@@ -89,7 +92,8 @@ export default function SignUp() {
                   autoComplete="new-password"/>
               </Grid>
               
-            </Grid>
+          </Grid>
+          {error && <Alert severity="error">username already taken</Alert>}
             <Button
               type="submit"
               fullWidth

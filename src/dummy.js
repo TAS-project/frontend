@@ -254,8 +254,8 @@ export const comments = [
     },
 ];
 
-export const follower = ["taravat" , "altas" , "saeed"];
-export const following = ["negin" , "melika" , "saeed"];
+export const follower = ["taravatii" , "altaas" , "saeeed"];
+export const following = ["neg-in" , "melikaa" , "saeeed"];
 export const user_books = [
   {
     Book_ID : 1,
@@ -264,7 +264,7 @@ export const user_books = [
     },
   {
     Book_ID : 2,
-    Book_Name : "melika",
+    Book_Name : "so close no matter how far ",
     Summery: "so true , it was based on a real story",
     },
   {

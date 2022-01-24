@@ -5,8 +5,7 @@ import { Input, InputLabel } from "@material-ui/core";
 import { Alert } from '@mui/material';
 
 
-// const drawerWidth = 240;
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 
   chapters: {
     marginTop:'3%',

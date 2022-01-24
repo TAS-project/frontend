@@ -112,7 +112,9 @@ export default function BookProfileHeader(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  const Bookclick = () => {
+    window.location.pathname = `/book/${window.location.href.split('/')[4]}`;
+  };
   const handleClose = (value) => {
     setOpen(false);
     setSelectedValue(value);
@@ -150,7 +152,7 @@ export default function BookProfileHeader(props) {
     {/* information */}
     <Box sx={{ display: { md: 'flex' } }}>
     <div className={classes.bookinfo} sx={{ width:'90%' }}>
-    <Typography variant="h4" gutterBottom component="div">
+              <Typography variant="h4" gutterBottom component="div"style={{ cursor: 'pointer'}} onClick={() => Bookclick()}>
         {book.Book_Name}
     </Typography>
     <Typography variant="h5" gutterBottom component="div">

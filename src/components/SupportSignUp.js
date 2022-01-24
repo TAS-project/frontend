@@ -18,11 +18,32 @@ export default function SupportSignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('Semail'),
-      password: data.get('Spassword'),
-    });
+
+    fetch('http://localhost:3001/Supporter/register', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+    "Username": data.get('Susername'),
+    "First_Name": data.get('SfirstName'),
+    "Last_Name": data.get('SlastName'),
+    "Password": data.get('Spassword'),
+    "Email":  data.get('Semail')
+})
+    }).then(res => {
+       const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+       }else if (status === 401) { // error coming back from server
+        console.log('user already exits');
+      }
+       return ( status );
+
+     }).then((status) => {
+       if (status === 200) {
+         window.location.pathname = `/login/`;
+       }
+      }) 
+
   };
 
   return (

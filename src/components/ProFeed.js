@@ -28,9 +28,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ProFeed = (props) => {
-  const BookProfileHandleClick =() => {
+
+
+
+  const BookProfileHandleClick =(Book_ID) => {
     console.log('BookProfile clicked');
-    window.location.pathname = `/book/:bookname`;    
+    window.location.pathname = `/book/${Book_ID}`;    
 };
 const EditBookHandleClick =() => {
     console.log('BookChapter clicked');
@@ -82,7 +85,7 @@ const EditBookHandleClick =() => {
       <Grid item  md={8} >
          
          <Button variant="contained"  sx={{padding: '10px',width: { md: '100px', xs: '75px' }}}
-         onClick={()=>BookProfileHandleClick()}>Book Profile</Button>
+         onClick={()=>BookProfileHandleClick(b.Book_ID)}>Book Profile</Button>
       </Grid>
 
       <Grid item  md={8}>
@@ -103,8 +106,7 @@ const EditBookHandleClick =() => {
       
               </Box>
               ))}
-  {/*{
-            props.books.map((b) => (  ))}*/}            
+        
   
     </Container>
   );

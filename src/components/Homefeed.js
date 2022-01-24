@@ -21,7 +21,7 @@ export default function Feed() {
   const [fetched, setfetched] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("token").toString();
+
 
   fetch('http://localhost:3001/User/Home', {
       method: 'POST',
