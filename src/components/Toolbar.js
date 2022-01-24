@@ -75,7 +75,7 @@ function ResponsiveDrawer() {
             <ListItemText>Home</ListItemText>
         </ListItem>
                 <ListItem button onClick={() => {
-            window.location.pathname = `/profile/${localStorage.getItem("user")}`;
+            window.location.pathname = `/profile/${localStorage.getItem("username")}`;
           }}>
             <ListItemIcon >
                <PersonIcon fontSize="small" /> 
