@@ -37,6 +37,17 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 export default function Chapters() {
+   
+ const handlePost = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    // eslint-disable-next-line no-console
+    console.log({
+      commentt: data.get('commentt'),
+      
+    });
+  };
+
   const [chapter, setchaper] = useState(null);
   const [fetched, setfetched] = useState(false);
   const [IsOwner, setOwner] = useState(null);
@@ -113,9 +124,12 @@ export default function Chapters() {
       <Box className={classes.comment}>
         <CardHeader style={{paddingLeft:'40px'}} avatar={ <Avatar alt="Remy Sharp" src={require(`../img/book_3.png`)}/>}
         title="user name"/>
+      <Box component="form" onSubmit={handlePost} noValidate sx={{ mt: 1 }}>
         <Grid container direction="row" alignItems="center" justifyContent="center" >
           <Grid item xs={10} >
               <TextField
+              id="commentt"
+              name="commentt"
               fullWidth
               multiline={true}
               rows={3}
@@ -128,9 +142,10 @@ export default function Chapters() {
             />
           </Grid>
           <Grid item alignItems="center" justifyContent="center">
-            <Button>Post</Button>
+            <Button type="submit" >Post</Button>
           </Grid>
         </Grid>
+      </Box>
       <br />
        <Divider />
       
