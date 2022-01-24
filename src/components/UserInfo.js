@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
+//import { profile } from "../dummy";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
@@ -33,7 +35,7 @@ InfoItemiN : {
 
 }));
 
-export default function UserInfo () {
+export default function UserInfo (props) {
 const EdithandleClick =() => {
     console.log('edit clicked');
     window.location.pathname = `/editUser`;    
@@ -43,25 +45,35 @@ const NewBookHandleClick =() => {
     window.location.pathname = `/NewBook`;    
 };
 
-   
+  const logouthandleClick =() => {
+    console.log('log out clicked');
+    window.location.pathname = `/login`;    
+}; 
     const classes = useStyles();
     return (
       <>
       <Container>         
-        <Box boxShadow={12} sx={{borderRadius: '12px'}}>
+        <Box boxShadow = {12} sx={{borderRadius: '12px'}}>
         <div    className={classes.InfoItem}>
        
      <Grid container justifyContent = "center" direction="row">
         <Grid item xs={8}>
-           <Typography gutterBottom variant="h5"> User information </Typography>
+           <Typography gutterBottom variant="h5"> My information </Typography>
          
         </Grid>
-        <Grid item xs={4} >
-         
-          <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
+        <Grid container spacing={1} item xs={4} >
+         <Grid item xs={6}  > 
+        <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
           height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>EdithandleClick()}>
              <EditIcon />
           </Button>
+         </Grid>
+         <Grid item xs={6}  justifyContent='flex-end'> 
+           <Button variant="contained"  sx={{width: { md: '60px', xs: '40px' },
+          height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>logouthandleClick()}>
+             <LogoutIcon />
+          </Button>
+          </Grid>
         </Grid>
       </Grid>
      
@@ -69,27 +81,27 @@ const NewBookHandleClick =() => {
           <Grid container spacing={0}  direction="column"  justifyContent = "center"  >
             <div alignItems = "center" >
               
-                  <Grid  item item className={classes.InfoItemiN}>
-                    <Typography  gutterBottom variant="h7">First Name :  name </Typography>
+                  <Grid  item className={classes.InfoItemiN}>
+                    <Typography  gutterBottom variant="h7">First Name :  {props.profile.First_Name} </Typography>
                   </Grid>
                   
               
               </div>
               <div >
                 <Grid item className={classes.InfoItemiN}>
-                  <Typography gutterBottom variant="h7">Last Name :  family </Typography>
+                  <Typography gutterBottom variant="h7">Last Name :  {props.profile.Last_Name} </Typography>
 
                 </Grid>
               </div>
               <div >
                 <Grid  item item className={classes.InfoItemiN}>
-                  <Typography  gutterBottom variant="h7">UserName :  username </Typography>
+                  <Typography  gutterBottom variant="h7">UserName :  {props.profile.Username} </Typography>
 
                 </Grid>
               </div>
               <div >
                 <Grid  item item className={classes.InfoItemiN}>
-                  <Typography  gutterBottom variant="h7">Email :  email@gmail.com </Typography>
+                  <Typography  gutterBottom variant="h7">Email :  {props.profile.email} </Typography>
 
                 </Grid>
               </div>

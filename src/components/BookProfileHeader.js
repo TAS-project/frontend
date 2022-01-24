@@ -4,7 +4,7 @@ import PopUp from '../components/PopUp';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
 import { Divider, Typography } from "@material-ui/core";
-import { Button, Rating } from "@mui/material";
+import { Button, LinearProgress, Rating } from "@mui/material";
 import CommentIcon from '@mui/icons-material/Comment';
 import ListIcon from '@mui/icons-material/List';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
@@ -66,7 +66,8 @@ verticalAlign: 'middle',
 export default function BookProfileHeader(props) {
   const [book, setbook] = useState(null);
   const [fetched, setfetched] = useState(false);
-
+  const [followers, setfollowers] = useState(false);
+// for chaching book information 
   useEffect(() => {
     const book_id = window.location.href.split('/')[4];
     console.log("book_id: " + book_id)
@@ -98,6 +99,10 @@ export default function BookProfileHeader(props) {
       }) 
   }, []);
 
+  // for chaching followers information 
+  
+
+
   // open pop ups
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
@@ -125,8 +130,9 @@ export default function BookProfileHeader(props) {
     console.log(newValue)
   };
   const classes = useStyles();
-    return (
-     
+  return (
+    <div>
+     { fetched=== true ?
     <div>
     {/* pic */}
    <Box className={classes.media} sx={{height:{ md:'399px' , xs:'350px'}}}>
@@ -162,20 +168,20 @@ export default function BookProfileHeader(props) {
                 <Button startIcon={<CommentIcon/>} style={{ color:'black', textTransform: 'none' }}>chapters</Button>
                             <Button startIcon={<ListIcon/>} style={{ color:'black', textTransform: 'none' }} >riviews</Button>
                 <Button onClick={() => handleClickOpen()} startIcon={<BookmarksIcon />} style={{ color: 'black', textTransform: 'none' }}>followrs</Button>
-               <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
+               <PopUp selectedValue={selectedValue} open={open} list={['grg']} title="Followers" onClose={() => handleClose()}/>
 
             </Box>
 
             <Box  style={{margin:'auto',justifycontent:'center',textAlign:'center', width:'60%'}}>
               {
-                book_1.genres.map((g) => (
+                book.genres.map((g) => (
                   <Chip label={g.name} color='primary' style={{ margin: {md:'2px' ,  xs:'1px'},backgroundColor: g.color }} key={g.name} />
                 ))
                 }
             </Box>
 
             <Box style={{margin:'2%'}}>
-            {props.IsOwner ?
+            { book.User_ID === book.Writer_ID ?
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button> 
               :
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book.followed === 0 ? 'follow book' : 'unfollow book'}</Button>
@@ -198,7 +204,13 @@ export default function BookProfileHeader(props) {
         :    
         null
     }
-      
-    </div>
+    
+        </div >
+      :
+      <Box sx={{ width: '90%' }}>
+      <LinearProgress />
+    </Box> 
+      }
+      </div>
   );
 }

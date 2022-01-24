@@ -11,7 +11,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import { blue } from '@mui/material/colors';
 
-const items = ['user 1', 'uesr 2 ' , 'user3' , 'user 4' , 'user5'];
+//const items = ['user 1', 'uesr 2 ' , 'user3' , 'user 4' , 'user5'];
 
 export default function PopUp(props) {
   const { onClose, selectedValue, open } = props;
@@ -27,9 +27,9 @@ export default function PopUp(props) {
 
   return (
       <Dialog onClose={handleClose} open={open}>
-          <DialogTitle style={{ width:'400px'}}>followers</DialogTitle>
+      <DialogTitle style={{ width: '400px' }}>{props.title}</DialogTitle>
       <List sx={{ pt: 0 }}>
-        {items.map((email) => (
+        {props.list.map((email) => (
           <ListItem button onClick={() => handleListItemClick(email)} key={email}>
             <ListItemAvatar>
               <Avatar sx={{ bgcolor: blue[100], color: blue[600] }}>

@@ -46,19 +46,26 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-const FollowProfile = ({ props, title }) => {
-  const [open, setOpen] = React.useState(false);
+const FollowProfile = (props) => {
+  const [openfollwer, setOpenflwr] = React.useState(false);
+  const [openfollwing, setOpenflwg] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
   // open create component 
-  const [showCreate, setShowCreate] = React.useState(false)
+  // const [showCreate, setShowCreate] = React.useState(false)
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleOpenflwr = () => {
+    setOpenflwr(true);
+  };
+  const handleOpenflwng = () => {
+    setOpenflwg(true);
   };
   const handleClose = (value) => {
-    setOpen(false);
+    setOpenflwg(false);
+    setOpenflwr(false);
     setSelectedValue(value);
   };
+
+
   const classes = useStyles();
 
   return (
@@ -85,13 +92,13 @@ const FollowProfile = ({ props, title }) => {
         </Grid>
 
         <Grid item xs={4}   >
-              <Button onClick={() => handleClickOpen()} className={classes.buttons}> Follower </Button>   
-            <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
+              <Button onClick={() => handleOpenflwr()} className={classes.buttons}> Follower </Button>   
+            <PopUp selectedValue={selectedValue} open={openfollwer} list={props.follower} title="Followers" onClose={() => handleClose()}/>
         </Grid>
 
         <Grid item xs={4} >
-              <Button onClick={() => handleClickOpen()}  className={classes.buttons}> Following</Button>   
-            <PopUp selectedValue={selectedValue} open={open} onClose={() => handleClose()}/>
+              <Button onClick={() => handleOpenflwng()}  className={classes.buttons}> Following</Button>   
+            <PopUp selectedValue={selectedValue} open={openfollwing} list={props.following} title="Followings" onClose={() => handleClose()}/>
         </Grid>
 </Grid>
       
