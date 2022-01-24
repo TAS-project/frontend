@@ -113,8 +113,9 @@ export default function Book(props) {
         paddingRight:{md:'20px'},
         height: { xs: 233, md: 267 },
         width: { xs: 150, md: 200 } }}
-      alt="The house from the offer."
-        src={require(`../img/book_${props.book.Book_Id}.png`)} />
+          alt="The house from the offer."
+
+          src = {props.book.Book_Cover} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',

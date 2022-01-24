@@ -67,7 +67,7 @@ const EditBookHandleClick =(Book_ID) => {
           <Grid item xs={16} md={8} sm={8} className={classes.media}>
 
             
-          <Box component="img" className={classes.media} src={require(`../img/book_${b.Book_ID}.png`)} title="My Post"  />
+          <Box component="img" className={classes.media} src={b.Book_Cover} title="My Post"  />
   </Grid>
   <Grid item xs={16} md={8} sm={8}  >    
     <Grid  container  direction="column"  spacing={6}  >

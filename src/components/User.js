@@ -58,8 +58,8 @@ export default function User(props) {
     const styles = useStyles();
     const [follow, togglefollow] = useState();
   useEffect(() => {
-      
-        togglefollow(props.user.followed_state)
+      console.log('state : '+ props.user.Followed_State)
+        togglefollow(props.user.Followed_State)
   }, []);
 
     const userclick = (Username) => {
@@ -117,7 +117,7 @@ export default function User(props) {
       <Box className={styles.media}
       component="img" sx={{ height: 150, width: 150 }}
       alt="The house from the offer."
-            src={require(`../img/book_${props.user.User_ID}.png`)} />
+            src={props.user.Pic} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',

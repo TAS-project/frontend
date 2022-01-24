@@ -53,7 +53,8 @@ const fuserClick =() => {
     console.log('send server massehe for following / unfollowing');   
   };
   useEffect(() => {
-        togglefollow(0)
+        console.log('fstate : ' + JSON.stringify(props))
+        togglefollow(props.profile.Followed_State)
   }, []);
 
   const logouthandleClick =() => {

@@ -41,7 +41,7 @@ export default function Feed() {
       return (res.json());
 
     }).then((response) => {
-      //console.log('posts anita : ' + response.Books);
+      console.log('posts anita : ' + JSON.stringify(response));
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setPosts(response.Books);
       console.log("new posts :" + posts);

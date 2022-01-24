@@ -146,11 +146,11 @@ export default function BookProfileHeader() {
    <Box className={classes.media} sx={{height:{ md:'399px' , xs:'350px'}}}>
     <Box className={classes.image1} component="img" sx={{ height: { md:'399px' , xs:'350px'}, width:'90%' }}
     alt="The house from the offer."
-    src={require(`../img/book_3.png`)}> 
+    src={book.Book_Cover}> 
     </Box>
     <Box className={classes.image2} component="img" sx={{ height: { md:'390px' , xs:'350px'}, width: 'auto' }}
     alt="The house from the offer."
-    src={require(`../img/book_3.png`)}> 
+    src={book.Book_Cover}> 
     </Box>                 
 </Box>
 

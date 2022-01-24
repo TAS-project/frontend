@@ -101,7 +101,7 @@ export default function BookProfile() {
         'Authorization': "Bearer " + localStorage.getItem("token"),
       },
     body: JSON.stringify({
-        "Username": "tas"//username
+        "Username": username
       })
     }).then(res => {
       const status = res.status;
@@ -114,6 +114,7 @@ export default function BookProfile() {
       return (res.json());
 
     }).then((response) => {
+      console.log("print  : " + JSON.stringify(response));
       setprofile(response.profile);
       setfollower(response.follower);
       setfollowing(response.following);
@@ -141,7 +142,7 @@ export default function BookProfile() {
                     src={require(`../img/book.jpg`)} alt=""
                   />
                   <img position="fixed" className={classes.profileUserImg}
-                    src={require(`../img/image.png`)} alt=""
+                    src={profile.pic} alt=""
                   />
                 </Box>
                 <Box className={classes.profileInfo}>

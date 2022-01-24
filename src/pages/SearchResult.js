@@ -46,7 +46,7 @@ export default function SearchResult() {
       return (res.json());
 
     }).then((response) => {
-      console.log('response  : ' + JSON.stringify(response));
+      console.log('response:  ' + JSON.stringify(response));
       setusers(response.Users);
       setbooks(response.Books);
       //.log("new posts :" + posts);
