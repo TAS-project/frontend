@@ -8,7 +8,7 @@ import BookProfile from './pages/BookProfile';
 import UserProfile from './pages/UserProfile';
 import SearchResult from './pages/SearchResult';
 import EditUserInfo from './pages/EditUserInfo';
-import NewBook from './pages/EditUserInfo';
+import NewBook from './pages/NewBook';
 import GenrePage from './pages/GenrePage';
 
 import {
