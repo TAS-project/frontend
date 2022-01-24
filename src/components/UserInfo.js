@@ -48,13 +48,7 @@ const fuserClick =() => {
     window.location.pathname = `/NewBook`;    
 };
 
-  const logouthandleClick =() => {
-    console.log(props.profile.Username);
-    console.log(localStorage.getItem("username"));
-   // props.profile.Username === localStorage.getItem("username")
 
-    //window.location.pathname = `/login`;    
-}; 
     const classes = useStyles();
     return (
       <>

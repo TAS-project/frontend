@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Homepage from './pages/Homepage';
 import ChapterOfBook from './pages/ChapterOfBook';
-import SignIn from './pages/SignIn';
+import Signin from './pages/Signin';
 import SignUp from './pages/SignUp';
 import BookProfile from './pages/BookProfile';
 import UserProfile from './pages/UserProfile';
@@ -46,7 +46,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<UserProfile />}></Route>
          
-        <Route path="/login" element={user ? <Navigate to="/" /> : <SignIn />}></Route>
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Signin />}></Route>
         <Route path="/register" element={user ? <Navigate to="/" /> : <SignUp />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
          <Route path="/home"  element= {<Homepage />}>  </Route> 
