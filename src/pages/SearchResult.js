@@ -10,8 +10,8 @@ import SbookFeed from '../components/SbookFeed';
 import SuserFeed from '../components/SuserFeed';
 import Footer from '../components/Footer';
 import { useEffect, useState } from "react";
-import { Users } from "../dummy";
-import { Books } from "../dummy";
+//import { Users } from "../dummy";
+//import { Books } from "../dummy";
 
 
 const drawerWidth = 240;
@@ -22,18 +22,20 @@ export default function SearchResult() {
   const [fetched, setfetched] = useState(false);
 
   // geting search resualts 
-  /*
+
   useEffect(() => {
-
-
-  fetch('http://localhost:3001/User/Home', {
+   const Search= window.location.href.split('/')[4];
+    console.log("search :" + Search);
+  fetch('http://localhost:3001/User/Search', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
         'Accept': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({})
+    body: JSON.stringify({
+        "Search_Text":window.location.href.split('/')[4]
+      })
     }).then(res => {
       const status = res.status;
       if (status === 400) { // error coming back from server
@@ -44,14 +46,14 @@ export default function SearchResult() {
       return (res.json());
 
     }).then((response) => {
-      //console.log('posts anita : ' + response.Books);
-      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
-      setPosts(response.Books);
-      console.log("new posts :" + posts);
-      setfetched(true)
+      console.log('response  : ' + JSON.stringify(response));
+      setusers(response.Users);
+      setbooks(response.Books);
+      //.log("new posts :" + posts);
+      //setfetched(true)
       }) 
   }, []);
-  */
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -71,14 +73,12 @@ export default function SearchResult() {
              
           </Box>
          
-            <TabPanel value="1"> <SbookFeed books={ Books}/> </TabPanel>
-            <TabPanel value="2"> <SuserFeed users={ Users } /></TabPanel>
+            <TabPanel value="1"> <SbookFeed books={ books}/> </TabPanel>
+            <TabPanel value="2"> <SuserFeed users={ users } /></TabPanel>
       </TabContext>
       </Box>
        : null }
-      {
-        window.location.href.split('/')[4]
-      }
+
      <Footer/>      
     </div>
     

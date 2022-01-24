@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
+import {useEffect, useState } from "react";
 //import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +35,8 @@ InfoItemiN : {
 
 }));
 
-export default function UserInfo (props) {
+export default function UserInfo(props) {
+      const [follow, togglefollow] = useState(0);
 const EdithandleClick =() => {
     console.log('edit clicked');
     window.location.pathname = `/editUser/${props.profile.Username}`;    
@@ -44,9 +46,15 @@ const NewBookHandleClick =() => {
     window.location.pathname = `/NewBook`;    
   };
 const fuserClick =() => {
-    console.log('new book clicked');
-    window.location.pathname = `/NewBook`;    
-};
+    if  (follow === 0)
+        togglefollow(1)
+      else
+          togglefollow(0)
+    console.log('send server massehe for following / unfollowing');   
+  };
+  useEffect(() => {
+        togglefollow(0)
+  }, []);
 
   const logouthandleClick =() => {
     console.log(props.profile.Username);
@@ -124,7 +132,7 @@ const fuserClick =() => {
                   <Button variant="contained"  fullWidth  
                   sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}
                   onClick={()=>fuserClick()}>
-                   follow 
+                   {follow === 0 ? 'follow ' : 'unfollow '} 
                   </Button>
                 }
                   

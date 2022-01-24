@@ -63,9 +63,10 @@ left: '0px',
 verticalAlign: 'middle',
 }    
 }));
-export default function BookProfileHeader(props) {
+export default function BookProfileHeader() {
   const [book, setbook] = useState(null);
   const [fetched, setfetched] = useState(false);
+  const [follow, togglefollow] = useState(0);
   //const [followers, setfollowers] = useState(false);
 // for caching book information 
   useEffect(() => {
@@ -95,6 +96,7 @@ export default function BookProfileHeader(props) {
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setbook(response.Book);
       console.log("new book :" + JSON.stringify(response.Book));
+      togglefollow(1)
       setfetched(true)
       }) 
   }, []);
@@ -119,7 +121,11 @@ export default function BookProfileHeader(props) {
     setOpen(false);
     setSelectedValue(value);
   };
-  const  trigerfollow = () => {
+  const trigerfollow = () => {
+      if  (follow === 0)
+        togglefollow(1)
+      else
+          togglefollow(0)
     console.log('send server massehe for following / unfollowing');
   };
   const TrigerCreate = () => {
@@ -186,7 +192,7 @@ export default function BookProfileHeader(props) {
             { book.User_ID === book.Writer_ID ?
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button> 
               :
-              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{book.followed === 0 ? 'follow book' : 'unfollow book'}</Button>
+              <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{follow === 0 ? 'follow book' : 'unfollow book'}</Button>
               
               
             }

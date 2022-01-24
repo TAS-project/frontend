@@ -59,7 +59,7 @@ export default function User(props) {
     const [follow, togglefollow] = useState();
   useEffect(() => {
       
-        togglefollow(props.user.followed)
+        togglefollow(props.user.followed_state)
   }, []);
 
     const userclick = (Username) => {
@@ -117,14 +117,14 @@ export default function User(props) {
       <Box className={styles.media}
       component="img" sx={{ height: 150, width: 150 }}
       alt="The house from the offer."
-            src={require(`../img/book_${props.user.Usr_ID}.png`)} />
+            src={require(`../img/book_${props.user.User_ID}.png`)} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           p: 1,
           m: 1,
           bgcolor: 'background.paper'}}>
-          <h3 className={styles.heading}>{props.user.First_Name + "  " + props.user.Last_Name} </h3>
+          <h3 className={styles.heading}>{props.user.Name } </h3>
           <Box  sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(props.user.Username)}>{"@" + props.user.Username}</Box>
             {follow === 0 ?
                 <Box className={styles.butn} onClick={() => followun(props.user.Username)} sx={{ display: 'flex', mt: 1 }}> follow</Box>

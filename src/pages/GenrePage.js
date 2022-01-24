@@ -10,9 +10,6 @@ export default function Homepage() {
     return (
      
       <div>
-
-        
-
         <Toolbar />
         <SbookFeed books={Books }/>
         <Footer/>

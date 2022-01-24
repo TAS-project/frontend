@@ -25,7 +25,7 @@ export default function BFeed(props) {
       >
               {
         props.books.map((b) => (
-          <Book xs={{ boxShadow: 3, m: 2 }} key={b.Book_ID} book={b} />
+          <Book xs={{ boxShadow: 3, m: 2 }} key={b.Book_Id} book={b} />
                   ))
               }
       
