@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Chapters() {
   const [chapter, setchaper] = useState(null);
   const [fetched, setfetched] = useState(false);
-  var IsOwner = false;
+  const [IsOwner, setOwner] = useState(null);
+  
   const [Edit, setEdit] = React.useState(false);
   const clickEdit =() => {
     console.log('click');
@@ -70,6 +71,8 @@ export default function Chapters() {
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setchaper(response.Chapter);
       setfetched(true)
+      if ((localStorage.getItem("username")).toLowerCase() === response.Chapter.Owner_Username.toLowerCase())
+       setOwner(true)
       }) 
     
   }, []);

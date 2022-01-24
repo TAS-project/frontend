@@ -44,14 +44,14 @@ import { useEffect, useState } from "react";
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    
+
     console.log({
       email: data.get('BookName'),
       Genres: [{ "Genre_ID": picked }],
       summery : data.get('Description'),
     });
-    /*
-    fetch('http://localhost:3001/User/Chapter_Create', {
+    
+    fetch('http://localhost:3001/User/Book_Create', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -59,8 +59,9 @@ import { useEffect, useState } from "react";
         'Authorization': "Bearer " + localStorage.getItem("token"),
       },
     body: JSON.stringify({
-      "Name": title.value,
-      "Content": text.value 
+      "Name": data.get('BookName'),
+      "Genres": [{ "Genre_ID": picked }],
+      "Summary":data.get('Description'),
       })
     }).then(res => {
       const status = res.status;
@@ -72,13 +73,12 @@ import { useEffect, useState } from "react";
       return (res.json());
 
     }).then((response) => {
-      console.log('response add chapter : ' + JSON.stringify(response));
-
+      console.log('response add chapter : ' + JSON.stringify(response.Book.Book_ID));
+      window.location.pathname = `/book/${response.Book.Book_ID}/`;
       
       })  
-   window.location.pathname = `/book/${props.chapter.Book_ID}/`;
-  }
-  */
+     
+  
   };
 
  const [picked, setpicked] = React.useState('');
@@ -131,7 +131,7 @@ import { useEffect, useState } from "react";
               
            
              <Grid item xs={12}>
-                    <TextField placeholder="Give a brief description of your book"  multiline  rows={7}  maxRows={7}  required  fullWidth  id="Description"  label="Description"  />             
+                    <TextField placeholder="Give a brief description of your book"  multiline  rows={7}  maxRows={7}  required name="Description" fullWidth  id="Description"  label="Description"  />             
             </Grid>
               
               <Grid item xs={12}>

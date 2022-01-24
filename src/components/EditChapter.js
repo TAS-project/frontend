@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Input, InputLabel } from "@material-ui/core";
-import React from 'react';
+
 import { Alert } from '@mui/material';
 
 
@@ -33,14 +33,17 @@ const useStyles = makeStyles((theme) => ({
 export default function EditChapter(props) {
   const [ShowError, setError] = React.useState(false);
   const ClickonAdd = (e) => {
+    const book_id = window.location.href.split('/')[4];
+    const chp_id = window.location.href.split('/')[5];
     e.preventDefault()
     const { title, text } = e.target.elements
     console.log({ title: title.value, content: text.value })
     if (title.value === '') {
       setError(true);
     } else { 
-    console.log('edit')   
-    window.location.reload();
+    console.log(book_id + '    ' + chp_id )   
+      //window.location.reload();
+      //window.location.pathname = `/book/${response.Book.Book_ID}/`;
   }
   };
 
@@ -60,7 +63,7 @@ export default function EditChapter(props) {
           <div className={classes.col75}>
               <InputLabel   htmlFor="my-input">chapter title</InputLabel>
   <Input style={{marginBottom:'3%'}}  defaultValue={props.chapter.chapter_name } id="title" aria-describedby="my-helper-text" />
-            <textarea className={classes.textarea} value={props.chapter.content } id="text" name="subject" placeholder="Write your story..." ></textarea>
+            <textarea className={classes.textarea} defaultvalue={props.chapter.content } id="text" name="subject" placeholder="Write your story..." ></textarea>
            
           </div>
           {

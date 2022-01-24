@@ -6,7 +6,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
 //import { profile } from "../dummy";
-import LogoutIcon from '@mui/icons-material/Logout';
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
@@ -38,7 +37,7 @@ InfoItemiN : {
 export default function UserInfo (props) {
 const EdithandleClick =() => {
     console.log('edit clicked');
-    window.location.pathname = `/editUser`;    
+    window.location.pathname = `/editUser/${props.profile.Username}`;    
 };
 const NewBookHandleClick =() => {
     console.log('new book clicked');
@@ -75,12 +74,7 @@ const fuserClick =() => {
              <EditIcon />
           </Button>
          </Grid>
-         <Grid item xs={6}  justifyContent='flex-end'> 
-           <Button variant="contained"  sx={{width: { md: '60px', xs: '40px' },
-          height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>logouthandleClick()}>
-             <LogoutIcon />
-          </Button>
-          </Grid>
+
         </Grid>
       </Grid>
      
@@ -120,7 +114,7 @@ const fuserClick =() => {
          <Box boxShadow={12} sx={{borderRadius: '12px'}}>
      <div className={classes.rightbarInfoItem}>
               <Grid className={classes.rightbarInfoKey} item >{
-                props.profile.Username.toLowerCase() === localStorage.getItem("username") ?
+                props.profile.Username.toLowerCase() === (localStorage.getItem("username")).toLowerCase() ?
                 <Button variant="contained"  fullWidth  
                   sx={{width: {mt: 3, mb: 2 } , padding:'15px', position : 'relative',fullWidth:'{true}'}}
                   onClick={()=>NewBookHandleClick()}>

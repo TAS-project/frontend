@@ -50,9 +50,9 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <SignUp />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
          <Route path="/home"  element= {<Homepage />}>  </Route> 
-         <Route exact path="/editUser" element={<EditUserInfo />}></Route>
+         <Route exact path="/editUser/:username" element={<EditUserInfo />}></Route>
           <Route exact path="/NewBook" element={<NewBook />}></Route>
-          <Route exact path="/EditBookInformation" element={<EditBookInfo />}></Route>
+          <Route exact path="/EditBookInformation/:bookid" element={<EditBookInfo />}></Route>
           <Route exact path="/book/:bookid" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
           <Route path="/book/:bookid/:CId" element={<ChapterOfBook />}></Route>

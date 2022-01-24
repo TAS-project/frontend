@@ -67,7 +67,8 @@ export default function WriteChapter() {
       
       })  
 
-   window.location.reload();
+    
+      window.location.pathname = `/book/${book_id}/`;
   }
   };
 

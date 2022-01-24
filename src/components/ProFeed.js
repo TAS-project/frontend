@@ -33,11 +33,11 @@ const ProFeed = (props) => {
 
   const BookProfileHandleClick =(Book_ID) => {
     console.log('BookProfile clicked');
-    window.location.pathname = `/book/${Book_ID}`;    
+    window.location.pathname = `/book/${Book_ID}/`;    
 };
-const EditBookHandleClick =() => {
+const EditBookHandleClick =(Book_ID) => {
     console.log('BookChapter clicked');
-    window.location.pathname = `/EditBookInformation`;    
+    window.location.pathname = `/EditBookInformation/${Book_ID}`;    
 };
   const classes = useStyles();
   return (
@@ -90,7 +90,7 @@ const EditBookHandleClick =() => {
 
       <Grid item  md={8}>
         <Button variant="contained"  sx={{padding: '10px',width: { md: '100px', xs: '75px' } } }
-          onClick={()=>EditBookHandleClick()}>Edit  Book</Button>
+          onClick={()=>EditBookHandleClick(b.Book_ID)}>Edit  Book</Button>
       </Grid>
           
      </Grid>

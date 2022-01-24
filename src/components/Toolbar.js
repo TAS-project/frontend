@@ -59,7 +59,7 @@ function ResponsiveDrawer() {
     setMobileOpen(!mobileOpen);
   };
   const genreclick = (Genre_Title) => {
-    window.location.pathname = `/genre/${Genre_Title}`;
+    window.location.pathname = `/genre/${Genre_Title}/`;
   };
   const drawer = (
     <div>
@@ -75,7 +75,7 @@ function ResponsiveDrawer() {
             <ListItemText>Home</ListItemText>
         </ListItem>
                 <ListItem button onClick={() => {
-            window.location.pathname = `/profile/${localStorage.getItem("username")}`;
+            window.location.pathname = `/profile/${localStorage.getItem("username")}/`;
           }}>
             <ListItemIcon >
                <PersonIcon fontSize="small" /> 
