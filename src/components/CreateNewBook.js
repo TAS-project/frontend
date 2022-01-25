@@ -115,6 +115,7 @@ inputimg : {
     }).then((response) => {
       console.log('response add chapter : ' + JSON.stringify(response.Book.Book_ID));
       window.location.pathname = `/book/${response.Book.Book_ID}/`;
+      console.log(JSON.stringify(response));
       
       })  
      
@@ -193,7 +194,7 @@ inputimg : {
            
           </Box>
         </Box>
-         <BookImgUp />
+         {/* <BookImgUp /> */}
       </Container>
       </>
         

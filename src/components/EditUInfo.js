@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import { profile } from "../dummy";
-import UpUsrImg from './UpUsrImg';
+import UserImgUp from './UserImgUp';
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -57,16 +57,20 @@ export default function  EditUInfo() {
   return (
     
 <div>         
-      <UpUsrImg />
+      
   <Container component="main" maxWidth="xs" >
 
+
+
+
+  <UserImgUp />
     <CssBaseline />
  
 
     
         <Box
           sx={{
-            marginTop: 25,
+            marginTop: 40,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

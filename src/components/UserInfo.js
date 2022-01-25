@@ -39,6 +39,7 @@ export default function UserInfo(props) {
       const [follow, togglefollow] = useState(0);
 const EdithandleClick =() => {
     console.log('edit clicked');
+     console.log(props.profile.Username);
     window.location.pathname = `/editUser/${props.profile.Username}`;    
 };
 const NewBookHandleClick =() => {

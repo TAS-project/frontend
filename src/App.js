@@ -1,7 +1,5 @@
 import './App.css';
 import React from 'react';
-
-
 import Homepage from './pages/Homepage';
 import ChapterOfBook from './pages/ChapterOfBook';
 import Signin from './pages/Signin';
@@ -23,7 +21,6 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import EditBookInfo from './pages/EditBookInfo';
 import SupportSignup from './pages/SupportSignup';
 import SupportSignin from './pages/SupportSignin';
-import Upload from './pages/Upload';
 
 
 
@@ -41,7 +38,7 @@ const theme = createTheme({
 const user = false;
 function App() {
   return (
-  
+ 
          
     <ThemeProvider theme={theme}>
       {/**/}
@@ -53,8 +50,7 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <SignUp />}></Route>
         <Route path="/profile/:username"  element= {<UserProfile />}>  </Route>
          <Route path="/home"  element= {<Homepage />}>  </Route> 
-          <Route path="/uploadfile"  element= {<Upload />}>  </Route> 
-         <Route exact path="/editUser" element={<EditUserInfo />}></Route>
+         <Route exact path="/editUser/:username" element={<EditUserInfo />}></Route>
           <Route exact path="/NewBook" element={<NewBook />}></Route>
           <Route exact path="/EditBookInformation/:bookid" element={<EditBookInfo />}></Route>
           <Route exact path="/book/:bookid" element={<BookProfile />}></Route>
