@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 300,
     width: 200,
-    // objectFit : 'cover',
-    // margin : '27px',
-    // padding : '40px',
     [theme.breakpoints.down("sm")]: {
       height: 200,
       width: 200,
@@ -33,25 +30,14 @@ const useStyles = makeStyles((theme) => ({
              width: '200px',
     },
     }
-  //   mediaContet : {
-  //   height: 100,
-  //   // width: 200,
-  //   // objectFit : 'cover',
-  //   // margin : '27px',
-  //   // padding : '40px',
-  //   [theme.breakpoints.down("sm")]: {
-  //     height: 100,
-  //     // width: 200,
-  //   },
-  // },
+
+
 }));
 
 const FollowProfile = (props) => {
   const [openfollwer, setOpenflwr] = React.useState(false);
   const [openfollwing, setOpenflwg] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState(emails[1]);
-  // open create component 
-  // const [showCreate, setShowCreate] = React.useState(false)
 
   const handleOpenflwr = () => {
     setOpenflwr(true);
@@ -70,11 +56,8 @@ const FollowProfile = (props) => {
     window.location.pathname = `/login`;
     window.localStorage.clear();
     if (localStorage.getItem("username") === null) {
-     alert("yes");
-}
-   // props.profile.Username === localStorage.getItem("username")
-
-        
+     alert("You will be Loged out");
+}    
 }; 
   const classes = useStyles();
 

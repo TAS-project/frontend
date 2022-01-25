@@ -70,7 +70,7 @@ export default function  EditUInfo() {
     
         <Box
           sx={{
-            marginTop: 40,
+            marginTop: 45,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

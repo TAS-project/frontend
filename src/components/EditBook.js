@@ -87,7 +87,7 @@ const [fetched2, setfetched2] = useState(false);
   };
 
 
-
+// bookimg={`../img/book_${book.Book_ID}.png`}
   const handleChange = (event) => {
     setpicked(event.target.value);
   };
@@ -95,12 +95,12 @@ const [fetched2, setfetched2] = useState(false);
 
     <div>{ (fetched1 === true && fetched2 === true) ?
       <div>
-      <BookImgUp  bookimg={`../img/book_${book.Book_ID}.png`} />
+      <BookImgUp   />
       <Container component="main" maxWidth="xs" >
           
         <Box 
           sx={{
-            marginTop: 35,
+            marginTop: 45,
             flexDirection: 'column',
             alignItems: 'center',
             

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
 
  const useStyles = makeStyles((theme) => ({
@@ -36,22 +36,39 @@ profileImg3: {
   left: '0',
   right: '0',
   margin: 'auto',
-  top: '230px', 
+  top: '240px', 
+},
+profileImg4: {
+  width: '400px',
+//   height: '180px',
+  //backgroundColor : '#ffffff',
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  top: '240px',
+  alignItems : 'center',
+   justifyContent:'center',
+   [theme.breakpoints.down("sm")]: {
+     direction : 'column',
+     
+      //display:"flex",
+      
+    }, 
 },
 profileImg2: {
-  width: '400px',
-  height: '300px',
+  // width: '400px',
+  // height: '300px',
   backgroundColor : '#ffffff',
   position: 'absolute',
   left: '0',
   right: '0',
   margin: 'auto',
-  top: '40px', 
+  top: '30px', 
+ 
+ 
 },
-profileUserIcon: {
- fontSize : 'medium',
-  objectFit: 'cover',
-},
+
 }));
 function UserImgUp() {
   const classes = useStyles();
@@ -93,12 +110,13 @@ function UserImgUp() {
             alt="new"
             />
         </Box>
-    <Box className={classes.profileImg3}>
-     <form onSubmit={onFormSubmit}>
-          <input type="file" name="photo" onChange={onInputChange} />
-          <Button variant="contained"   type='submit ' >Upload</Button>
-          </form>
-        </Box>
+   <Grid container className={classes.profileImg4} onSubmit={onFormSubmit}>
+          <Grid item >
+          <input type="file" name="photo" onChange={onInputChange} /></Grid>
+          <Grid item  sx={{padding: '10px'}}>
+          <Button variant="contained"  type='submit ' >Upload</Button>
+         </Grid>
+          </Grid>
     </Box>
            
         </div>

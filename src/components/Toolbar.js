@@ -134,7 +134,7 @@ const ClickonSearch =(e) => {
           {/* logo */}
           <Typography sx={{  flex: 1 }}
             variant="h6" noWrap component="div">
-            the authors society
+            The Authors Society
           </Typography>
           {/* search input  */}
           <form onSubmit={ClickonSearch} component="form"
