@@ -1,8 +1,38 @@
 # a website for reading and writing
 
+Hi, welcome to TAS (The Authors Society)
+in this website you can read the books of people who are members of TAS.
+you can even write your own book. books can published chapter by chapter.
+you can follow the members and their books and become followed by them.
+after sign up in TAS, you can upload your profile image or edit your informations, create new book and you can see your books there.
+for creating book you should choose a Genre for it . you can search book and members so easily.
+on your home feed, you can see the latest published chapter of the book you followed and by clicking on book name you will be referred to the
+book's profile page. and by clicking on writer's name you will referred to his/her profile.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# how to run code of frontend and backend in your vscode
+
+1- Step 1 : clone frontend
+
+make a folder you want to put the frontend react js code which cloned from github in it.
+open TAS-project in github and clone master branch of frontend repository with this script :
+`git clone {the url of master branch of frontend repo}`
+when you clone frontend :
+if you use npm, you should first run the script `npm start` which installs the required dependencies. after that
+then run `npm start` to run the React project and show the result in browser.
+if you use yarn, you should first run the script `yarn build ` and `yarn start`.
+
+2- Step 2 : Clone backend
+make a folder you want to put the backend react js code which cloned from github in it.
+open TAS-project in github and clone backend repository with this script :
+`git clone {the url of backend repo}`
+when you clone backend :
+if you use npm, you should first run the script `npm start` which installs the required dependencies. after that
+then run `node index.js` to run the server.
+if you use yarn, you should first run the script `yarn build ` and `node index.js`.
 
 ## Available Scripts
 

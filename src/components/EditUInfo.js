@@ -56,13 +56,17 @@ export default function  EditUInfo() {
   };
 
   return (
+    
 
       <Container component="main" maxWidth="xs" >
          
     <CssBaseline />
     <Box className={classes.profileImg}>
-        <img  className={classes.profileUserImg}
-        src={require(`../img/book_3.png`)}   alt=""/>
+      
+        <img className={classes.profileUserImg}
+            src="https://i.ibb.co/FKRrVtF/image.png"
+            alt="new"
+            />
         <IconButton sx={{marginTop: '120px',marginLeft : '125px'}}>
             <PhotoCameraIcon className={classes.profileUserIcon}  />
         </IconButton> 
