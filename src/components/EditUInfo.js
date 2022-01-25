@@ -7,11 +7,12 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
+import { useEffect, useState } from "react";
 import Container from '@mui/material/Container';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@material-ui/core';
-import { profile } from "../dummy";
+//import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -44,7 +45,8 @@ profileUserIcon: {
 }));
 export default function  EditUInfo() {
       const classes = useStyles();
-
+  const [profile, setprofile] = useState({});
+  const [fetched, setfetched] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -55,14 +57,49 @@ export default function  EditUInfo() {
     });
   };
 
-  return (
 
+    useEffect(() => {
+    const username = window.location.href.split('/')[4];
+    console.log("username: " + username)
+    
+  fetch('http://localhost:3001/User/Profile_Page', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+        "Username": username
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      }
+      console.log("print  : " + JSON.stringify(res))
+      return (res.json());
+
+    }).then((response) => {
+      console.log("print: " + JSON.stringify(response));
+      setprofile(response.profile);
+      setfetched(true)
+      }) 
+      
+  }, []);
+
+  return (
+      <div>
+      {
+        fetched === true ?
       <Container component="main" maxWidth="xs" >
          
     <CssBaseline />
     <Box className={classes.profileImg}>
         <img  className={classes.profileUserImg}
-        src={require(`../img/book_3.png`)}   alt=""/>
+        src={profile.pic}   alt=""/>
         <IconButton sx={{marginTop: '120px',marginLeft : '125px'}}>
             <PhotoCameraIcon className={classes.profileUserIcon}  />
         </IconButton> 
@@ -109,7 +146,11 @@ export default function  EditUInfo() {
           </Box>
         </Box>
        
-      </Container>
+          </Container>
+        
+        : null
+      }
+       </div>
 
   );
 };
