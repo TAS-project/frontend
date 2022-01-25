@@ -1,4 +1,4 @@
-# a website for reading and writing
+# TAS : a website for reading and writing books
 
 Hi, welcome to TAS (The Authors Society)
 in this website you can read the books of people who are members of TAS.
@@ -8,10 +8,6 @@ after sign up in TAS, you can upload your profile image or edit your information
 for creating book you should choose a Genre for it . you can search book and members so easily.
 on your home feed, you can see the latest published chapter of the book you followed and by clicking on book name you will be referred to the
 book's profile page. and by clicking on writer's name you will referred to his/her profile.
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # how to run code of frontend and backend in your vscode
 
@@ -41,6 +37,12 @@ this project used MYSQL as database:
 1- install MYSQL
 2- install HeidiSQL to make tables
 3- install postman to notice the inputs that should be send to backend and token given from backend.
+
+<!--
+
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -107,4 +109,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->

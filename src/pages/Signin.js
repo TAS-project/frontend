@@ -51,7 +51,8 @@ function Signin() {
         localStorage.setItem('access', false);
         console.log(localStorage.getItem("token"));
         console.log(localStorage.getItem("username"));
-        window.location.pathname = `/home/`;
+        window.location.pathname = `/editUser/`;
+        
       }
       }) 
 

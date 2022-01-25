@@ -8,10 +8,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import Container from '@mui/material/Container';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@material-ui/core';
 import { profile } from "../dummy";
+import UpUsrImg from './UpUsrImg';
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -57,21 +57,12 @@ export default function  EditUInfo() {
 
   return (
     
+<div>         
+      <UpUsrImg />
+  <Container component="main" maxWidth="xs" >
 
-      <Container component="main" maxWidth="xs" >
-         
     <CssBaseline />
-    <Box className={classes.profileImg}>
-      
-        <img className={classes.profileUserImg}
-            src="https://i.ibb.co/FKRrVtF/image.png"
-            alt="new"
-            />
-        <IconButton sx={{marginTop: '120px',marginLeft : '125px'}}>
-            <PhotoCameraIcon className={classes.profileUserIcon}  />
-        </IconButton> 
-     
-    </Box>
+ 
 
     
         <Box
@@ -114,6 +105,9 @@ export default function  EditUInfo() {
         </Box>
        
       </Container>
+
+</div>
+    
 
   );
 };
