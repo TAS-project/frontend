@@ -8,8 +8,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import { profile } from "../dummy";
 import UpUsrImg from './UpUsrImg';
 

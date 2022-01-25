@@ -1,7 +1,9 @@
-import { Box, CssBaseline, IconButton, makeStyles } from '@material-ui/core'
+import { Box, CssBaseline, IconButton } from '@material-ui/core'
 import React from 'react'
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-
+import { useState } from 'react'
+import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
   width: '160px',
@@ -39,9 +41,36 @@ iconbut :{
 }));
 function BookImgUp(bookimg) {
      const classes = useStyles();
+       const [file, setFile] = useState(null);
+ 
+      const onInputChange = (e) => {
+        setFile(e.target.files[0]);
+       
+      };
+ 
+      const onFormSubmit = async (e) => {
+          e.preventDefault();
+        const formData = new FormData();
+        formData.append("photo", file);
+      
+        
+      const config = {
+        headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      };
+      const url = 'http://localhost:3001/User/Upload_Book_Cover/:BookID/'
+      axios.post(url,formData,config).then((res)=>{alert('uploaded')
+    }).catch((err)=>{
+        console.log('err',err);
+    })
+       
+      };
   return (
     <>
- <CssBaseline />
+ {/* <CssBaseline />
     <Box className={classes.profileImg}>
         <img  className={classes.profileUserImg}
         src={require(`../img/bookimg.png`)}   alt=""/>
@@ -49,7 +78,12 @@ function BookImgUp(bookimg) {
             <PhotoCameraIcon className={classes.profileUserIcon}  />
         </IconButton> 
      
-    </Box>
+    </Box> */}
+
+      <form onSubmit={onFormSubmit}>
+          <input type="file" name="photo" onChange={onInputChange} />
+          <button type='submit ' >Upload</button>
+          </form>
     </>
   )
 }

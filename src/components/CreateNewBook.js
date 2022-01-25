@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -88,7 +87,7 @@ import { useEffect, useState } from "react";
   };
   return (
       <>
-      <BookImgUp />
+      {/* <BookImgUp /> */}
       <Container component="main" maxWidth="xs" >
           
         <Box 
@@ -154,5 +153,3 @@ import { useEffect, useState } from "react";
   );
 };
 export default CreateNewBook
-
-

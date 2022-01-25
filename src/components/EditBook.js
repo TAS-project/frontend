@@ -101,7 +101,6 @@ const [fetched2, setfetched2] = useState(false);
         <Box 
           sx={{
             marginTop: 35,
-          
             flexDirection: 'column',
             alignItems: 'center',
             
