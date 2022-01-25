@@ -15,6 +15,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # how to run code of frontend and backend in your vscode
 
+run step 1 and 2 together to see the resut.
+
 1- Step 1 : clone frontend
 
 make a folder you want to put the frontend react js code which cloned from github in it.
@@ -26,6 +28,7 @@ then run `npm start` to run the React project and show the result in browser.
 if you use yarn, you should first run the script `yarn build ` and `yarn start`.
 
 2- Step 2 : Clone backend
+
 make a folder you want to put the backend react js code which cloned from github in it.
 open TAS-project in github and clone backend repository with this script :
 `git clone {the url of backend repo}`
@@ -33,6 +36,11 @@ when you clone backend :
 if you use npm, you should first run the script `npm start` which installs the required dependencies. after that
 then run `node index.js` to run the server.
 if you use yarn, you should first run the script `yarn build ` and `node index.js`.
+
+this project used MYSQL as database:
+1- install MYSQL
+2- install HeidiSQL to make tables
+3- install postman to notice the inputs that should be send to backend and token given from backend.
 
 ## Available Scripts
 
