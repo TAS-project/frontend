@@ -55,6 +55,35 @@ export default function  EditUInfo() {
       email: data.get('email'),
       UserName : data.get('UserName'),
     });
+     fetch('http://localhost:3001/User/Edit', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("token"),
+        },
+      body: JSON.stringify({
+          "Username": data.get('UserName'),
+          "First_Name": data.get('firstName'),
+          "Last_Name": data.get('lastName'),
+          "Password": data.get('email'),
+          "Email": data.get('email')
+        })
+      }).then(res => {
+        const status = res.status;
+        if (status === 400) { // error coming back from server
+          console.log('Error in fecthing');
+        } else if (status === 401) { // error coming back from server
+          console.log('401');
+        }
+        return (res.json());
+
+      }).then((response) => {
+        console.log("fgvu :" + JSON.stringify(response))
+        window.location.pathname = `/profile/${data.get('UserName')}/`;
+        
+      })
+
   };
 
 

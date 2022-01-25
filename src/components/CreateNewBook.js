@@ -44,7 +44,8 @@ import { useEffect, useState } from "react";
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
+    const book_id = window.location.href.split('/')[3];
+    console.log('book id :' +  book_id )
     console.log({
       email: data.get('BookName'),
       Genres: [{ "Genre_ID": picked }],
@@ -58,7 +59,7 @@ import { useEffect, useState } from "react";
         'Accept': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem("token"),
       },
-    body: JSON.stringify({
+      body: JSON.stringify({
       "Name": data.get('BookName'),
       "Genres": [{ "Genre_ID": picked }],
       "Summary":data.get('Description'),

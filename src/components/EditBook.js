@@ -79,11 +79,43 @@ const [fetched2, setfetched2] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const book_id = window.location.href.split('/')[4];
+    console.log('book id:' +  book_id )
     // eslint-disable-next-line no-console
+     console.log('shit')
     console.log({
       BookName: data.get('BookName'),
       Description: data.get('Description'),
     });
+    fetch('http://localhost:3001/User/Book_Edit', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("token"),
+        },
+      body: JSON.stringify({
+          
+      "Book_ID":book_id,
+      "Name": data.get('BookName'),
+      "Genres": [{ "Genre_ID": picked }],
+      "Summary":data.get('Description'),
+        })
+      }).then(res => {
+        const status = res.status;
+        if (status === 400) { // error coming back from server
+          console.log('Error in fecthing');
+        } else if (status === 401) { // error coming back from server
+          console.log('401');
+        }
+        return (res.json());
+
+      }).then((response) => {
+        console.log()
+          window.location.pathname = `/book/${book_id}/`;
+        
+      })
+
   };
 
 
@@ -95,7 +127,7 @@ const [fetched2, setfetched2] = useState(false);
 
     <div>{ (fetched1 === true && fetched2 === true) ?
       <div>
-      <BookImgUp  bookimg={`../img/book_${book.Book_ID}.png`} />
+      <BookImgUp   />
       <Container component="main" maxWidth="xs" >
           
         <Box 
