@@ -1,15 +1,13 @@
-import { Box, CssBaseline, IconButton } from '@material-ui/core'
-import React from 'react'
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import { useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
+import { Box, Button, Grid } from '@mui/material';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Grid } from '@mui/material';
-const useStyles = makeStyles((theme) => ({
+
+ const useStyles = makeStyles((theme) => ({
 profileUserImg: {
   width: '170px',
   height: '170px',
-  //borderRadius: '10%',
+  borderRadius: '50%',
   objectFit: 'cover',
   position: 'absolute',
   left: '0',
@@ -69,25 +67,18 @@ profileImg2: {
  
  
 },
-profileUserIcon: {
- fontSize : 'medium',
-  objectFit: 'cover',
-},
+
 }));
-function BookImgUp(bookimg) {
-     const classes = useStyles();
-     const Book_ID = window.location.href.split('/')[4];
-     console.log(Book_ID);
-       const [file, setFile] = useState(null);
+function UserImgUp() {
+  const classes = useStyles();
+      const [file, setFile] = useState(null);
  
-  const onInputChange = (e) => {
-    console.log("setfile");
+      const onInputChange = (e) => {
         setFile(e.target.files[0]);
        
       };
  
-  const onFormSubmit = (e) => {
-    console.log("hello");
+      const onFormSubmit = async (e) => {
           e.preventDefault();
         const formData = new FormData();
         formData.append("photo", file);
@@ -98,43 +89,38 @@ function BookImgUp(bookimg) {
         "Content-Type": "application/json",
         'Accept': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem("token"),
-         
       },
-        params : {BookID: Book_ID},
-       
       };
-      const url = 'http://localhost:3001/User/Upload_Book_Cover/:BookID/'
+      const url = 'http://localhost:3001/User/Upload_Profile_Image/'
       axios.post(url,formData,config).then((res)=>{alert('uploaded')
     }).catch((err)=>{
         console.log('err',err);
     })
        
-  };
-  return (
-    <div >
-    <Box justifyContent='center' className={classes.profileImg2}>
+      };
+      
+   
+      return (
+        <div >
+    <Box className={classes.profileImg2}>
        <Box className={classes.profileImg}>
         <img className={classes.profileUserImg}
-            src={require('../img/bookimg.png')}
+            src="https://i.ibb.co/FKRrVtF/image.png"
             alt="new"
             />
         </Box>
-      
-      <Grid container className={classes.profileImg4} >
-         <form onChange={onFormSubmit}>
+   <Grid container className={classes.profileImg4} onSubmit={onFormSubmit}>
           <Grid item >
-           
           <input type="file" name="photo" onChange={onInputChange} /></Grid>
           <Grid item  sx={{padding: '10px'}}>
-          <Button variant="contained"  type='submit ' > Upload </Button>
+          <Button variant="contained"  type='submit ' >Upload</Button>
          </Grid>
-         </form>
           </Grid>
-        </Box>
-    
+    </Box>
            
         </div>
-  )
+      );
+    
 }
-
-export default BookImgUp
+ 
+export default UserImgUp;

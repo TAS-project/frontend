@@ -9,7 +9,8 @@ import BookImgUp from './BookImgUp';
 import { Button } from '@material-ui/core';
 // import { Book } from "../dummy";
 import { useEffect, useState } from "react";
-
+import UserImgUp from './UserImgUp';
+  
 export default function  EditBook() {
   const [book, setbook] = useState(null);
    const [picked, setpicked] = React.useState('');
@@ -127,12 +128,12 @@ const [fetched2, setfetched2] = useState(false);
 
     <div>{ (fetched1 === true && fetched2 === true) ?
       <div>
-      <BookImgUp   />
+     
       <Container component="main" maxWidth="xs" >
           
         <Box 
           sx={{
-            marginTop: 35,
+            marginTop: 45,
           
             flexDirection: 'column',
             alignItems: 'center',

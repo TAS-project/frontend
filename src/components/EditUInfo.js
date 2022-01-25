@@ -13,6 +13,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@material-ui/core';
 //import { profile } from "../dummy";
+import UserImgUp from './UserImgUp';
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -124,21 +125,14 @@ export default function  EditUInfo() {
       {
         fetched === true ?
       <Container component="main" maxWidth="xs" >
-         
+       
     <CssBaseline />
-    <Box className={classes.profileImg}>
-        <img  className={classes.profileUserImg}
-        src={profile.pic}   alt=""/>
-        <IconButton sx={{marginTop: '120px',marginLeft : '125px'}}>
-            <PhotoCameraIcon className={classes.profileUserIcon}  />
-        </IconButton> 
-     
-    </Box>
+
 
     
         <Box
           sx={{
-            marginTop: 25,
+            marginTop: 45,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

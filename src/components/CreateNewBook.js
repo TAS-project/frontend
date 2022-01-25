@@ -94,7 +94,7 @@ import { useEffect, useState } from "react";
           
         <Box 
           sx={{
-            marginTop: 35,
+            marginTop: 45,
           
             flexDirection: 'column',
             alignItems: 'center',
