@@ -86,11 +86,11 @@ export default function Book(props) {
       return (res.json());
 
     }).then((response) => {
-      console.log('posts anita : ' + JSON.stringify(response));
+      console.log('response : ' + JSON.stringify(response));
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       if  (follow === 0)
         togglefollow(1)
-      else
+      if (follow === 1)
           togglefollow(0)
       }) 
   };

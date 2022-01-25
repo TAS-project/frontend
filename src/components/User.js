@@ -92,7 +92,7 @@ export default function User(props) {
       if (response.Response === 'Done')
       if  (follow === 0)
         togglefollow(1)
-      else
+      if  (follow === 1)
           togglefollow(0)
       }) 
       
