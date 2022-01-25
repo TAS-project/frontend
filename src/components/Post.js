@@ -1,14 +1,12 @@
 
-import { MoreVert } from "@material-ui/icons";
-import { useContext, useEffect, useState } from "react";
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
-import img1 from "../img/book_1.png";
-import { Button, Card, CardContent, CardMedia, Divider, Typography } from "@material-ui/core";
+import { Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useEffect, useState } from "react";
 
-const user_id = 1;
 const useStyles = makeStyles((theme) => ({
   post: {
     border: '2px solid',
@@ -21,53 +19,57 @@ const useStyles = makeStyles((theme) => ({
 
   },
   rate: {
-    //position: { md: 'absolute' },
     position:'absolute',
     right: '3px',
     bottom: '4px',
-    
-    //right:{ md: '3px' },
     display: 'flex',
-    //marginLeft: "auto",
-    //padding:"4px",
     },
   
 }));
 export default function Post(props) {
   const classes = useStyles();
-
-    /*
-  const [like, setLike] = useState(post.likes.length);
-  const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState({});
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user: currentUser } = useContext(AuthContext);
-
+  const [rate, setrate] = useState(null);
   useEffect(() => {
-    setIsLiked(post.likes.includes(currentUser._id));
-  }, [currentUser._id, post.likes]);
+    console.log('rate' +props.chapter.Rate)
+    setrate(props.chapter.Rate)
+  }, []);
+  // when user rate a book :
+  const setValueRate =(newValue) => {
+    console.log(newValue)
+    console.log("book_id:" + props.chapter.Book_ID)
+  fetch('http://localhost:3001/User/Rate', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Book_ID": props.chapter.Book_ID,
+      "Rate": newValue,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?userId=${post.userId}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [post.userId]);
-*/
-  const likeHandler = () => {
-    try {
-      //axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
-    } catch (err) {}
-    //setLike(isLiked ? like - 1 : like + 1);
-    //setIsLiked(!isLiked);
-  };
+    }).then((response) => {
+      console.log('respomse: ' + JSON.stringify( response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      setrate(response.Rate);
+      }) 
+  }
 
   const userclick = () => {
-    window.location.pathname = `/profile/${props.chapter.Username}`;
+    window.location.pathname = `/profile/${props.chapter.Writer_Username}/`;
   };
+
   const Bookclick = () => {
-    window.location.pathname = `/book/${props.chapter.Book_Name}`;
+    window.location.pathname = `/book/${props.chapter.Book_ID}/`;
   };
     return (
 
@@ -93,11 +95,9 @@ export default function Post(props) {
             paddingRight:{md:'20px'},
           height: { xs: 233, md: 267 },
           width: { xs: 150, md: 200 },
-          //maxHeight: { xs: 233, md: 167 },
-          //maxWidth: { xs: 350, md: 250 },
         }}
         alt="The house from the offer."
-        src={require(`../img/book_${props.chapter.Chapter_ID}.png`)}
+        src={props.chapter.Book_Cover}
       />
       <Box
         sx={{
@@ -109,12 +109,12 @@ export default function Post(props) {
           minWidth: { md: 350 },
         }}
         >
-           <Typography style={{color:"#878383", position: 'absolute' ,top:'3%', right:'3%'}}> last update : {props.chapter.Publishing_date }</Typography>
+           <Typography style={{color:"#878383", position: 'absolute' ,top:'3%', right:'3%'}}> last update : {props.chapter.Last_Updated }</Typography>
         <Box component="span" sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick()}>
          {props.chapter.Book_Name}
           </Box>
         <Box  sx={{ color: '#ABABAB', fontSize: 16 , cursor: 'pointer'}} onClick={() => userclick()}>
-         @{props.chapter.Username}
+         @{props.chapter.Writer_Username}
         </Box>
          
         <Box
@@ -135,7 +135,7 @@ export default function Post(props) {
           }}
         >
          
-         last chapter : {props.chapter.Last_chapter_name}
+         last chapter : {props.chapter.Last_Chapter_Name}
         </Box>
 
         </Box>
@@ -143,14 +143,14 @@ export default function Post(props) {
       <Typography component="legend">rating</Typography>
       <Rating
         name="rating"
-        value={props.chapter.BooK_Rate}
-        /*onChange={(event, newValue) => {
-          setValue(newValue);
+        value= {rate}
+        onChange={(event, newValue) => {
+          setValueRate(newValue);
           }}
-          */  />
+           />
         <Divider orientation="vertical" variant="middle" flexItem />
         
-          <Box xs={{fontSize:{md:'20px', xs:'10px'},}} style={{ display: 'flex', alignItems: 'center',cursor: 'pointer', flexWrap: 'wrap', }}>
+          <Box xs={{ fontSize: { md: '20px', xs: '10px' }, }} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', flexWrap: 'wrap', }} onClick={() => Bookclick()}>
             read more <ArrowForwardIosIcon fontSize="small" /></Box>
         
         </Box>

@@ -1,7 +1,5 @@
-import Post from "./Post";
-import { Post_HomePage } from "../dummy";
 import Box from '@mui/material/Box';
-
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 240;

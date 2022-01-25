@@ -3,49 +3,62 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { makeStyles } from '@material-ui/core';
+import { Alert } from '@mui/material';
+import { useState } from "react";
 
 
-const useStyles = makeStyles((theme) => ({
 
-
-}));
 export default function SignUp() {
-      const classes = useStyles();
+      // const classes = useStyles();
+  const [error, seterror] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    console.log(data.get('UserName'));
+    fetch('http://localhost:3001/User/register', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+    "Username": data.get('UserName'),
+    "First_Name": data.get('firstName'),
+    "Last_Name": data.get('lastName'),
+    "Password": data.get('password'),
+    "Email":  data.get('email')
+})
+    }).then(res => {
+       const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+        seterror(true)
+       }else if (status === 401) { // error coming back from server
+        console.log('user already exits');
+        seterror(true)
+      }
+       return ( status );
 
+     }).then((status) => {
+       if (status === 200) {
+         window.location.pathname = `/login/`;
+       }
+      }) 
+
+  };
+  
+  
   return (
 
       <Container component="main" maxWidth="xs" >
          
              <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            
-          }}
-        >
+        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             
              
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -60,61 +73,27 @@ export default function SignUp() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
+                <TextField autoComplete="given-name" name="firstName" required fullWidth
+                  id="firstName" label="First Name" autoFocus />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
+                <TextField required fullWidth id="lastName" label="Last Name" name="lastName" autoComplete="family-name" />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="UserName"
-                  label="User Name"
-                  type="UserName"
-                  id="UserName"
-                  autoComplete="new-password"
-                />
+                <TextField required fullWidth name="UserName" label="User Name" type="UserName" id="UserName"
+                  autoComplete="new-password"/>
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
+                <TextField required fullWidth id="email" label="Email Address" name="email" autoComplete="email"/>
               </Grid>
               
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
+                <TextField required fullWidth name="password" label="Password" type="password" id="password"
+                  autoComplete="new-password"/>
               </Grid>
               
-            </Grid>
+          </Grid>
+          {error && <Alert severity="error">username already taken</Alert>}
             <Button
               type="submit"
               fullWidth
@@ -125,9 +104,11 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-start">
               <Grid item>Already have an account?
-                <Link href="#" variant="body2">
-                      Sign in
+               <Button>
+                <Link href="/login" variant="body2">
+                      {" Sign in"}
                 </Link>
+                 </Button>
               </Grid>
             </Grid>
           </Box>

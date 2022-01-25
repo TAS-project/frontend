@@ -12,23 +12,54 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-import { Genre } from "../dummy";
+//import { Genre } from "../dummy";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
+import { useEffect, useState } from "react";
 const drawerWidth = 240;
 
+
+
 function ResponsiveDrawer() {
+  const [genres, setgenres] = useState([]);
+  const [fetched, setfetched] = useState(false);
+
+  useEffect(() => {
+  fetch('http://localhost:3001/User/Genre_All', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({})
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log(JSON.stringify(response.Genres));
+      setgenres(response.Genres);
+      console.log("new genres :" + genres);
+      setfetched(true)
+      }) 
+  }, []);
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const genreclick = (Genre_Title) => {
-    window.location.pathname = `/genre/${Genre_Title}`;
+  const genreclick = (Genre_id) => {
+    window.location.pathname = `/genre/${Genre_id}/`;
   };
   const drawer = (
     <div>
@@ -43,7 +74,9 @@ function ResponsiveDrawer() {
             </ListItemIcon>
             <ListItemText>Home</ListItemText>
         </ListItem>
-                <ListItem button >
+                <ListItem button onClick={() => {
+            window.location.pathname = `/profile/${localStorage.getItem("username")}/`;
+          }}>
             <ListItemIcon >
                <PersonIcon fontSize="small" /> 
             </ListItemIcon>
@@ -58,14 +91,15 @@ function ResponsiveDrawer() {
         </Typography>
       <List>
         
-        { Genre.map((G) => (
-          <ListItem button key={G.Genre_ID} onClick={() => genreclick(G.Genre_Title)}>
+        { fetched=== true ?
+          genres.map((G) => (
+          <ListItem button key={G.Genre_ID} onClick={() => genreclick(G.Genre_ID)}>
             <ListItemIcon >
                <LabelImportantIcon fontSize="small" /> 
             </ListItemIcon>
             <ListItemText primary={G.Genre_Title} />
           </ListItem>
-        ))}
+        )) : null}
       </List>
     </div>
   );
@@ -74,7 +108,7 @@ const ClickonSearch =(e) => {
   e.preventDefault()
     const {Seachithem } = e.target.elements
     console.log({ Seachithem: Seachithem.value })
-    window.location.pathname = `/search/${Seachithem.value}`;
+    window.location.pathname = `/search/${Seachithem.value}/`;
   };
 
   return (
@@ -104,8 +138,9 @@ const ClickonSearch =(e) => {
           </Typography>
           {/* search input  */}
           <form onSubmit={ClickonSearch} component="form"
-          sx={{ margin:'auto' ,width:{md:'300px' , sx:'150px'} , flex: 1  , p:1}}>
-            <InputBase sx={{ ml: 1, flex: 1, }}
+            sx={{ margin: 'auto', width: { md: '300px', sx: '150px' }, flex: 1, p: 1 }}>
+            <Box sx={{background:'white' , borderRadius:'3%'}} >
+            <InputBase sx={{ ml: 1, flex: 1,  }}
               placeholder="Search in"
               id="Seachithem"
           inputProps={{ 'aria-label': 'search Search books' }}
@@ -115,6 +150,7 @@ const ClickonSearch =(e) => {
            <Typography variant="caption"></Typography>
         <SearchIcon />
             </IconButton>
+            </Box>
           </form>
 
       </Toolbar>

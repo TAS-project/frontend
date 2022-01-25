@@ -1,13 +1,11 @@
 import Box from '@mui/material/Box';
-
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Divider, FormControl, FormHelperText, Input, InputLabel, List, ListItem, ListItemText, Typography } from "@material-ui/core";
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Input, InputLabel } from "@material-ui/core";
 import { Alert } from '@mui/material';
 
 
-const drawerWidth = 240;
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
 
   chapters: {
     marginTop:'3%',
@@ -34,14 +32,43 @@ const useStyles = makeStyles((theme) => ({
 export default function WriteChapter() {
   const [ShowError, setError] = React.useState(false);
   const ClickonAdd = (e) => {
+     const book_id = window.location.href.split('/')[4];
     e.preventDefault()
     const { title, text } = e.target.elements
     console.log({ title: title.value, content: text.value })
     if (title.value === '') {
       setError(true);
     } else { 
-     
-    window.location.reload();
+    // send it to sever 
+    fetch('http://localhost:3001/User/Chapter_Create', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Book_ID": book_id,
+      "Name": title.value,
+      "Content": text.value 
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('response add chapter : ' + JSON.stringify(response));
+     // window.location.pathname = `/book/${book_id}/`;
+      window.location.reload();
+      })  
+
+    
+      
   }
   };
 
