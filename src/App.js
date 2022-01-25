@@ -56,7 +56,7 @@ function App() {
           <Route exact path="/book/:bookid" element={<BookProfile />}></Route>
           <Route  path="/search/:word" element={<SearchResult />} />
           <Route path="/book/:bookid/:CId" element={<ChapterOfBook />}></Route>
-          <Route path="/genre/:title" element={<GenrePage />}></Route>
+          <Route path="/genre/:genreid" element={<GenrePage />}></Route>
           
           {/* Support Members*/}
           <Route path="/SupportSignup"  element= {<SupportSignup />}>  </Route>

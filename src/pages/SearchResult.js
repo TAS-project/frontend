@@ -50,7 +50,7 @@ export default function SearchResult() {
       setusers(response.Users);
       setbooks(response.Books);
       //.log("new posts :" + posts);
-      //setfetched(true)
+      setfetched(true)
       }) 
   }, []);
   
@@ -60,7 +60,7 @@ export default function SearchResult() {
   return (
     <div>
       <Toolbar />
-      { fetched === false ?
+      { fetched === true ?
     <Box
       component="main"
       sx={{}}>

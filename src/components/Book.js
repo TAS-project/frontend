@@ -54,7 +54,8 @@ export default function Book(props) {
     const styles = useStyles();
     const [follow, togglefollow] = useState(0);
     useEffect(() => {
-        togglefollow(props.book.followed)
+      console.log("mese "+JSON.stringify(props))
+      togglefollow(props.book.followed_state)
   }, []);
     const Bookclick = (Book_ID) => {
     window.location.pathname = `/book/${Book_ID}/`;

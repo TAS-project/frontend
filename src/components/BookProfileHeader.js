@@ -11,6 +11,7 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Chip from '@mui/material/Chip';
 import WriteChapter from '../components/WriteChapter';
 import { useEffect, useState } from "react";
+import { follower } from '../dummy';
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +68,7 @@ export default function BookProfileHeader() {
   const [book, setbook] = useState(null);
   const [fetched, setfetched] = useState(false);
   const [follow, togglefollow] = useState(0);
-  //const [followers, setfollowers] = useState(false);
+  const [followers, setfollowers] = useState([]);
 // for caching book information 
   useEffect(() => {
     const book_id = window.location.href.split('/')[4];
@@ -92,11 +93,12 @@ export default function BookProfileHeader() {
       return (res.json());
 
     }).then((response) => {
-      console.log('book: ' + JSON.stringify(response.Book));
+      //console.log('f: ' + JSON.stringify( response.Book.follower));
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setbook(response.Book);
-      console.log("new book :" + JSON.stringify(response.Book));
-      togglefollow(1)
+      setfollowers(response.Book.follower);
+      console.log("f state:" + JSON.stringify(response.Book.Followed_State));
+      togglefollow(response.Book.Followed_State);
       setfetched(true)
       }) 
   }, []);
@@ -122,11 +124,35 @@ export default function BookProfileHeader() {
     setSelectedValue(value);
   };
   const trigerfollow = () => {
+    const book_id = window.location.href.split('/')[4];
+    console.log("please toggle : " + book_id)
+    fetch('http://localhost:3001/User/BookFollow', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        "Book_ID": book_id,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('posts anita : ' + JSON.stringify(response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       if  (follow === 0)
         togglefollow(1)
       else
           togglefollow(0)
-    console.log('send server massehe for following / unfollowing');
+      }) 
   };
   const TrigerCreate = () => {
     showCreate === true?
@@ -176,7 +202,7 @@ export default function BookProfileHeader() {
                 <Button startIcon={<CommentIcon/>} style={{ color:'black', textTransform: 'none' }}>chapters</Button>
                             <Button startIcon={<ListIcon/>} style={{ color:'black', textTransform: 'none' }} >riviews</Button>
                 <Button onClick={() => handleClickOpen()} startIcon={<BookmarksIcon />} style={{ color: 'black', textTransform: 'none' }}>followrs</Button>
-               <PopUp selectedValue={selectedValue} open={open} list={['grg']} title="Followers" onClose={() => handleClose()}/>
+               <PopUp selectedValue={selectedValue} open={open} list={followers} title="Followers" onClose={() => handleClose()}/>
 
             </Box>
 
@@ -189,11 +215,11 @@ export default function BookProfileHeader() {
             </Box>
 
             <Box style={{margin:'2%'}}>
-            { book.User_ID === book.Writer_ID ?
+            { follow === -1 ?
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => TrigerCreate()}>create new chapter</Button> 
-              :
+              : 
               <Button variant='outlined' style={{cursor: 'pointer', color: 'black', textTransform: 'none' }} onClick={() => trigerfollow()}>{follow === 0 ? 'follow book' : 'unfollow book'}</Button>
-              
+                  
               
             }
             </Box>

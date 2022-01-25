@@ -1,7 +1,9 @@
 import Comment from "./Comment";
 import React from 'react';
 //import { chapter_1} from "../dummy";
-import { comments} from "../dummy";
+
+
+//import { comments } from "../dummy";
 import Box from '@mui/material/Box';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -43,12 +45,42 @@ export default function Chapters() {
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      commentt: data.get('commentt'),
+      comment: data.get('comment'),
       
     });
+   const ch_id = window.location.href.split('/')[5];
+   console.log('chapter_id :' + ch_id)
+    // send it to sever 
+    fetch('http://localhost:3001/User/Comment_Write', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Chapter_ID": ch_id,
+      "Comment": data.get('comment'),
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('response add chapter : ' + JSON.stringify(response));
+     // window.location.pathname = `/book/${book_id}/`;
+      window.location.reload();
+      })  
+   
   };
 
   const [chapter, setchaper] = useState(null);
+  const [comments, setcomments] = useState(null);
   const [fetched, setfetched] = useState(false);
   const [IsOwner, setOwner] = useState(null);
   
@@ -82,9 +114,10 @@ export default function Chapters() {
       return (res.json());
 
     }).then((response) => {
-      console.log('chaper: ' + JSON.stringify(response.Chapter));
+      console.log('comments:' + JSON.stringify(response.Chapter.Comments));
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setchaper(response.Chapter);
+      setcomments(response.Chapter.Comments)
       setfetched(true)
       if ((localStorage.getItem("username")).toLowerCase() === response.Chapter.Owner_Username.toLowerCase())
        setOwner(true)
@@ -92,6 +125,9 @@ export default function Chapters() {
     
   }, []);
   const classes = useStyles();
+    const userclick = (uname) => {
+    window.location.pathname = `/profile/${uname}/`;
+  };
   return (
     <div>
       {
@@ -122,14 +158,14 @@ export default function Chapters() {
       </Typography>
       {/*comment section */ }
       <Box className={classes.comment}>
-        <CardHeader style={{paddingLeft:'40px'}} avatar={ <Avatar alt="Remy Sharp" src={require(`../img/book_3.png`)}/>}
-        title="user name"/>
+                    <CardHeader style={{ paddingLeft: '40px', cursor: 'pointer' }} onClick={() => userclick(chapter.Owner_Username)}avatar={<Avatar alt="Remy Sharp" src={chapter.pic} />}
+        title={chapter.Owner_Username } />
       <Box component="form" onSubmit={handlePost} noValidate sx={{ mt: 1 }}>
         <Grid container direction="row" alignItems="center" justifyContent="center" >
           <Grid item xs={10} >
               <TextField
-              id="commentt"
-              name="commentt"
+              id="comment"
+              name="comment"
               fullWidth
               multiline={true}
               rows={3}
@@ -153,7 +189,7 @@ export default function Chapters() {
       <Box >
                   {
         comments.map((c) => (
-             <Comment xs={{ boxShadow: 3, m: 2 }} key={c.comments_ID} comment={c} />
+             <Comment xs={{ boxShadow: 3, m: 2 }} key={c.Comment_ID} comment={c} />
             ))
         }
         </Box>

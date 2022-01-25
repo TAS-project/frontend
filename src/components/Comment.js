@@ -17,21 +17,23 @@ import {ListItem,ListItemText,ListItemAvatar,Avatar} from "@material-ui/core";
 // }));
 export default function Comment(props) {
   // const classes = useStyles();
-
+  const userclick = (uname) => {
+    window.location.pathname = `/profile/${uname}/`;
+  };
   return (
       <Box>
           <ListItem key={props.comment.comments_ID} alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt="avatar" src={require(`../img/book_4.png`)} />
+                <Avatar alt="avatar" src={props.comment.pic} />
               </ListItemAvatar>
               <ListItemText
                 primary={
-                  <Typography variant="caption">
-                    {`@${props.comment.Username}`}
+                  <Typography variant="caption" style={{cursor: 'pointer'}} onClick={() => userclick(props.comment.Commenter_Username)} >
+                    {`@${props.comment.Commenter_Username}`}
                   </Typography>
                 }
                 secondary={
-                  <Typography variant="body2" gutterBottom>{`${props.comment.content}`}</Typography>
+                  <Typography variant="body2" gutterBottom>{`${props.comment.Comment}`}</Typography>
                 }
               />
             </ListItem>
