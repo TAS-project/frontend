@@ -7,9 +7,50 @@ import MenuItem from '@mui/material/MenuItem';
 import BookImgUp from './BookImgUp';
 import { Button } from '@material-ui/core';
 import { useEffect, useState } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+// import {  IconButton } from '@material-ui/core'
 
 
+const useStyles = makeStyles((theme) => ({
+profileUserImg: {
+  width: '160px',
+  height: '200px',
+ // borderRadius: '50%',
+  objectFit: 'cover',
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  border : '3px solid grey',
+  //borderColor : '#ffffff',
+ 
+},
+profileImg: {
+  width: '180px',
+  height: '180px',
+ // backgroundColor : '#ffffff',
+  position: 'absolute',
+  left: '0',
+  right: '0',
+  margin: 'auto',
+  top: '40px', 
+},
+profileUserIcon: {
+ fontSize : 'medium',
+  objectFit: 'cover',
+  color : 'black'
+},
+iconbut :{
+    marginLeft : '130px',
+    marginTop : '160px',
+   // color : 'hsla(0, 0%, 100%, 0.769)6',
+},
+inputimg : {
+  marginTop : '20px'
+}
+}));
  function  CreateNewBook() {
+    const classes = useStyles();
   const [genres, setgenres] = useState([]);
    const [fetched, setfetched] = useState(false);
    // get all the genres
@@ -87,9 +128,16 @@ import { useEffect, useState } from "react";
   };
   return (
       <>
-      {/* <BookImgUp /> */}
-      <Container component="main" maxWidth="xs" >
-          
+    
+      <Container component="main" maxWidth="xs" >  
+       <Box className={classes.profileImg}>
+        <img  className={classes.profileUserImg}
+        src={require(`../img/bookimg.png`)}   alt=""/>
+        {/* <IconButton className={classes.iconbut}>
+            <PhotoCameraIcon className={classes.profileUserIcon}  />
+        </IconButton>  */}
+     
+    </Box>   
         <Box 
           sx={{
             marginTop: 35,
@@ -130,7 +178,7 @@ import { useEffect, useState } from "react";
               
            
              <Grid item xs={12}>
-                    <TextField placeholder="Give a brief description of your book"  multiline  rows={7}  maxRows={7}  required name="Description" fullWidth  id="Description"  label="Description"  />             
+                    <TextField placeholder="Give a brief description of your book"  multiline  rows={5}  maxRows={5}  required name="Description" fullWidth  id="Description"  label="Description"  />             
             </Grid>
               
               <Grid item xs={12}>
@@ -145,7 +193,7 @@ import { useEffect, useState } from "react";
            
           </Box>
         </Box>
-       
+         <BookImgUp />
       </Container>
       </>
         

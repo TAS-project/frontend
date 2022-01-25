@@ -4,6 +4,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { useState } from 'react'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
+import { Button } from '@mui/material';
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
   width: '160px',
@@ -37,6 +38,11 @@ iconbut :{
     marginLeft : '130px',
     marginTop : '160px',
    // color : 'hsla(0, 0%, 100%, 0.769)6',
+},
+inputimg : {
+  marginTop : '20px',
+  padding : '10px',
+  fontSize : '15px'
 }
 }));
 function BookImgUp(bookimg) {
@@ -81,8 +87,8 @@ function BookImgUp(bookimg) {
     </Box> */}
 
       <form onSubmit={onFormSubmit}>
-          <input type="file" name="photo" onChange={onInputChange} />
-          <button type='submit ' >Upload</button>
+          <input className={classes.inputimg} type="file" name="photo" onChange={onInputChange} />
+          <Button  variant="contained" type='submit ' >Upload</Button>
           </form>
     </>
   )
