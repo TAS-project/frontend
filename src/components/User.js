@@ -56,20 +56,45 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function User(props) {
     const styles = useStyles();
-    const [follow, togglefollow] = useState(0);
-    useEffect(() => {
-        togglefollow(props.user.follow)
-  }, [props.user.follow]);
+    const [follow, togglefollow] = useState();
+  useEffect(() => {
+      console.log('state : '+ props.user.Followed_State)
+        togglefollow(props.user.Followed_State)
+  }, []);
 
     const userclick = (Username) => {
     window.location.pathname = `/profile/${Username}/`;
   };
 
   const followun = (Username) => {
-      if (follow === 0) 
+ console.log("please toggle : " + Username)
+    fetch('http://localhost:3001/User/UserFollow', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        "Username": Username,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      if (response.Response === 'Done')
+      if  (follow === 0)
         togglefollow(1)
-      else
+      if  (follow === 1)
           togglefollow(0)
+      }) 
       
   };
   
@@ -92,19 +117,19 @@ export default function User(props) {
       <Box className={styles.media}
       component="img" sx={{ height: 150, width: 150 }}
       alt="The house from the offer."
-            src={require(`../img/book_${props.user.Usr_ID}.png`)} />
+            src={props.user.Pic} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           p: 1,
           m: 1,
           bgcolor: 'background.paper'}}>
-          <h3 className={styles.heading}>{props.user.First_Name + "  " + props.user.Last_Name} </h3>
+          <h3 className={styles.heading}>{props.user.Name } </h3>
           <Box  sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(props.user.Username)}>{"@" + props.user.Username}</Box>
             {follow === 0 ?
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> follow</Box>
+                <Box className={styles.butn} onClick={() => followun(props.user.Username)} sx={{ display: 'flex', mt: 1 }}> follow</Box>
                 :
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
+                <Box className={styles.butn} onClick={() => followun(props.user.Username)} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
             }
           </Box>
      </Box>

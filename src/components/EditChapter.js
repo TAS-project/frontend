@@ -95,7 +95,7 @@ export default function EditChapter(props) {
           <div className={classes.col75}>
               <InputLabel   htmlFor="my-input">chapter title</InputLabel>
   <Input style={{marginBottom:'3%'}}  defaultValue={props.chapter.chapter_name } id="title" aria-describedby="my-helper-text" />
-            <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." >{props.chapter.content}</textarea>
+            <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." >{props.chapter.content}git </textarea>
            
           </div>
           {//props.chapter.content
@@ -104,7 +104,7 @@ export default function EditChapter(props) {
               :
               null
           }
- <button  type="submit" style={{color:'white', borderRadius:'10%', fontSize: 18,  cursor: 'pointer' ,backgroundColor: '#ED6663'}} >Edit chapter</button>
+ <button type="submit" style={{color:'white', borderRadius:'10%', fontSize: 18,  cursor: 'pointer' ,backgroundColor: '#ED6663'}} >Edit chapter</button>
   
   </form>
 </div>

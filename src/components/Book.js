@@ -54,8 +54,9 @@ export default function Book(props) {
     const styles = useStyles();
     const [follow, togglefollow] = useState(0);
     useEffect(() => {
-        togglefollow(props.book.follow)
-  }, [props.book.follow]);
+      console.log("mese "+JSON.stringify(props))
+      togglefollow(props.book.followed_state)
+  }, []);
     const Bookclick = (Book_ID) => {
     window.location.pathname = `/book/${Book_ID}/`;
     };
@@ -63,12 +64,35 @@ export default function Book(props) {
     window.location.pathname = `/profile/${Username}/`;
   };
 
-  const followun = (Username) => {
-      if (follow === 0) 
+  const followun = (Book_ID) => {
+    console.log("please toggle : " + Book_ID)
+    fetch('http://localhost:3001/User/BookFollow', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        "Book_ID": Book_ID,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('response : ' + JSON.stringify(response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      if  (follow === 0)
         togglefollow(1)
-      else
+      if (follow === 1)
           togglefollow(0)
-      
+      }) 
   };
   
     return (
@@ -90,26 +114,28 @@ export default function Book(props) {
         paddingRight:{md:'20px'},
         height: { xs: 233, md: 267 },
         width: { xs: 150, md: 200 } }}
-      alt="The house from the offer."
-        src={require(`../img/book_${props.book.Book_ID}.png`)} />
+          alt="The house from the offer."
+
+          src = {props.book.Book_Cover} />
           <Box sx={{
           display: 'flex',
           flexDirection: 'column',
           p: 1,
           m: 1,
           bgcolor: 'background.paper'}}>
-          <Box  sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick(props.book.Book_ID)} >{props.book.Book_Name} </Box>
+          <Box  sx={{ fontSize: 22, mt: 1, cursor: 'pointer' }} onClick={() => Bookclick(props.book.Book_Id)} >{props.book.Name} </Box>
             <Box sx={{color: '#ABABAB', fontSize: 16, mt: 1, cursor: 'pointer' }} onClick={() => userclick(props.book.Username)}>{"@" + props.book.Username}</Box>
             <Typography>
-            {props.book.summary}
+            {props.book.Summary}
             </Typography>
             
                 {follow === 0 ?
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> follow</Box>
-                :
-                <Box className={styles.butn} onClick={() => followun()} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
-                }
-                
+                <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> follow</Box>
+                :follow === 1 ?
+              <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
+              : null
+          }
+    
             </Box>
             
      </Box>

@@ -65,7 +65,7 @@ export default function Post(props) {
           width: { xs: 150, md: 200 },
         }}
         alt="The house from the offer."
-        src={require(`../img/book_${props.chapter.Book_ID}.png`)}
+        src={props.chapter.Book_Cover}
       />
       <Box
         sx={{
