@@ -5,18 +5,14 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
-import BookImgUp from './BookImgUp';
 import { Button } from '@material-ui/core';
-// import { Book } from "../dummy";
 import { useEffect, useState } from "react";
-import UserImgUp from './UserImgUp';
   
 export default function  EditBook() {
   const [book, setbook] = useState(null);
    const [picked, setpicked] = React.useState('');
   const [fetched1, setfetched1] = useState(false);
-  //const [followers, setfollowers] = useState(false);
-// for caching book information 
+
   useEffect(() => {
     const book_id = window.location.href.split('/')[4];
     console.log("book_id: " + book_id)
@@ -41,9 +37,9 @@ export default function  EditBook() {
 
     }).then((response) => {
       console.log('book: ' + JSON.stringify(response.Book));
-      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      
       setbook(response.Book);
-      //console.log("new book :" + JSON.stringify(response.Book));
+   
       setfetched1(true)
       }) 
   }, []);
@@ -118,9 +114,6 @@ const [fetched2, setfetched2] = useState(false);
       })
 
   };
-
-
-
   const handleChange = (event) => {
     setpicked(event.target.value);
   };
@@ -140,7 +133,6 @@ const [fetched2, setfetched2] = useState(false);
             
           }}
         >
-           
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

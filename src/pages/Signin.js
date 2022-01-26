@@ -14,7 +14,6 @@ import { Alert } from '@mui/material';
 import { useState } from "react";
 
 
-
 function Signin() {
   const [error, seterror] = useState(false);
   var status = 0;
@@ -52,6 +51,7 @@ function Signin() {
         console.log(localStorage.getItem("token"));
         console.log(localStorage.getItem("username"));
         window.location.pathname = `/home/`;
+        
       }
       }) 
 

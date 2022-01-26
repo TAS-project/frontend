@@ -6,14 +6,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
 import {useEffect, useState } from "react";
-//import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
   border:' 3px solid black',
 },
-
-
 
 roundbox : {
   marginBottom: '30px',
@@ -23,22 +20,19 @@ InfoItem :{
   alignItems : 'center',
   justifyContent :'center',
   borderRadius: '12px',
-  padding : '30px',
-   
-    
+  padding : '30px',  
 },
-
 
 InfoItemiN : {
   padding : '10px'
 }
-
 }));
 
 export default function UserInfo(props) {
       const [follow, togglefollow] = useState(0);
 const EdithandleClick =() => {
     console.log('edit clicked');
+     console.log(props.profile.Username);
     window.location.pathname = `/editUser/${props.profile.Username}`;    
 };
 const NewBookHandleClick =() => {
@@ -135,6 +129,7 @@ console.log("please toggle : " + props.profile.Username)
                 </Grid>
               </div>
           </Grid>
+          
         </Box>
 
       </div>

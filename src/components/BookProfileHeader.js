@@ -1,5 +1,4 @@
 import * as React from 'react';
-//import { book_1 } from "../dummy";
 import PopUp from '../components/PopUp';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
@@ -11,7 +10,6 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Chip from '@mui/material/Chip';
 import WriteChapter from '../components/WriteChapter';
 import { useEffect, useState } from "react";
-//import { follower } from '../dummy';
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 const useStyles = makeStyles((theme) => ({

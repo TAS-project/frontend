@@ -6,14 +6,9 @@ import TextField from '@mui/material/TextField';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
 import { useEffect, useState } from "react";
 import Container from '@mui/material/Container';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import IconButton from '@mui/material/IconButton';
 import { makeStyles } from '@material-ui/core';
-//import { profile } from "../dummy";
-import UserImgUp from './UserImgUp';
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -162,14 +157,10 @@ export default function  EditUInfo() {
               <Grid item xs={12}>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 , height:'50px'}}> Save </Button>
               </Grid>          
-            </Grid >
-            
-
-           
+            </Grid >           
           </Box>
         </Box>
-       
-          </Container>
+      </Container>
         
         : null
       }

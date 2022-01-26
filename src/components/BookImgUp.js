@@ -86,12 +86,12 @@ function BookImgUp(bookimg) {
        
       };
  
+
+      const onFormSubmit = async (e) => {
+
   const onFormSubmit = (e) => {
-    console.log("hello");
-          e.preventDefault();
         const formData = new FormData();
         formData.append("photo", file);
-      
         
       const config = {
         headers: {
@@ -109,6 +109,9 @@ function BookImgUp(bookimg) {
         console.log('err',err);
     })
        
+
+      };
+
   };
   return (
     <div >
