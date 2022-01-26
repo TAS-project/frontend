@@ -1,5 +1,4 @@
 # TAS : a website for reading and writing books
-<<<<<<< HEAD
 
 Hi, welcome to TAS (The Authors Society)
 in this website you can read the books of people who are members of TAS.
@@ -38,10 +37,6 @@ this project used MYSQL as database:
 1- install MYSQL
 2- install HeidiSQL to make tables
 3- install postman to notice the inputs that should be send to backend and token given from backend.
-
-<!--
-=======
->>>>>>> 213c780b9f04a792b213d954a65c59ec6c6f87f5
 
 Hi, welcome to TAS (The Authors Society)
 in this website you can read the books of people who are members of TAS.
