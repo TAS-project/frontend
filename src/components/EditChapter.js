@@ -34,6 +34,7 @@ export default function EditChapter(props) {
   const [ShowError, setError] = React.useState(false);
 
 
+
   const ClickonAdd = (e) => {
     console.log('edit')
     const book_id = window.location.href.split('/')[4];
@@ -78,7 +79,6 @@ export default function EditChapter(props) {
       })
     }
   };
-
   const classes = useStyles();
   return (
     <Box
@@ -89,13 +89,15 @@ export default function EditChapter(props) {
 <h3 style={{fontFamily:'inherit'}}>New Chapter</h3>
 
           <div className={classes.container}>
-  <form onSubmit={ClickonAdd}>
+
+        <form onSubmit={ClickonAdd}>
 
 
           <div className={classes.col75}>
               <InputLabel   htmlFor="my-input">chapter title</InputLabel>
-  <Input style={{marginBottom:'3%'}}  defaultValue={props.chapter.chapter_name } id="title" aria-describedby="my-helper-text" />
-            <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." >{props.chapter.content}git </textarea>
+   
+          <Input style={{marginBottom:'3%'}}  defaultValue={props.chapter.chapter_name } id="title" aria-describedby="my-helper-text" />
+            <textarea className={classes.textarea} id="text" name="subject" placeholder="Write your story..." >{props.chapter.content}</textarea>
            
           </div>
           {//props.chapter.content

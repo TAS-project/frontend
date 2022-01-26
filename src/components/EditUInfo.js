@@ -67,7 +67,7 @@ export default function  EditUInfo() {
           "Username": data.get('UserName'),
           "First_Name": data.get('firstName'),
           "Last_Name": data.get('lastName'),
-          "Password": data.get('email'),
+          "Password": data.get('password'),
           "Email": data.get('email')
         })
       }).then(res => {

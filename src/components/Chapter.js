@@ -86,13 +86,13 @@ export default function Chapters() {
   
   const [Edit, setEdit] = React.useState(false);
   const clickEdit =() => {
-    console.log('click');
+    console.log('click on edit !!!!');
     setEdit(true);
   };
   // for caching book information 
   useEffect(() => {
     const chapter_id = window.location.href.split('/')[5];
-    console.log("book_id: " + chapter_id)
+    console.log("book_id:" + chapter_id)
     
   fetch('http://localhost:3001/User/Chapter_view', {
       method: 'POST',
@@ -197,7 +197,10 @@ export default function Chapters() {
         </Box>
           </Box >
           :
-          <EditChapter chapter={chapter} />
+                 
+              <EditChapter chapter={chapter} />
+            
+                
       }
       </div>
       :
