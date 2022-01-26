@@ -22,14 +22,17 @@ when you clone frontend :
 if you use npm, you should first run the script `npm start` which installs the required dependencies. after that
 then run `npm start` to run the React project and show the result in browser.
 if you use yarn, you should first run the script `yarn build ` and `yarn start`.
-
+</br>
+</br>
+</br>
+</br>
 2- Step 2 : Clone backend
 
 make a folder you want to put the backend react js code which cloned from github in it.
 open TAS-project in github and clone backend repository with this script :
 `git clone {the url of backend repo}`
 when you clone backend :
-if you use npm, you should first run the script `npm start` which installs the required dependencies. after that
+if you use npm, you should first run the script `npm install` which installs the required dependencies. after that
 then run `node index.js` to run the server.
 if you use yarn, you should first run the script `yarn build ` and `node index.js`.
 
@@ -38,42 +41,24 @@ this project used MYSQL as database:
 2- install HeidiSQL to make tables
 3- install postman to notice the inputs that should be send to backend and token given from backend.
 
-<!--
-# Getting Started with Create React App
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## Available Scripts
-In the project directory, you can run:
-### `yarn start`
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-### `yarn test`
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-### `yarn build`
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-### `yarn eject`
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-## Learn More
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-To learn React, check out the [React documentation](https://reactjs.org/).
-### Code Splitting
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-### Analyzing the Bundle Size
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-### Making a Progressive Web App
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-### Advanced Configuration
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-### Deployment
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-### `yarn build` fails to minify
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) -->
+</br>
+</br>
+Pay attention to .env file, this file is loaded with your most important data.
+
+PORT, SQL_PORT, JWT_SECRET, JWT_EXPIRES_IN, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE, HOST, DIALECT PHOTOS_PREFIX
+
+You need to fill these values with corect inputs in order to create and use database and back end.
+
+</br>
+create a data base table and
+after npm install `uncomment the line 21 of index.js` to create database tables.
+
+then run this script for seeders:
+</br></br></br>
+`npx sequelize-cli db:seed --seed Seeder_Users Seeder_Genres Seeder_Books Seeder_Book_Genres Seeder_Chapter Seeder_Comment Seeder_Follow_User Seeder_Bookmark`
+
+</br>
+</br>
+Now your database is loaded with data
+
+Enjoy our website ;)

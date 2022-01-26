@@ -130,9 +130,9 @@ export default function Book(props) {
             </Typography>
             
                 {follow === 0 ?
-                <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> follow</Box>
+                <Box className={styles.butn} onClick={() => followun(props.book.Book_Id)} sx={{ display: 'flex', mt: 1 }}> follow</Box>
                 :follow === 1 ?
-              <Box className={styles.butn} onClick={() => followun(props.book.Book_ID)} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
+              <Box className={styles.butn} onClick={() => followun(props.book.Book_Id)} sx={{ display: 'flex', mt: 1 }}> unfollow</Box>
               : null
           }
     
