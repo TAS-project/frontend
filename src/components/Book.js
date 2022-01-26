@@ -86,13 +86,16 @@ export default function Book(props) {
       return (res.json());
 
     }).then((response) => {
-      console.log('response : ' + JSON.stringify(response));
-      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
-      if  (follow === 0)
-        togglefollow(1)
-      if (follow === 1)
-          togglefollow(0)
-      }) 
+        //console.log('taravat : ' + JSON.stringify(Post_HomePage) );
+        if (response.Response === "Done")
+          if (response.Following_State === true) {
+            props.book.followed_state = 1;
+            togglefollow(1);
+          } else {
+            props.book.followed_state = 0;
+            togglefollow(0);
+          }
+      })
   };
   
     return (
