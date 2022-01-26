@@ -89,7 +89,7 @@ export default function BookProfile() {
 
   useEffect(() => {
     const username = window.location.href.split('/')[4];
-    console.log("username: " + username)
+    console.log("username:   " + username)
     
   fetch('http://localhost:3001/User/Profile_Page', {
       method: 'POST',

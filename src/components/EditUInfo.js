@@ -6,11 +6,9 @@ import TextField from '@mui/material/TextField';
 
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
+import { useEffect, useState } from "react";
 import Container from '@mui/material/Container';
-import { makeStyles } from '@material-ui/core/styles';
-import { profile } from "../dummy";
-import UserImgUp from './UserImgUp';
+import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 profileUserImg: {
@@ -43,7 +41,8 @@ profileUserIcon: {
 }));
 export default function  EditUInfo() {
       const classes = useStyles();
-
+  const [profile, setprofile] = useState({});
+  const [fetched, setfetched] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -52,20 +51,78 @@ export default function  EditUInfo() {
       email: data.get('email'),
       UserName : data.get('UserName'),
     });
+     fetch('http://localhost:3001/User/Edit', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json',
+          'Authorization': "Bearer " + localStorage.getItem("token"),
+        },
+      body: JSON.stringify({
+          "Username": data.get('UserName'),
+          "First_Name": data.get('firstName'),
+          "Last_Name": data.get('lastName'),
+          "Password": data.get('password'),
+          "Email": data.get('email')
+        })
+      }).then(res => {
+        const status = res.status;
+        if (status === 400) { // error coming back from server
+          console.log('Error in fecthing');
+        } else if (status === 401) { // error coming back from server
+          console.log('401');
+        }
+        return (res.json());
+
+      }).then((response) => {
+        console.log("fgvu :" + JSON.stringify(response))
+        window.location.pathname = `/profile/${data.get('UserName')}/`;
+        
+      })
+
   };
 
-  return (
+
+    useEffect(() => {
+    const username = window.location.href.split('/')[4];
+    console.log("username: " + username)
     
-<div>         
+  fetch('http://localhost:3001/User/Profile_Page', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+        "Username": username
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      }
+      console.log("print  : " + JSON.stringify(res))
+      return (res.json());
+
+    }).then((response) => {
+      console.log("print: " + JSON.stringify(response));
+      setprofile(response.profile);
+      setfetched(true)
+      }) 
       
-  <Container component="main" maxWidth="xs" >
+  }, []);
 
-
-
-
-  <UserImgUp />
+  return (
+      <div>
+      {
+        fetched === true ?
+      <Container component="main" maxWidth="xs" >
+       
     <CssBaseline />
- 
+
 
     
         <Box
@@ -100,17 +157,14 @@ export default function  EditUInfo() {
               <Grid item xs={12}>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 , height:'50px'}}> Save </Button>
               </Grid>          
-            </Grid >
-            
-
-           
+            </Grid >           
           </Box>
         </Box>
-       
       </Container>
-
-</div>
-    
+        
+        : null
+      }
+       </div>
 
   );
 };

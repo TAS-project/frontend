@@ -56,8 +56,11 @@ const FollowProfile = (props) => {
     window.location.pathname = `/login`;
     window.localStorage.clear();
     if (localStorage.getItem("username") === null) {
-     alert("You will be Loged out");
-}    
+     alert("You have logged out");
+}
+   // props.profile.Username === localStorage.getItem("username")
+
+        
 }; 
   const classes = useStyles();
 

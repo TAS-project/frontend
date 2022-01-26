@@ -6,14 +6,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import * as React from 'react';
 import { Typography } from '@mui/material';
 import {useEffect, useState } from "react";
-//import { profile } from "../dummy";
 
 const useStyles = makeStyles((theme) => ({
 rightbar : {
   border:' 3px solid black',
 },
-
-
 
 roundbox : {
   marginBottom: '30px',
@@ -23,16 +20,12 @@ InfoItem :{
   alignItems : 'center',
   justifyContent :'center',
   borderRadius: '12px',
-  padding : '30px',
-   
-    
+  padding : '30px',  
 },
-
 
 InfoItemiN : {
   padding : '10px'
 }
-
 }));
 
 export default function UserInfo(props) {
@@ -47,14 +40,38 @@ const NewBookHandleClick =() => {
     window.location.pathname = `/NewBook`;    
   };
 const fuserClick =() => {
-    if  (follow === 0)
+console.log("please toggle : " + props.profile.Username)
+    fetch('http://localhost:3001/User/UserFollow', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        "Username": props.profile.Username,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      if (response.Response === 'Done')
+      if  (follow === 0)
         togglefollow(1)
-      else
+      if  (follow === 1)
           togglefollow(0)
-    console.log('send server massehe for following / unfollowing');   
+      }) 
+      
   };
   useEffect(() => {
-        console.log('fstate : ' + JSON.stringify(props))
+        console.log('what we have is  : ' + JSON.stringify(props))
         togglefollow(props.profile.Followed_State)
   }, []);
 
@@ -73,10 +90,11 @@ const fuserClick =() => {
         </Grid>
         <Grid container spacing={1} item xs={4} >
          <Grid item xs={6}  > 
-        <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
+        {props.profile.Followed_State === -1 && <Button variant="contained" sx={{width: { md: '60px', xs: '40px' },
           height: { md: '50px', xs: '40px' }, paddingLeft:'10px'}} onClick={()=>EdithandleClick()}>
              <EditIcon />
-          </Button>
+                    </Button>
+                    }
          </Grid>
 
         </Grid>

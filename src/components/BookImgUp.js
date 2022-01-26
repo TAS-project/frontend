@@ -80,16 +80,18 @@ function BookImgUp(bookimg) {
      console.log(Book_ID);
        const [file, setFile] = useState(null);
  
-      const onInputChange = (e) => {
+  const onInputChange = (e) => {
+    console.log("setfile");
         setFile(e.target.files[0]);
        
       };
  
+
       const onFormSubmit = async (e) => {
-          e.preventDefault();
+
+  const onFormSubmit = (e) => {
         const formData = new FormData();
         formData.append("photo", file);
-      
         
       const config = {
         headers: {
@@ -107,7 +109,10 @@ function BookImgUp(bookimg) {
         console.log('err',err);
     })
        
+
       };
+
+  };
   return (
     <div >
     <Box justifyContent='center' className={classes.profileImg2}>

@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 import { Divider, Typography } from "@material-ui/core";
 import { Rating } from "@mui/material";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   post: {
@@ -28,8 +28,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Post(props) {
   const classes = useStyles();
+  const [rate, setrate] = useState(null);
+  useEffect(() => {
+    console.log('rate' +props.chapter.Rate)
+    setrate(props.chapter.Rate)
+  }, []);
+  // when user rate a book :
   const setValueRate =(newValue) => {
-      console.log(newValue)
+    console.log(newValue)
+    console.log("book_id:" + props.chapter.Book_ID)
+  fetch('http://localhost:3001/User/Rate', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Book_ID": props.chapter.Book_ID,
+      "Rate": newValue,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('respomse: ' + JSON.stringify( response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      setrate(response.Rate);
+      }) 
   }
 
   const userclick = () => {
@@ -111,7 +143,7 @@ export default function Post(props) {
       <Typography component="legend">rating</Typography>
       <Rating
         name="rating"
-        value={props.chapter.Rate}
+        value= {rate}
         onChange={(event, newValue) => {
           setValueRate(newValue);
           }}

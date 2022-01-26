@@ -1,5 +1,4 @@
 import * as React from 'react';
-//import { book_1 } from "../dummy";
 import PopUp from '../components/PopUp';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from "@mui/system";
@@ -11,7 +10,6 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import Chip from '@mui/material/Chip';
 import WriteChapter from '../components/WriteChapter';
 import { useEffect, useState } from "react";
-import { follower } from '../dummy';
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 const useStyles = makeStyles((theme) => ({
@@ -69,6 +67,7 @@ export default function BookProfileHeader() {
   const [fetched, setfetched] = useState(false);
   const [follow, togglefollow] = useState(0);
   const [followers, setfollowers] = useState([]);
+  const [rate, setrate] = useState(null);
 // for caching book information 
   useEffect(() => {
     const book_id = window.location.href.split('/')[4];
@@ -93,18 +92,48 @@ export default function BookProfileHeader() {
       return (res.json());
 
     }).then((response) => {
-      //console.log('f: ' + JSON.stringify( response.Book.follower));
+      console.log('respomse:' + JSON.stringify( response));
       //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
       setbook(response.Book);
       setfollowers(response.Book.follower);
       console.log("f state:" + JSON.stringify(response.Book.Followed_State));
       togglefollow(response.Book.Followed_State);
+      setrate(response.Book.BooK_Rate)
       setfetched(true)
       }) 
   }, []);
 
-  // for chaching followers information 
-  
+
+  // when user rate a book :
+  const book_id = window.location.href.split('/')[4];
+  const setValueRate =(newValue) => {
+    console.log(newValue)
+  fetch('http://localhost:3001/User/Rate', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Authorization': "Bearer " + localStorage.getItem("token"),
+      },
+    body: JSON.stringify({
+      "Book_ID": book_id,
+      "Rate": newValue,
+      })
+    }).then(res => {
+      const status = res.status;
+      if (status === 400) { // error coming back from server
+        console.log('Error in fecthing book');
+      } else if (status === 401) { // error coming back from server
+        console.log('401');
+      } 
+      return (res.json());
+
+    }).then((response) => {
+      console.log('respomse: ' + JSON.stringify( response));
+      //console.log('taravat : ' + JSON.stringify(Post_HomePage)  );
+      setrate(response.Rate);
+      }) 
+  }
 
 
   // open pop ups
@@ -160,9 +189,6 @@ export default function BookProfileHeader() {
       setShowCreate(true)
     console.log('show create component');
   };
-  const setValueRate = (newValue) => {
-    console.log(newValue)
-  };
   const classes = useStyles();
   return (
     <div>
@@ -193,7 +219,7 @@ export default function BookProfileHeader() {
     
      <Rating
         name="rating"
-        value={book.BooK_Rate}
+        value={rate}
         onChange={(event, newValue) => {
           setValueRate(newValue);
           }}
@@ -247,4 +273,6 @@ export default function BookProfileHeader() {
       }
       </div>
   );
+
+
 }

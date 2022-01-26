@@ -84,7 +84,8 @@ inputimg : {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
+    const book_id = window.location.href.split('/')[3];
+    console.log('book id :' +  book_id )
     console.log({
       email: data.get('BookName'),
       Genres: [{ "Genre_ID": picked }],
@@ -98,7 +99,7 @@ inputimg : {
         'Accept': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem("token"),
       },
-    body: JSON.stringify({
+      body: JSON.stringify({
       "Name": data.get('BookName'),
       "Genres": [{ "Genre_ID": picked }],
       "Summary":data.get('Description'),
@@ -141,7 +142,7 @@ inputimg : {
     </Box>   
         <Box 
           sx={{
-            marginTop: 35,
+            marginTop: 45,
           
             flexDirection: 'column',
             alignItems: 'center',
